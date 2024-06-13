@@ -1,113 +1,223 @@
+import { Footer, Header } from "@/components";
 import Image from "next/image";
+
+const Hero = () => (
+  <article className="flex gap-10 justify-between items-center">
+    <section className="flex flex-col gap-[24px] pl-24">
+      <p className="text-_green">Supercharge your open source project</p>
+      <h1 className="text-4xl">
+        Engage your
+        <br />
+        open source community
+      </h1>
+      <p>
+        Gamify developers' daily routine with friendly competition managed by
+        GitHub bot
+      </p>
+    </section>
+    <section>
+      <Image
+        src={"/images/hero.svg"}
+        height={324}
+        width={600}
+        alt={"Sloth image"}
+      />
+    </section>
+  </article>
+);
+
+const HowItWorks = () => {
+  const items = [
+    {
+      image: "/images/bot1.svg",
+      title: "1. Include command",
+      description: "Contributor tags @race-of-sloths on the pull request",
+    },
+    {
+      image: "/images/bot2.svg",
+      image2: "/images/firework-sm.svg",
+      title: "2. Bot Response",
+      description:
+        "Bot responds with a confirmation with additional info in details",
+    },
+    {
+      image: "/images/bot3.svg",
+      title: "3. Maintainer score command",
+      description:
+        "Maintainer responds with a fibonnaci score of [0,1,2,3,5,8,13]",
+    },
+    {
+      image: "/images/bot4.svg",
+      title: "4. Bot Response",
+      description:
+        "Bot responds with a confirmation with additional info in details",
+    },
+    {
+      image: "/images/bot5.svg",
+      title: "Final",
+      description:
+        "After 24 hours from the merge, the bot finalizes score and updates the leaderboard",
+    },
+  ];
+
+  const HowItWorksItems = ({ title, description, image, image2 }) => (
+    <section className="flex justify-between items-center gap-5">
+      <div className="w-[380px] flex flex-col gap-2">
+        <b>{title}</b>
+        <p>{description}</p>
+      </div>
+      <div className="relative">
+        <div className="absolute w-[1px] h-full bg-[#3d3d3d] left-6 z-10" />
+        <div className="py-12 relative z-20">
+          <Image src={image} height={267} width={518} alt={title} />
+          {image2 && (
+            <div className="absolute -right-12 top-0 z-30">
+              <Image src={image2} height={114} width={97} alt="firework" />
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+
+  return (
+    <article className="flex flex-col">
+      <h1 className="text-3xl">How it works</h1>
+      <div className="flex flex-col relative">
+        {items.map((item, index) => (
+          <HowItWorksItems
+            key={index}
+            title={item.title}
+            description={item.description}
+            image={item.image}
+            image2={item.image2}
+          />
+        ))}
+      </div>
+    </article>
+  );
+};
+const StreaksRating = () => {
+  const items = [
+    [
+      {
+        title: "Valueble Contriblution",
+        description:
+          "Earn +10 rating points per each of your score point earned by submitting valuable pull requests",
+        image: "/images/rating1.svg",
+      },
+      {
+        title: "Weekly streak",
+        description:
+          "Keep your weekly streak with at least one contribution to receive a bonus at the end of the week",
+        image: "/images/rating2.svg",
+      },
+    ],
+    [
+      {
+        title: "Monthly streak",
+        description:
+          "Keep your monthly streak of high-valuable pull request (scored 8 or above) to receive additional bonus at the end of the month",
+        image: "/images/rating3.svg",
+      },
+      {
+        title: "Lifetime bonus",
+        description:
+          "Keep rocking with your streaks to receive a lifetime bonus to your rating",
+        image: "/images/rating4.png",
+      },
+    ],
+  ];
+
+  return (
+    <article className="flex flex-col gap-[40px] w-full">
+      <h1 className="text-3xl">
+        Sreaks <span className="text-_red">it</span> Rating
+      </h1>
+      {items.map((row, i) => (
+        <div key={i} className="flex justify-between gap-[64px]">
+          {row.map((item, j) => (
+            <div index={`${i}${j}`} className="flex gap-4">
+              <Image
+                src={item.image}
+                height={120}
+                width={120}
+                alt={`rating ${i}${j}`}
+              />
+              <div className="flex flex-col gap-2 w-[344px]">
+                <b>{item.title}</b>
+                <p>{item.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      ))}
+    </article>
+  );
+};
+
+const Leaderboard = () => (
+  <article className="flex ">
+    <h1 className="text-3xl">Leaderboard</h1>
+  </article>
+);
+const OurMission = () => (
+  <article className="flex flex-row gap-[64px] justify-between items-center">
+    <section className="flex flex-col gap-[16px]">
+      <h1 className="text-3xl">Our mission</h1>
+      <p>
+        We are developers and we want to bring fun and profit to the
+        open-source. The open-source software movement leads the world
+        innovation and we want to bring more contributors to the space. There
+        are plenty of open issues in the open-source projects, but how to make
+        it fun? Join Sloths community to collect race points in weekly quests
+        while contributing to the open-source projects. The Race of Sloths
+        originated from NEAR ecosystem, so we want to start with the projects
+        that helped to build NEAR and expand it from there."
+      </p>
+    </section>
+    <Image
+      src="/images/our-mission.png"
+      height={427}
+      width={337}
+      alt={"our mission"}
+    />
+  </article>
+);
+const HaveFun = () => (
+  <article className="flex items-center flex-col gap-3">
+    <h1 className="text-4xl text-center">
+      Have a fun <span className="text-_blue">&</span> Contribute
+    </h1>
+    <div className="flex gap-2">
+      <h2 className="text-2xl text-center">Pick the Project</h2>
+      <Image
+        src="/images/have-a-fun.svg"
+        height={29}
+        width={82}
+        alt="Pick the Project"
+      />
+    </div>
+  </article>
+);
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+    <main className="w-full flex items-center justify-center">
+      <article className="w-[1277px] max-w-[1277px] flex  flex-col items-center justify-center">
+        <Header />
+        <section className="flex w-full flex-col py-12">
+          <Hero />
+        </section>
+        <section className="flex w-full flex-col gap-[80px] py-12 px-24">
+          <HowItWorks />
+          <StreaksRating />
+          <Leaderboard />
+          <OurMission />
+          <HaveFun />
+          <Footer />
+        </section>
+      </article>
     </main>
   );
 }
