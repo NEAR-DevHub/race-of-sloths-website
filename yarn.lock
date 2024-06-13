@@ -192,6 +192,11 @@
   resolved "https://registry.yarnpkg.com/@panva/hkdf/-/hkdf-1.1.1.tgz#ab9cd8755d1976e72fc77a00f7655a64efe6cd5d"
   integrity sha512-dhPeilub1NuIG0X5Kvhh9lH4iW3ZsHlnzwgwbOlgwQ2wG1IqFzsgHqmKPk3WzsdWAeaxKJxgM0+W433RmN45GA==
 
+"@phosphor-icons/react@^2.1.6":
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/@phosphor-icons/react/-/react-2.1.6.tgz#7009c632972ebc8fc76b42636baaec4144ae68c1"
+  integrity sha512-F963SJvCTk0Qm5SRTSHXP8bCIYgMAbSVZ73f5DoxjP2iG/yAzRdySzbs9kVPETYxvr0zwTY4DUTqUjB3vr8sVw==
+
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"

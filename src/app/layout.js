@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import AuthProvider from "./auth-provider";
 import "./globals.css";
+import { Footer, Header } from "@/components";
 
 const font = localFont({
   src: [
@@ -35,7 +36,17 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={font.className}>
-        <AuthProvider session={session}>{children}</AuthProvider>
+        <AuthProvider session={session}>
+          <main className="w-full flex h-full items-center justify-center">
+            <article className="w-[1277px] max-w-[1277px] h-full flex flex-col items-center justify-between">
+              <div className="w-full">
+                <Header />
+                {children}
+              </div>
+              <Footer />
+            </article>
+          </main>
+        </AuthProvider>
       </body>
     </html>
   );

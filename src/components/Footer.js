@@ -15,7 +15,7 @@ const FooterItems = ({ links }) => (
 
 export const Footer = () => {
   return (
-    <footer className="flex w-full  mb-12">
+    <footer className="flex w-full pb-12 px-24">
       <section className="flex w-full justify-between items-start">
         <Image
           src={"/images/logo-footer.svg"}

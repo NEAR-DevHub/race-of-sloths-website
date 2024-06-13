@@ -1,5 +1,6 @@
 import { Footer, Header } from "@/components";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => (
   <article className="flex gap-10 justify-between items-center">
@@ -189,35 +190,33 @@ const HaveFun = () => (
     <h1 className="text-4xl text-center">
       Have a fun <span className="text-_blue">&</span> Contribute
     </h1>
-    <div className="flex gap-2">
-      <h2 className="text-2xl text-center">Pick the Project</h2>
-      <Image
-        src="/images/have-a-fun.svg"
-        height={29}
-        width={82}
-        alt="Pick the Project"
-      />
-    </div>
+    <Link href="/projects">
+      <div className="flex gap-2">
+        <h2 className="text-2xl text-center">Pick the Project</h2>
+        <Image
+          src="/images/have-a-fun.svg"
+          height={29}
+          width={82}
+          alt="Pick the Project"
+        />
+      </div>
+    </Link>
   </article>
 );
 
 export default function Home() {
   return (
-    <main className="w-full flex items-center justify-center">
-      <article className="w-[1277px] max-w-[1277px] flex  flex-col items-center justify-center">
-        <Header />
-        <section className="flex w-full flex-col py-12">
-          <Hero />
-        </section>
-        <section className="flex w-full flex-col gap-[80px] py-12 px-24">
-          <HowItWorks />
-          <StreaksRating />
-          <Leaderboard />
-          <OurMission />
-          <HaveFun />
-          <Footer />
-        </section>
-      </article>
-    </main>
+    <>
+      <section className="flex w-full flex-col py-12">
+        <Hero />
+      </section>
+      <section className="flex w-full flex-col gap-[80px] py-12 px-24">
+        <HowItWorks />
+        <StreaksRating />
+        <Leaderboard />
+        <OurMission />
+        <HaveFun />
+      </section>
+    </>
   );
 }

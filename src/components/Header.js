@@ -20,12 +20,14 @@ export const Header = () => {
 
   return (
     <div className="flex w-full items-center justify-between border-b-gray-800 border-b py-2 xl:px-0 px-4">
-      <Image
-        src={"/images/logo-header.svg"}
-        height={62}
-        width={154}
-        alt={"Logo"}
-      />
+      <Link href="/">
+        <Image
+          src={"/images/logo-header.svg"}
+          height={62}
+          width={154}
+          alt={"Logo"}
+        />
+      </Link>
       <NavigationLinks
         links={[
           { title: "About", href: "/about" },
@@ -33,7 +35,7 @@ export const Header = () => {
           { title: "Projects", href: "/projects" },
         ]}
       />
-      <GithubButton isSigned={currentUser} />
+      <GithubButton currentUser={currentUser} />
     </div>
   );
 };
