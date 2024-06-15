@@ -1,16 +1,34 @@
-import { Table } from "@/components";
+"use client";
 
-const headers = ["Repositories", "Date", "Score", "Rating"];
-export default function Page() {
+import { Table } from "@/components";
+import { useEffect, useState } from "react";
+import { headers, preparedData } from "./utils";
+import { apiUrl } from "../api/constants";
+
+export default function Projects() {
+  const [repos, setRepos] = useState([]);
+
+  async function fetchRepos() {
+    const resp = await fetch(`${apiUrl}/leaderboard/repos`);
+    const data = await resp.json();
+
+    if (data) {
+      const prepared = preparedData(data.records);
+      setRepos(prepared);
+    }
+  }
+
+  useEffect(() => {
+    fetchRepos();
+  }, []);
+
   return (
     <>
       <h2 className="text-3xl">Projects</h2>
       <Table
         headers={headers}
-        body={[
-          { repo: "nft", date: "Jun 23, 2024", score: 13, rating: null },
-          { repo: "nft2", date: "Jun 21, 2024", score: 1, rating: 123 },
-        ]}
+        body={repos}
+        fallbackMsg="There are no projects"
       />
     </>
   );
