@@ -1,6 +1,7 @@
 import { Footer, Header } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
+import Leaderboard from "./leaderboard/page";
 
 const Hero = () => (
   <article className="flex gap-10 justify-between items-center">
@@ -157,11 +158,6 @@ const StreaksRating = () => {
   );
 };
 
-const Leaderboard = () => (
-  <article className="flex ">
-    <h1 className="text-3xl">Leaderboard</h1>
-  </article>
-);
 const OurMission = () => (
   <article className="flex flex-row gap-[64px] justify-between items-center">
     <section className="flex flex-col gap-[16px]">
