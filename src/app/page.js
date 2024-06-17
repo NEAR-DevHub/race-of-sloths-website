@@ -1,4 +1,3 @@
-import { Footer, Header } from "@/components";
 import Image from "next/image";
 import Link from "next/link";
 import Leaderboard from "./leaderboard/page";
@@ -99,6 +98,7 @@ const HowItWorks = () => {
     </article>
   );
 };
+
 const StreaksRating = () => {
   const items = [
     [
@@ -181,6 +181,7 @@ const OurMission = () => (
     />
   </article>
 );
+
 const HaveFun = () => (
   <article className="flex items-center flex-col gap-3">
     <h1 className="text-4xl text-center">
