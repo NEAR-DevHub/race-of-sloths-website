@@ -16,7 +16,7 @@ const NavigationLinks = ({ links }) => (
 );
 
 export const Header = () => {
-  const { data: currentUser } = useSession();
+  const { data: githubUser } = useSession();
 
   return (
     <div className="flex w-full items-center justify-between border-b-gray-800 border-b py-2 xl:px-0 px-4">
@@ -35,7 +35,7 @@ export const Header = () => {
           { title: "Projects", href: "/projects" },
         ]}
       />
-      <GithubButton currentUser={currentUser} />
+      <GithubButton currentUser={githubUser} />
     </div>
   );
 };
