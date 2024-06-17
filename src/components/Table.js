@@ -3,7 +3,7 @@
 import { CaretUpDown } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
 
-export const Table = ({ headers, body, fallbackMsg }) => {
+export const Table = ({ headers, body, pinned }) => {
   const [bodyData, setBodyData] = useState([]);
   const [asc, setAsc] = useState(
     headers.map((_i, index) => {
@@ -29,13 +29,13 @@ export const Table = ({ headers, body, fallbackMsg }) => {
     setBodyData(sortedBody);
   }
 
-  function Cell({ item }) {
-    return (
+  function Cell({ item, pinned }) {
+    const CellValue = () => (
       <div className="flex gap-2 items-center truncate">
         {item.image && item.organization ? (
           <>
             <img
-              className="w-[32px] h-[32px] rounded-md border-[1px] border-[#424242]"
+              className={`w-[32px] h-[32px] rounded-md border-[1px] border-[#424242]`}
               src={item.image}
             />
             <div className="flex flex-col gap-0">
@@ -63,6 +63,20 @@ export const Table = ({ headers, body, fallbackMsg }) => {
         )}
       </div>
     );
+
+    return (
+      <td
+        className={`flex flex-1 w-full min-w-32 items-center p-3 border-r-[1px] last:border-r-0 ${
+          pinned ? "border-[#E6E6E6]" : "border-[#424242]"
+        }`}
+      >
+        {item.value === null || item.value === undefined ? (
+          "N/A"
+        ) : (
+          <CellValue item={item} />
+        )}
+      </td>
+    );
   }
 
   useEffect(() => {
@@ -71,7 +85,7 @@ export const Table = ({ headers, body, fallbackMsg }) => {
 
   return (
     <table
-      className={`w-full flex flex-col bg-[#1d1d1d] border-[1px] border-[#424242] rounded-xl p-[3px]`}
+      className={`w-full flex flex-col bg-[#1d1d1d] border-[1px] border-[#424242] rounded-xl p-[2px]`}
     >
       <thead className="flex">
         <tr className="flex w-full">
@@ -80,7 +94,7 @@ export const Table = ({ headers, body, fallbackMsg }) => {
               role="button"
               key={idx}
               onClick={() => sortColumn(idx)}
-              className="flex flex-1 w-full justify-between gap-3 items-center px-3 py-2 bg-[#222222] border-b-[1px] border-r-[1px] last:border-r-0 border-[#424242]"
+              className="flex flex-1 w-full min-w-32 justify-between gap-3 items-center px-3 py-2 bg-[#222222] border-b-[1px] border-r-[1px] last:border-r-0 border-[#424242]"
             >
               {item}
               <CaretUpDown className="opacity-50" />
@@ -89,26 +103,26 @@ export const Table = ({ headers, body, fallbackMsg }) => {
         </tr>
       </thead>
       <tbody className="no-scrollbar overflow-y-auto max-h-[860px]">
-        {bodyData.length > 0 ? (
-          bodyData.map((row, i) => (
-            <tr
-              key={i}
-              className="flex flex-row border-b-[1px] last:border-b-0 hover:bg-[#222] border-[#424242]"
-            >
-              {Object.values(row).map((cell, j) => (
-                <td
-                  key={j}
-                  className={`flex-1 flex items-center p-3 border-r-[1px] last:border-r-0 border-[#424242]`}
-                >
-                  {cell.value === null ? "N/A" : <Cell item={cell} />}
-                </td>
-              ))}
-            </tr>
-          ))
-        ) : (
-          <h3 className="p-10 text-center w-full text-xl">{fallbackMsg}</h3>
-        )}
+        {bodyData.map((row, i) => (
+          <tr
+            key={i}
+            className="flex flex-row border-b-[1px] last:border-b-0 hover:bg-[#222] border-[#424242]"
+          >
+            {Object.values(row).map((cell, j) => (
+              <Cell key={j} item={cell} />
+            ))}
+          </tr>
+        ))}
       </tbody>
+      {pinned && (
+        <tbody className="flex">
+          <tr className="flex w-full bg-white text-black">
+            {Object.values(pinned).map((cell, i) => (
+              <Cell key={i} item={cell} pinned={true} />
+            ))}
+          </tr>
+        </tbody>
+      )}
     </table>
   );
 };
