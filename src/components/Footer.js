@@ -33,14 +33,14 @@ export const Footer = () => {
         <FooterItems
           links={[
             { title: "About", href: "/about" },
-            { title: "Contact", href: "/contact" },
+            { title: "Contacts", href: "/contacts" },
             { title: "FAQ", href: "/faq" },
           ]}
         />
         <FooterItems
           links={[
             { title: "Privacy policy", href: "/policy" },
-            { title: "Cookie statement", href: "/cookie" },
+            { title: "Cookie statement", href: "/cookies" },
           ]}
         />
       </section>

@@ -1,6 +1,7 @@
 "use client";
 
 import { CaretUpDown } from "@phosphor-icons/react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export const Table = ({ headers, body, pinned }) => {
@@ -30,19 +31,27 @@ export const Table = ({ headers, body, pinned }) => {
   }
 
   function Cell({ item, pinned }) {
+    const TextValue = () => (
+      <div className="truncate">
+        {item.href ? (
+          <Link href={item.href}>{item.value}</Link>
+        ) : (
+          <span>{item.value || "N/A"}</span>
+        )}
+      </div>
+    );
+
     const CellValue = () => (
-      <div className="flex gap-2 items-center truncate">
-        {item.image && item.organization ? (
+      <div className="flex gap-3 items-center truncate">
+        {item.image && item.value2 ? (
           <>
             <img
               className={`w-[32px] h-[32px] rounded-md border-[1px] border-[#424242]`}
               src={item.image}
             />
             <div className="flex flex-col gap-0">
-              <small className="text-xs text-_secondary">
-                {item.organization} /
-              </small>
-              <span>{item.value}</span>
+              <small className="text-xs text-_secondary">{item.value2}</small>
+              <TextValue />
             </div>
           </>
         ) : item.image ? (
@@ -51,15 +60,15 @@ export const Table = ({ headers, body, pinned }) => {
               className="w-[32px] h-[32px] rounded-full border-[1px] border-[#424242]"
               src={item.image}
             />
-            <span>{item.value}</span>
+            {item.value && <TextValue />}
           </>
         ) : item.icon ? (
           <>
             <img src={item.icon} />
-            <span>{item.value}</span>
+            <TextValue />
           </>
         ) : (
-          item.value
+          <TextValue />
         )}
       </div>
     );
@@ -70,11 +79,7 @@ export const Table = ({ headers, body, pinned }) => {
           pinned ? "border-[#E6E6E6]" : "border-[#424242]"
         }`}
       >
-        {item.value === null || item.value === undefined ? (
-          "N/A"
-        ) : (
-          <CellValue item={item} />
-        )}
+        <CellValue item={item} />
       </td>
     );
   }
@@ -82,7 +87,6 @@ export const Table = ({ headers, body, pinned }) => {
   useEffect(() => {
     setBodyData(body);
   }, [body]);
-
   return (
     <table
       className={`w-full flex flex-col bg-[#1d1d1d] border-[1px] border-[#424242] rounded-xl p-[2px]`}

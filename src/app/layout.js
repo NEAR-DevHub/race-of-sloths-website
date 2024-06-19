@@ -26,7 +26,7 @@ const font = localFont({
 });
 
 export const metadata = {
-  title: "Rsce of Sloths",
+  title: "Race of Sloths",
   description: "TBD",
 };
 

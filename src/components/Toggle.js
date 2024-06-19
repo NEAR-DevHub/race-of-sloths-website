@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export const Toggle = ({ options, onClick }) => {
-  const [selected, setSelected] = useState(0);
+export const Toggle = ({ options, onClick, selectedOpt }) => {
+  const [selected, setSelected] = useState(selectedOpt);
 
   return (
     <div className="flex rounded-full border-[1px] border-[#424242]">

@@ -1,23 +1,24 @@
 export const preparedData = (data) =>
-  data.map((repo) => {
+  data.map((project) => {
     return {
-      repo: {
-        image: repo.organization.image,
-        organization: repo.organization.name,
-        value: repo.name,
+      project: {
+        image: project.organization.image,
+        value: project.name,
+        value2: `${project.organization.name} /`,
       },
-      language: { value: repo.repo_language },
+      language: { value: project.repo_language },
       contributor: {
         image: null,
-        value: repo.contributor_of_the_month,
+        value: project.contributor_of_the_month.login,
+        href: `profile/${project.contributor_of_the_month.login}`,
       },
-      openIssues: { value: repo.open_issues },
-      prs: { value: repo.contributions_with_sloth },
+      openIssues: { value: project.open_issues },
+      prs: { value: project.contributions_with_sloth },
     };
   });
 
 export const headers = [
-  "Repositories",
+  "Repository",
   "Language",
   "Contributor",
   "Open Issues",

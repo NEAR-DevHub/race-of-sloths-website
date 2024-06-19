@@ -27,7 +27,7 @@ export default function Leaderboard() {
   }
 
   useEffect(() => {
-    fetchLeaderboard();
+    if (period && githubUser) fetchLeaderboard();
   }, [period, githubUser]);
 
   return (
@@ -36,6 +36,7 @@ export default function Leaderboard() {
         <h2 className="text-3xl">Leaderboard</h2>
         <Toggle
           options={["This month", "All time"]}
+          selectedOpt={periods.indexOf(period)}
           onClick={(index) => setPeriod(periods[index])}
         />
       </div>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { GithubButton } from "./ui/GithubButton";
+import { signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 
 const NavigationLinks = ({ links }) => (
@@ -35,7 +36,10 @@ export const Header = () => {
           { title: "Projects", href: "/projects" },
         ]}
       />
-      <GithubButton currentUser={githubUser} />
+      <GithubButton
+        title={githubUser ? "Sign Out" : "Continue with GitHub"}
+        onClick={() => (githubUser ? signOut() : signIn("github"))}
+      />
     </div>
   );
 };
