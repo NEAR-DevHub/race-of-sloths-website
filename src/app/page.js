@@ -12,8 +12,8 @@ const Hero = () => (
         open source community
       </h1>
       <p>
-        Gamify developers' daily routine with friendly competition managed by
-        GitHub bot
+        Gamify developers&apos; daily routine with friendly competition managed
+        by GitHub bot
       </p>
     </section>
     <section>
@@ -139,7 +139,7 @@ const StreaksRating = () => {
       {items.map((row, i) => (
         <div key={i} className="flex justify-between gap-[64px]">
           {row.map((item, j) => (
-            <div index={`${i}${j}`} className="flex gap-4">
+            <div key={`${i}${j}`} className="flex gap-4">
               <Image
                 src={item.image}
                 height={120}
@@ -170,7 +170,7 @@ const OurMission = () => (
         it fun? Join Sloths community to collect race points in weekly quests
         while contributing to the open-source projects. The Race of Sloths
         originated from NEAR ecosystem, so we want to start with the projects
-        that helped to build NEAR and expand it from there."
+        that helped to build NEAR and expand it from there.
       </p>
     </section>
     <Image
