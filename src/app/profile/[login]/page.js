@@ -15,6 +15,14 @@ export default function Page() {
   const [profile, setProfile] = useState();
   const [period, setPeriod] = useState(periods[0]);
   const [contributions, setContributions] = useState([]);
+  const [userBadge, setUserBadge] = useState();
+
+  async function fetchUserBadge() {
+    const resp = await fetch(`${apiUrl}/users/${params.login}/badge`);
+    const data = await resp.text();
+    console.log(data);
+    if (data) setUserBadge(data);
+  }
 
   async function fetchContributions() {
     const resp = await fetch(`${apiUrl}/users/${params.login}/contributions`);
@@ -38,7 +46,10 @@ export default function Page() {
   }, [params]);
 
   useEffect(() => {
-    if (profile) fetchContributions();
+    if (profile) {
+      fetchContributions();
+      // fetchUserBadge();
+    }
   }, [profile]);
 
   console.log(profile);
@@ -120,7 +131,7 @@ export default function Page() {
           <Statistic
             text="Max. Week Streak"
             value={profile.streaks["Weekly Pull Request"].longest}
-            icon="/images/fire.svg"
+            icon="/images/fire.png"
           />
           <Statistic
             text="Month Streak"
@@ -128,7 +139,7 @@ export default function Page() {
               profile.streaks["Monthly Pull Request with score higher 8"]
                 .longest
             }
-            icon="/images/fire.svg"
+            icon="/images/fire.png"
           />
         </div>
       </div>
@@ -152,22 +163,39 @@ export default function Page() {
           >
             <div className="flex flex-col justify-between h-24">
               <div className="flex justify-between items-center">
-                <b className="text-lg">Weekly streak completed</b>
-                <Image src="/images/done.svg" width={32} height={32} />
+                <b className="text-lg">
+                  {profile.streaks["Weekly Pull Request"].name}
+                </b>
+                <Image
+                  src="/images/done.svg"
+                  width={32}
+                  height={32}
+                  alt="done"
+                />
               </div>
               <p className="text-_secondary">
                 Well done! Next challenge in 3 days
               </p>
               <p className="text-[#0DC268] flex gap-2">
                 <span>Earned +50 </span>
-                <Image src="/images/bolt.svg" width={20} height={20} />
+                <Image
+                  src="/images/bolt.svg"
+                  width={20}
+                  height={20}
+                  alt="bolt"
+                />
               </p>
             </div>
           </Section>
           <Section fullWidth>
             <div className="flex flex-col justify-between h-24">
               <div className="flex justify-between items-center">
-                <b className="text-lg">5-month streak</b>
+                <b className="text-lg">
+                  {
+                    profile.streaks["Monthly Pull Request with score higher 8"]
+                      .name
+                  }
+                </b>
               </div>
               <div className="flex justify-between items-center">
                 <p>
@@ -179,7 +207,13 @@ export default function Page() {
                 </span>
               </div>
               <div className="bg-[#353535] rounded-full w-full flex justify-end">
-                <div className="h-[16px] rounded-full w-[60%] bg-red-500"></div>
+                <div
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #FF8947 0%, #D80027 100%)",
+                  }}
+                  className="h-[16px] rounded-full w-[60%]"
+                ></div>
               </div>
             </div>
           </Section>

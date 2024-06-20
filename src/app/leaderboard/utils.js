@@ -16,7 +16,7 @@ export const preparedData = (data, period) =>
       streak: {
         value:
           period === "all time" ? item.streak.longest : item.streak.current,
-        icon: "/images/fire.svg",
+        icon: "/images/fire.png",
       },
     };
   });
@@ -40,7 +40,7 @@ export const preparedPinned = (data, period, githubUser) => {
     streak: {
       value:
         period === "all time" ? item?.streak?.longest : item?.streak?.current,
-      icon: "/images/fire.svg",
+      icon: "/images/fire.png",
     },
   };
 };

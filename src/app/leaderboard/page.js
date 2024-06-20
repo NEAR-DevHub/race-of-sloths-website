@@ -27,7 +27,7 @@ export default function Leaderboard() {
   }
 
   useEffect(() => {
-    if (period && githubUser) fetchLeaderboard();
+    if (period) fetchLeaderboard();
   }, [period, githubUser]);
 
   return (
