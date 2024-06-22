@@ -24,7 +24,8 @@ export const preparedData = (data) =>
       repository: {
         image: contribution.organization.image,
         value: contribution.repository,
-        value2: contribution.organization.name,
+        value2: `${contribution.organization.name} /`,
+        href: `https://github.com/${contribution.organization.login}/${contribution.repository}`,
       },
       date: { value: formatDate(contribution.created_at) },
       score: {
@@ -33,5 +34,18 @@ export const preparedData = (data) =>
       rating: { value: contribution.total_rating },
     };
   });
+
+export const daysLeft = (start, end) => {
+  const startDate = new Date(start).getTime();
+  const endDate = new Date(end).getTime();
+  const nowDate = new Date().getTime();
+
+  const diff = (start, end) => Math.round((end - start) / (1000 * 3600 * 24));
+
+  return {
+    max: diff(startDate, endDate),
+    current: diff(nowDate, endDate),
+  };
+};
 
 export const headers = ["Repository", "Date", "Score", "Rating"];

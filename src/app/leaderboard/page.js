@@ -32,13 +32,15 @@ export default function Leaderboard() {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="flex justify-between items-center">
+      <div className="flex md:flex-row flex-col justify-between gap-5">
         <h2 className="text-3xl">Leaderboard</h2>
-        <Toggle
-          options={["This month", "All time"]}
-          selectedOpt={periods.indexOf(period)}
-          onClick={(index) => setPeriod(periods[index])}
-        />
+        <div className="md:w-[400px] w-full">
+          <Toggle
+            options={["This month", "All time"]}
+            selectedOpt={periods.indexOf(period)}
+            onClick={(index) => setPeriod(periods[index])}
+          />
+        </div>
       </div>
       <Table
         headers={headers}

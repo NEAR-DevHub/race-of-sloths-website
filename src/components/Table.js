@@ -36,7 +36,9 @@ export const Table = ({ headers, body, pinned }) => {
         {item.href ? (
           <Link href={item.href}>{item.value}</Link>
         ) : (
-          <span>{item.value || "N/A"}</span>
+          <span className={item.value ? "" : "text-_secondary"}>
+            {item.value || "N/A"}
+          </span>
         )}
       </div>
     );
@@ -64,7 +66,7 @@ export const Table = ({ headers, body, pinned }) => {
           </>
         ) : item.icon ? (
           <>
-            <img src={item.icon} />
+            <img src={item.icon} width={21} height={21} />
             <TextValue />
           </>
         ) : (
@@ -74,59 +76,58 @@ export const Table = ({ headers, body, pinned }) => {
     );
 
     return (
-      <td
-        className={`flex flex-1 w-full min-w-32 items-center p-3 border-r-[1px] last:border-r-0 ${
+      <div
+        className={`flex md:w-full w-32 min-w-32 items-center p-3 border-r-[1px] last:border-r-0 ${
           pinned ? "border-[#E6E6E6]" : "border-[#424242]"
         }`}
       >
         <CellValue item={item} />
-      </td>
+      </div>
     );
   }
 
   useEffect(() => {
     setBodyData(body);
   }, [body]);
+
   return (
-    <table
+    <div
       className={`w-full flex flex-col bg-[#1d1d1d] border-[1px] border-[#424242] rounded-xl p-[2px]`}
     >
-      <thead className="flex">
-        <tr className="flex w-full">
+      <div className="no-scrollbar overflow-y-auto overflow-x-auto max-h-[860px]">
+        <div className="flex">
           {headers.map((item, idx) => (
-            <td
+            <div
               role="button"
               key={idx}
               onClick={() => sortColumn(idx)}
-              className="flex flex-1 w-full min-w-32 justify-between gap-3 items-center px-3 py-2 bg-[#222222] border-b-[1px] border-r-[1px] last:border-r-0 border-[#424242]"
+              className="flex md:w-full w-32 min-w-32 whitespace-nowrap justify-between gap-3 items-center px-3 py-2 bg-[#222222] border-b-[1px] border-r-[1px] last:border-r-0 border-[#424242]"
             >
               {item}
               <CaretUpDown className="opacity-50" />
-            </td>
+            </div>
           ))}
-        </tr>
-      </thead>
-      <tbody className="no-scrollbar overflow-y-auto max-h-[860px]">
+        </div>
         {bodyData.map((row, i) => (
-          <tr
+          <div
             key={i}
-            className="flex flex-row border-b-[1px] last:border-b-0 hover:bg-[#222] border-[#424242]"
+            className="flex md:w-full w-fit border-b-[1px] last:border-b-0 hover:bg-[#222] border-[#424242]"
           >
             {Object.values(row).map((cell, j) => (
               <Cell key={j} item={cell} />
             ))}
-          </tr>
+          </div>
         ))}
-      </tbody>
-      {pinned && (
-        <tbody className="flex">
-          <tr className="flex w-full bg-white text-black">
-            {Object.values(pinned).map((cell, i) => (
-              <Cell key={i} item={cell} pinned={true} />
-            ))}
-          </tr>
-        </tbody>
-      )}
-    </table>
+        {pinned && (
+          <div className="flex">
+            <div className="flex md:w-full w-fit bg-white text-black">
+              {Object.values(pinned).map((cell, i) => (
+                <Cell key={i} item={cell} pinned={true} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 };

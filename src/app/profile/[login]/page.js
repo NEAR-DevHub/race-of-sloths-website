@@ -7,20 +7,25 @@ import { Clock, CopySimple } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { headers, preparedData } from "./utils";
+import { daysLeft, headers, preparedData } from "./utils";
 import { periods } from "@/app/leaderboard/utils";
+import { GithubButton, ProgressBar } from "@/components/ui";
+import { signIn, signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const params = useParams();
-  const [profile, setProfile] = useState();
+  const [profile, setProfile] = useState(null);
   const [period, setPeriod] = useState(periods[0]);
   const [contributions, setContributions] = useState([]);
   const [userBadge, setUserBadge] = useState();
+  const { data: githubUser } = useSession();
+  const router = useRouter();
 
   async function fetchUserBadge() {
     const resp = await fetch(`${apiUrl}/users/${params.login}/badge`);
     const data = await resp.text();
-    console.log(data);
+
     if (data) setUserBadge(data);
   }
 
@@ -52,14 +57,19 @@ export default function Page() {
     }
   }, [profile]);
 
-  console.log(profile);
+  useEffect(() => {
+    console.log(githubUser);
+    console.log(params.login);
+    if (githubUser && params.login === "undefined")
+      router.push(`/profile/${githubUser.user.login}`, { scroll: false });
+  }, [githubUser]);
 
-  const Section = ({ children, fullWidth, style }) => (
+  const isCurrentUser = githubUser?.user?.login === profile?.user?.login;
+
+  const Section = ({ children, className, style }) => (
     <div
       style={style}
-      className={`${
-        fullWidth ? "w-full" : ""
-      } bg-[#161616] border-[1px] border-[#424242] rounded-lg p-[24px]`}
+      className={`bg-[#161616] border-[1px] border-[#424242] rounded-2xl p-[24px] ${className}`}
     >
       {children}
     </div>
@@ -67,24 +77,27 @@ export default function Page() {
 
   const ProfileSection = () => (
     <div>
-      <h2 className="text-4xl mb-5">Profile</h2>
+      <div className="flex justify-between items-center my-5">
+        <h2 className="text-4xl">Profile</h2>
+        {isCurrentUser && <GithubButton title="Sign Out" onClick={signOut} />}
+      </div>
       <div className="flex justify-between items-center">
-        <Section fullWidth>
+        <Section className="w-full">
           <div className="flex w-full mb-[24px] justify-between items-start">
             <div className="flex gap-[24px] items-center">
               <img
-                className="rounded-full w-[80px] h-[80px] border-2 border-white"
+                className="rounded-full w-[80px] h-[80px]"
                 src={profile.user.image}
               />
               <div className="flex flex-col">
-                <h2 className="text-2xl">{profile.user.name}</h2>
+                <h2 className="text-2xl">{profile.user.name ?? "N/A"}</h2>
                 <h2 className="text-_secondary">@{profile.user.login}</h2>
               </div>
             </div>
           </div>
           <div>
             <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">
-              {profile.contributions}
+              {profile?.contributions ?? "N/A"}
             </span>{" "}
             Total contributions
           </div>
@@ -95,12 +108,14 @@ export default function Page() {
 
   const StatisticSection = () => {
     const Statistic = ({ icon, text, value }) => (
-      <Section fullWidth>
-        <div className="flex flex-row gap-2 items-start">
-          <Image src={icon} height={36} width={36} alt={text} />
+      <Section className="w-full p-[12px] px-[8px]">
+        <div className="flex flex-row gap-2 md:items-start items-center">
+          <Image src={icon} height={40} width={40} alt={text} />
           <div className="flex flex-col">
-            <h2 className="text-4xl">{value}</h2>
-            <h2 className="text-_secondary">{text}</h2>
+            <h2 className="md:text-4xl text-3xl">{value}</h2>
+            <h2 className="text-_secondary md:text-base text-xs md:leading-normal leading-tight">
+              {text}
+            </h2>
           </div>
         </div>
       </Section>
@@ -108,18 +123,20 @@ export default function Page() {
 
     return (
       <div className="flex flex-col">
-        <div className="flex mb-5 justify-between items-center">
+        <div className="flex md:flex-row flex-col gap-3 mb-5 justify-between md:items-center">
           <h2 className="text-3xl">Statistic</h2>
-          <Toggle
-            options={["This month", "All time"]}
-            selectedOpt={periods.indexOf(period)}
-            onClick={(index) => setPeriod(periods[index])}
-          />
+          <div className="md:w-[400px] w-full">
+            <Toggle
+              options={["This month", "All time"]}
+              selectedOpt={periods.indexOf(period)}
+              onClick={(index) => setPeriod(periods[index])}
+            />
+          </div>
         </div>
 
-        <div className="flex justify-between items-center gap-2">
+        <div className="grid md:grid-cols-4 grid-cols-2 justify-between items-center gap-2">
           <Statistic
-            text="Rating"
+            text="Sloth Points"
             value={profile.rating}
             icon="/images/bolt.svg"
           />
@@ -130,16 +147,17 @@ export default function Page() {
           />
           <Statistic
             text="Max. Week Streak"
-            value={profile.streaks["Weekly Pull Request"].longest}
-            icon="/images/fire.png"
+            value={
+              profile.streaks.find((s) => s.streak_type == "Weekly").longest
+            }
+            icon="/images/fire.svg"
           />
           <Statistic
             text="Month Streak"
             value={
-              profile.streaks["Monthly Pull Request with score higher 8"]
-                .longest
+              profile.streaks.find((s) => s.streak_type == "Monthly").longest
             }
-            icon="/images/fire.png"
+            icon="/images/fire.svg"
           />
         </div>
       </div>
@@ -149,74 +167,85 @@ export default function Page() {
   const ChallengesSection = () => {
     return (
       <div className="flex flex-col">
-        <div className="flex mb-5 justify-between items-center">
+        <div className="mb-5">
           <h2 className="text-3xl">Challenges</h2>
         </div>
 
-        <div className="flex justify-between items-center gap-2">
-          <Section
-            style={{
-              background:
-                "radial-gradient(80% 80% at 90% 30%, rgba(42, 229, 186, 0.20) 0%, rgba(0, 0, 0, 0.00) 100%), linear-gradient(0deg, #161616 0%, #161616 100%), #222",
-            }}
-            fullWidth
-          >
-            <div className="flex flex-col justify-between h-24">
-              <div className="flex justify-between items-center">
-                <b className="text-lg">
-                  {profile.streaks["Weekly Pull Request"].name}
-                </b>
-                <Image
-                  src="/images/done.svg"
-                  width={32}
-                  height={32}
-                  alt="done"
-                />
-              </div>
-              <p className="text-_secondary">
-                Well done! Next challenge in 3 days
-              </p>
-              <p className="text-[#0DC268] flex gap-2">
-                <span>Earned +50 </span>
-                <Image
-                  src="/images/bolt.svg"
-                  width={20}
-                  height={20}
-                  alt="bolt"
-                />
-              </p>
-            </div>
-          </Section>
-          <Section fullWidth>
-            <div className="flex flex-col justify-between h-24">
-              <div className="flex justify-between items-center">
-                <b className="text-lg">
-                  {
-                    profile.streaks["Monthly Pull Request with score higher 8"]
-                      .name
-                  }
-                </b>
-              </div>
-              <div className="flex justify-between items-center">
-                <p>
-                  <span className="text-_secondary">Next earning: </span>
-                  <span className="text-[#FFD400]">+5% Lifetime bonus</span>
-                </p>
-                <span className="text-_secondary flex gap-2 items-center">
-                  <Clock className="text-lg" />7 days left
-                </span>
-              </div>
-              <div className="bg-[#353535] rounded-full w-full flex justify-end">
-                <div
-                  style={{
-                    background:
-                      "linear-gradient(90deg, #FF8947 0%, #D80027 100%)",
-                  }}
-                  className="h-[16px] rounded-full w-[60%]"
-                ></div>
-              </div>
-            </div>
-          </Section>
+        <div className="flex md:flex-row flex-col justify-between items-center gap-2">
+          {profile.streaks.map((streak, index) => {
+            const dateDiff = daysLeft(streak.start_time, streak.end_time);
+
+            return (
+              <>
+                {streak.achived ? (
+                  <Section
+                    key={index}
+                    style={{
+                      background:
+                        "radial-gradient(80% 80% at 90% 30%, rgba(42, 229, 186, 0.20) 0%, rgba(0, 0, 0, 0.00) 100%), linear-gradient(0deg, #161616 0%, #161616 100%), #222",
+                    }}
+                    className="w-full"
+                  >
+                    <div className="flex flex-col justify-between md:h-24 h-full">
+                      <div className="flex justify-between items-center">
+                        <b className="text-lg">{streak.name}</b>
+                        <Image
+                          src="/images/done.svg"
+                          width={32}
+                          height={32}
+                          alt="done"
+                        />
+                      </div>
+                      <p className="text-_secondary">
+                        Well done! Next challenge in 3 days
+                      </p>
+                      <p className="text-[#0DC268] flex gap-2">
+                        <span>Earned +50 </span>
+                        <Image
+                          src="/images/bolt.svg"
+                          width={20}
+                          height={20}
+                          alt="bolt"
+                        />
+                      </p>
+                    </div>
+                  </Section>
+                ) : (
+                  <Section key={index} className="w-full">
+                    <div className="flex flex-col justify-between md:h-24 h-full">
+                      <div className="flex justify-between items-center">
+                        <b className="text-lg">{streak.name}</b>
+                      </div>
+                      <div className="flex md:flex-row flex-col justify-between">
+                        <p>
+                          <span className="text-_secondary">
+                            Next earning:{" "}
+                          </span>
+                          <span className="text-[#FFD400]">
+                            +5% Lifetime bonus
+                          </span>
+                        </p>
+                        <span className="text-_secondary md:my-0 my-3 flex gap-2 items-center justify-end">
+                          <Clock className="text-lg" />
+                          <span>
+                            {dateDiff.current} day
+                            {dateDiff.current === 1 ? "" : "s"} left
+                          </span>
+                        </span>
+                      </div>
+                      <ProgressBar
+                        value={
+                          (
+                            dateDiff.current.toFixed() / dateDiff.max.toFixed()
+                          ).toFixed(1) * 100
+                        }
+                      />
+                    </div>
+                  </Section>
+                )}
+              </>
+            );
+          })}
         </div>
       </div>
     );
@@ -224,10 +253,10 @@ export default function Page() {
 
   const ShareSection = () => {
     return (
-      <div className="flex flex-row justify-between items-center gap-2">
-        <div className="flex w-full flex-col gap-2">
+      <div className="flex md:flex-row flex-col justify-between items-center gap-2">
+        <div className="flex w-full flex-col gap-3">
           <h2 className="text-3xl">Share your achivemets</h2>
-          <ul className="list-disc list-inside">
+          <ul className="list-disc list-inside p-3">
             <li>Dynamically rendered</li>
             <li>Shareable across the internet</li>
           </ul>
@@ -268,16 +297,37 @@ export default function Page() {
   );
 
   return (
-    <>
-      {profile && (
-        <div className="flex flex-col gap-[56px]">
+    <div className="flex flex-col gap-[56px]">
+      {profile ? (
+        <>
           <ProfileSection />
           <StatisticSection />
-          <ChallengesSection />
-          <ShareSection />
+          {isCurrentUser && (
+            <>
+              <ChallengesSection />
+              <ShareSection />
+            </>
+          )}
           <Contributions />
+        </>
+      ) : githubUser && !params.login ? (
+        <div className="flex justify-center items-center">
+          <h2 className="text-4xl">User is not found</h2>
         </div>
+      ) : params.login === "undefined" && !githubUser ? (
+        <div className="flex flex-col gap-5 justify-center items-center h-screen -mt-16">
+          <h2 className="text-4xl">Profile</h2>
+          <p className="text-_secondary">Log in using your Github account</p>
+          <div className="mt-5">
+            <GithubButton
+              title={githubUser ? "Sign Out" : "Continue with GitHub"}
+              onClick={() => (githubUser ? signOut() : signIn("github"))}
+            />
+          </div>
+        </div>
+      ) : (
+        <></>
       )}
-    </>
+    </div>
   );
 }

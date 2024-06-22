@@ -5,6 +5,7 @@ export const preparedData = (data) =>
         image: project.organization.image,
         value: project.name,
         value2: `${project.organization.name} /`,
+        href: `https://github.com/${project.organization.login}/${project.name}`,
       },
       language: { value: project.repo_language },
       contributor: {

@@ -29,6 +29,10 @@
   --section-color: #222222;
 }
 
+html, body {
+  width: 100%;
+}
+
 body {
   color: var(--text-color);
   background: var(--background-color);
@@ -41,4 +45,8 @@ body {
 
 .section {
   background-color: var(--section-color);
+}
+
+table a:hover {
+  opacity: 80%;
 }

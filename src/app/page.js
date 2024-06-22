@@ -2,96 +2,99 @@ import Image from "next/image";
 import Link from "next/link";
 import Leaderboard from "./leaderboard/page";
 
-const Hero = () => (
-  <article className="flex gap-10 justify-between items-center">
-    <section className="flex flex-col gap-[24px] pl-24">
-      <p className="text-_green">Supercharge your open source project</p>
-      <h1 className="text-4xl">
-        Engage your
-        <br />
-        open source community
-      </h1>
-      <p>
-        Gamify developers&apos; daily routine with friendly competition managed
-        by GitHub bot
-      </p>
-    </section>
-    <section>
-      <Image
-        src={"/images/hero.svg"}
-        height={324}
-        width={600}
-        alt={"Sloth image"}
-      />
-    </section>
-  </article>
-);
-
 const HowItWorks = () => {
   const items = [
     {
-      image: "/images/bot1.svg",
+      image: {
+        desktop: "/images/bot1.svg",
+        mobile: "/images/bot1-m.svg",
+      },
       title: "1. Include command",
       description: "Contributor tags @race-of-sloths on the pull request",
     },
     {
-      image: "/images/bot2.svg",
-      image2: "/images/firework-sm.svg",
+      image: {
+        desktop: "/images/bot2.svg",
+        mobile: "/images/bot2-m.svg",
+        secondary: "/images/firework-sm.svg",
+      },
       title: "2. Bot Response",
       description:
         "Bot responds with a confirmation with additional info in details",
     },
     {
-      image: "/images/bot3.svg",
+      image: {
+        desktop: "/images/bot3.svg",
+        mobile: "/images/bot3-m.svg",
+      },
       title: "3. Maintainer score command",
       description:
         "Maintainer responds with a fibonnaci score of [0,1,2,3,5,8,13]",
     },
     {
-      image: "/images/bot4.svg",
+      image: {
+        desktop: "/images/bot4.svg",
+        mobile: "/images/bot4-m.svg",
+      },
       title: "4. Bot Response",
       description:
         "Bot responds with a confirmation with additional info in details",
     },
     {
-      image: "/images/bot5.svg",
+      image: {
+        desktop: "/images/bot5.svg",
+        mobile: "/images/bot5-m.svg",
+      },
       title: "Final",
       description:
         "After 24 hours from the merge, the bot finalizes score and updates the leaderboard",
     },
   ];
 
-  const HowItWorksItems = ({ title, description, image, image2 }) => (
-    <section className="flex justify-between items-center gap-5">
-      <div className="w-[380px] flex flex-col gap-2">
+  const HowItWorksItems = ({ title, description, image }) => (
+    <section className="flex md:flex-row flex-col justify-between items-center gap-5">
+      <div className="md:w-[380px] w-full flex flex-col gap-2">
         <b>{title}</b>
         <p>{description}</p>
       </div>
-      <div className="relative">
-        <div className="absolute w-[1px] h-full bg-[#3d3d3d] left-6 z-10" />
-        <div className="py-12 relative z-20">
-          <Image src={image} height={267} width={518} alt={title} />
-          {image2 && (
+      <div className="md:relative">
+        <div className="md:block hidden absolute w-[1px] h-full bg-[#3d3d3d] left-6 z-10" />
+        <div className="md:block hidden py-[12px] relative z-20">
+          <Image src={image.desktop} height={267} width={518} alt={title} />
+          {image.secondary && (
             <div className="absolute -right-12 top-0 z-30">
-              <Image src={image2} height={114} width={97} alt="firework" />
+              <Image
+                src={image.secondary}
+                height={114}
+                width={97}
+                alt="firework"
+              />
             </div>
           )}
+        </div>
+        <div className="md:hidden block">
+          <Image
+            style={{ width: "100%", height: "auto" }}
+            src={image.mobile}
+            height={0}
+            width={0}
+            alt={title}
+          />
         </div>
       </div>
     </section>
   );
 
   return (
-    <article className="flex flex-col">
+    <article className="flex flex-col md:gap-0 gap-[40px]">
       <h1 className="text-3xl">How it works</h1>
-      <div className="flex flex-col relative">
+      <div className="flex flex-col relative md:gap-[0] gap-[40px]">
         {items.map((item, index) => (
           <HowItWorksItems
             key={index}
             title={item.title}
             description={item.description}
             image={item.image}
-            image2={item.image2}
           />
         ))}
       </div>
@@ -126,7 +129,7 @@ const StreaksRating = () => {
         title: "Lifetime bonus",
         description:
           "Keep rocking with your streaks to receive a lifetime bonus to your rating",
-        image: "/images/rating4.png",
+        image: "/images/rating4.svg",
       },
     ],
   ];
@@ -137,13 +140,16 @@ const StreaksRating = () => {
         Sreaks <span className="text-_red">it</span> Rating
       </h1>
       {items.map((row, i) => (
-        <div key={i} className="flex justify-between gap-[64px]">
+        <div
+          key={i}
+          className="flex md:flex-row flex-col justify-between gap-[64px]"
+        >
           {row.map((item, j) => (
             <div key={`${i}${j}`} className="flex gap-4">
               <Image
                 src={item.image}
-                height={120}
-                width={120}
+                height={100}
+                width={100}
                 alt={`rating ${i}${j}`}
               />
               <div className="flex flex-col gap-2 w-[344px]">
@@ -159,7 +165,7 @@ const StreaksRating = () => {
 };
 
 const OurMission = () => (
-  <article className="flex flex-row gap-[64px] justify-between items-center">
+  <article className="flex md:flex-row flex-col gap-[32px] justify-between md:items-center">
     <section className="flex flex-col gap-[16px]">
       <h1 className="text-3xl">Our mission</h1>
       <p>
@@ -168,9 +174,11 @@ const OurMission = () => (
         innovation and we want to bring more contributors to the space. There
         are plenty of open issues in the open-source projects, but how to make
         it fun? Join Sloths community to collect race points in weekly quests
-        while contributing to the open-source projects. The Race of Sloths
-        originated from NEAR ecosystem, so we want to start with the projects
-        that helped to build NEAR and expand it from there.
+        while contributing to the open-source projects.
+      </p>
+      <p>
+        The Race of Sloths originated from NEAR ecosystem, so we want to start
+        with the projects that helped to build NEAR and expand it from there.
       </p>
     </section>
     <Image
@@ -204,10 +212,7 @@ const HaveFun = () => (
 export default function Home() {
   return (
     <>
-      <section className="flex w-full flex-col py-12">
-        <Hero />
-      </section>
-      <section className="flex w-full flex-col gap-[80px] py-12 px-24">
+      <section className="flex w-full flex-col gap-[80px]">
         <HowItWorks />
         <StreaksRating />
         <Leaderboard />

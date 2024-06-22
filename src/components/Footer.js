@@ -15,9 +15,17 @@ const FooterItems = ({ links }) => (
 
 export const Footer = () => {
   return (
-    <footer className="flex w-full pb-12 px-24">
-      <section className="flex w-full justify-between items-start">
+    <footer className="flex w-full pb-12 md:px-24 p-[16px]">
+      <section className="flex md:flex-row flex-col w-full justify-between items-start gap-[24px]">
         <Image
+          className="md:hidden block"
+          src={"/images/logo-header.svg"}
+          height={32}
+          width={154}
+          alt={"Logo"}
+        />
+        <Image
+          className="md:block hidden"
           src={"/images/logo-footer.svg"}
           height={105}
           width={81}

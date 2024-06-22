@@ -8,7 +8,7 @@ export const preparedData = (data, period) =>
       place: { value: index + 1 },
       name: {
         image: item.user.image,
-        value: item.user.name,
+        value: item.user.name ?? item.user.login,
         href: `profile/${item.user.login}`,
       },
       rating: { value: item.rating },
@@ -16,7 +16,7 @@ export const preparedData = (data, period) =>
       streak: {
         value:
           period === "all time" ? item.streak.longest : item.streak.current,
-        icon: "/images/fire.png",
+        icon: "/images/fire2.svg",
       },
     };
   });
@@ -32,7 +32,7 @@ export const preparedPinned = (data, period, githubUser) => {
     },
     name: {
       image: githubUser.user.image,
-      value: githubUser.user.name,
+      value: item?.user?.name ?? githubUser.user.login,
       href: `profile/${githubUser.user.login}`,
     },
     rating: { value: item?.rating },
@@ -40,7 +40,7 @@ export const preparedPinned = (data, period, githubUser) => {
     streak: {
       value:
         period === "all time" ? item?.streak?.longest : item?.streak?.current,
-      icon: "/images/fire.png",
+      icon: "/images/fire2.svg",
     },
   };
 };
