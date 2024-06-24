@@ -18,23 +18,6 @@ function formatDate(date) {
   return `${monthNames[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
 }
 
-export const preparedData = (data) =>
-  data.map((contribution) => {
-    return {
-      repository: {
-        image: contribution.organization.image,
-        value: contribution.repository,
-        value2: `${contribution.organization.name} /`,
-        href: `https://github.com/${contribution.organization.login}/${contribution.repository}`,
-      },
-      date: { value: formatDate(contribution.created_at) },
-      score: {
-        value: contribution.score,
-      },
-      rating: { value: contribution.total_rating },
-    };
-  });
-
 export const daysLeft = (start, end) => {
   const startDate = new Date(start).getTime();
   const endDate = new Date(end).getTime();
@@ -48,4 +31,34 @@ export const daysLeft = (start, end) => {
   };
 };
 
-export const headers = ["Repository", "Date", "Score", "Rating"];
+export const preparedData = (data) =>
+  data.map((contribution) => {
+    return {
+      repository: {
+        className: "md:flex-1 w-64 min-w-64",
+        image: contribution.organization.image,
+        value: contribution.repository,
+        value2: `${contribution.organization.name} /`,
+        href: `https://github.com/${contribution.organization.login}/${contribution.repository}`,
+      },
+      date: {
+        className: "md:flex-1 w-44 min-w-44",
+        value: formatDate(contribution.created_at),
+      },
+      score: {
+        className: "md:flex-1 w-44 min-w-44",
+        value: contribution.score,
+      },
+      rating: {
+        className: "md:flex-1 w-44 min-w-44",
+        value: contribution.total_rating,
+      },
+    };
+  });
+
+export const headers = [
+  { value: "Repository", className: "md:flex-1 w-64 min-w-64" },
+  { value: "Date", className: "md:flex-1 w-44 min-w-44" },
+  { value: "Score", className: "md:flex-1 w-44 min-w-44" },
+  { value: "Rating", className: "md:flex-1 w-44 min-w-44" },
+];
