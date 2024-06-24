@@ -11,12 +11,15 @@ export const preparedData = (data) =>
       contributor: {
         className: "md:flex-1 w-44 min-w-44",
         image: null,
-        value: project.contributor_of_the_month.login,
-        href: `profile/${project.contributor_of_the_month.login}`,
+        value: project.contributor_of_the_month?.login,
+        href: `profile/${project.contributor_of_the_month?.login}`,
       },
       language: { className: "md:w-40 w-32", value: project.repo_language },
       openIssues: { className: "md:w-40 w-32", value: project.open_issues },
-      prs: { className: "md:w-40 w-32", value: project.contributions_with_sloth },
+      prs: {
+        className: "md:w-40 w-32",
+        value: project.contributions_with_sloth,
+      },
     };
   });
 

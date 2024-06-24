@@ -5,13 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Navigation } from "./Navigation";
 import { useSession } from "next-auth/react";
-import {
-  BookOpen,
-  House,
-  HouseSimple,
-  Ranking,
-  User,
-} from "@phosphor-icons/react";
+import { BookOpen, House, Ranking, User } from "@phosphor-icons/react";
 
 const Hero = () => (
   <>
