@@ -48,7 +48,7 @@ export default async function RootLayout({ children }) {
             <article className="w-full lg:w-[1277px] h-full flex flex-col items-center justify-between gap-[56px]">
               <div className="w-full">
                 <Header />
-                <section className="flex w-full flex-col gap-[24px] md:px-24 md:py-12 p-[16px]">
+                <section className="flex w-full flex-col gap-[24px] md:px-24 md:py-12 pt-4 pb-24 px-[16px]">
                   {children}
                 </section>
               </div>

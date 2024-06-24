@@ -1,7 +1,7 @@
 "use client";
 
 import { apiUrl } from "@/app/api/constants";
-import { Table } from "@/components";
+import { Badge, Table } from "@/components";
 import { Toggle } from "@/components/Toggle";
 import { Clock, CopySimple } from "@phosphor-icons/react";
 import Image from "next/image";
@@ -82,8 +82,8 @@ export default function Page() {
         {isCurrentUser && <GithubButton title="Sign Out" onClick={signOut} />}
       </div>
       <div className="flex justify-between items-center">
-        <Section className="w-full">
-          <div className="flex w-full mb-[24px] justify-between items-start">
+        <Section className="w-full flex flex-col gap-[24px]">
+          <div className="flex w-full md:flex-row flex-col gap-[24px] justify-between">
             <div className="flex gap-[24px] items-center">
               <img
                 className="rounded-full w-[80px] h-[80px]"
@@ -94,6 +94,7 @@ export default function Page() {
                 <h2 className="text-_secondary">@{profile.user.login}</h2>
               </div>
             </div>
+            <Badge type="gold" />
           </div>
           <div>
             <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">
