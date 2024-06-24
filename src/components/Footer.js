@@ -55,7 +55,7 @@ export const Footer = () => {
             <FooterItems
               links={[
                 { title: "Privacy policy", href: "/policy" },
-                { title: "Cookie statement", href: "/cookies" },
+                { title: "Terms of Service", href: "/tos" },
               ]}
             />
           </section>

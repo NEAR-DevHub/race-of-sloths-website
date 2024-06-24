@@ -27,7 +27,7 @@ const font = localFont({
 
 export const metadata = {
   title: "Race of Sloths",
-  description: "TBD",
+  description: "Supercharge your open source project with Race of Sloths",
 };
 
 export const viewport = {
