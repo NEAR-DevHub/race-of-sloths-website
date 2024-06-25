@@ -12,7 +12,7 @@ import { GithubButton, ProgressBar } from "@/components/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function Profile({ apiUrl }) {
+export default function Profile({ apiUrl, badgeUrl }) {
   const params = useParams();
   const [profile, setProfile] = useState(undefined);
   const [period, setPeriod] = useState(periods[0]);
@@ -278,12 +278,11 @@ export default function Profile({ apiUrl }) {
           <Section>
             <div className="gap-3 flex flex-col">
               <code className="text-[#5B75F0]">
-                [![<span className="text-white">Race Of Sloths</span>
-                ](https://streak-stats.demolab.com/?user={params.login}
-                )](https://git.io/streak-stats)
+                ![<span className="text-white">Race Of Sloths</span>
+                ]({badgeUrl}/{params.login})
               </code>
               <CopyButton
-                text={`[![Race Of Sloths](https://streak-stats.demolab.com/?user=${params.login})](https://git.io/streak-stats)`}
+                text={`![Race Of Sloths](${badgeUrl}/${params.login})`}
               />
             </div>
           </Section>
