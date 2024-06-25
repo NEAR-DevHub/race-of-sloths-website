@@ -6,13 +6,13 @@ import { headers, periods, preparedData, preparedPinned } from "./utils";
 import { Toggle } from "@/components/Toggle";
 import { useSession } from "next-auth/react";
 
-export default function Leaderboard() {
+export default function Leaderboard({ apiUrl }) {
   const [leaderboard, setLeaderboard] = useState([]);
   const [userData, setUserData] = useState({});
   const [period, setPeriod] = useState(periods[0]);
   const { data: githubUser } = useSession();
 
-  async function fetchLeaderboard({ apiUrl }) {
+  async function fetchLeaderboard() {
     const resp = await fetch(`${apiUrl}/leaderboard/users/${period}`);
     const data = await resp.json();
 
