@@ -36,8 +36,8 @@ export const Table = ({ headers, body, pinned }) => {
         {item.href ? (
           <Link href={item.href}>{item.value}</Link>
         ) : (
-          <span className={item.value ? "" : "text-_secondary"}>
-            {item.value || "N/A"}
+          <span className={item.value ?? "text-_secondary"}>
+            {item.value ?? "N/A"}
           </span>
         )}
       </div>
