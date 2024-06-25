@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import Leaderboard from "./leaderboard/page";
+import CookieConsent from "@/components/CookieConsent";
 
 const HowItWorks = () => {
   const items = [
@@ -219,6 +220,7 @@ export default function Home() {
         <OurMission />
         <HaveFun />
       </section>
+      <CookieConsent />
     </>
   );
 }
