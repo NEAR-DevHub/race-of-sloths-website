@@ -258,9 +258,17 @@ export default function Profile() {
             <div className="gap-3 flex flex-col">
               <code className="text-[#5B75F0]">
                 [![<span className="text-white">Race Of Sloths</span>
-                ](https://streak-stats.demolab.com/?user=DenverCoder1)](https://git.io/streak-stats)
+                ](https://streak-stats.demolab.com/?user={params.login}
+                )](https://git.io/streak-stats)
               </code>
-              <button className="w-full p-2 flex justify-center items-center bg-white gap-2 rounded-md text-black font-semibold">
+              <button
+                onClick={() =>
+                  navigator.clipboard.writeText(
+                    `[![Race Of Sloths](https://streak-stats.demolab.com/?user=${params.login})](https://git.io/streak-stats)`
+                  )
+                }
+                className="w-full p-2 flex justify-center items-center bg-white gap-2 rounded-md text-black font-semibold"
+              >
                 Copy Code
                 <CopySimple className="text-xl" />
               </button>
