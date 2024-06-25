@@ -12,10 +12,8 @@ export default function Leaderboard() {
   const [period, setPeriod] = useState(periods[0]);
   const { data: githubUser } = useSession();
 
-  async function fetchLeaderboard() {
-    const resp = await fetch(
-      `${process.env.API_URL}/leaderboard/users/${period}`
-    );
+  async function fetchLeaderboard({ apiUrl }) {
+    const resp = await fetch(`${apiUrl}/leaderboard/users/${period}`);
     const data = await resp.json();
 
     if (data) {

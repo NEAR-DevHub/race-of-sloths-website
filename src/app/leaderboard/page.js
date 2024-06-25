@@ -5,6 +5,8 @@ export const metadata = {
   description: "Race of Sloths Leaderboard",
 };
 
+const apiUrl = process.env.API_URL;
+
 export default function LeaderboardPage() {
-  return <Leaderboard />;
+  return <Leaderboard apiUrl={apiUrl} />;
 }

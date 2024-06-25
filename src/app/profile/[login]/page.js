@@ -1,9 +1,9 @@
 import Profile from "./Profile";
 
+const apiUrl = process.env.API_URL;
+
 export async function generateMetadata({ params, searchParams }, parent) {
-  const resp = await fetch(
-    `${process.env.API_URL}/users/${params.login}/badge`
-  );
+  const resp = await fetch(`${apiUrl}/users/${params.login}/badge`);
   const data = await resp.text();
 
   return {
@@ -19,5 +19,5 @@ export async function generateMetadata({ params, searchParams }, parent) {
 }
 
 export default function ProfilePage() {
-  return <Profile />;
+  return <Profile apiUrl={apiUrl} />;
 }

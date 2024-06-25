@@ -5,6 +5,8 @@ export const metadata = {
   description: "Race of Sloths Projects",
 };
 
+const apiUrl = process.env.API_URL;
+
 export default function ProjectsPage() {
-  return <Projects />;
+  return <Projects apiUrl={apiUrl} />;
 }

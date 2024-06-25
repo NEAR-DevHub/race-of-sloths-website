@@ -12,7 +12,7 @@ import { GithubButton, ProgressBar } from "@/components/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function Profile() {
+export default function Profile({ apiUrl }) {
   const params = useParams();
   const [profile, setProfile] = useState(undefined);
   const [period, setPeriod] = useState(periods[0]);
@@ -21,9 +21,7 @@ export default function Profile() {
   const router = useRouter();
 
   async function fetchContributions() {
-    const resp = await fetch(
-      `${process.env.API_URL}/users/${params.login}/contributions`
-    );
+    const resp = await fetch(`${apiUrl}/users/${params.login}/contributions`);
     const data = await resp.json();
 
     if (data) {
@@ -34,7 +32,7 @@ export default function Profile() {
 
   async function fetchProfile() {
     try {
-      const resp = await fetch(`${process.env.API_URL}/users/${params.login}`);
+      const resp = await fetch(`${apiUrl}/users/${params.login}`);
       const data = await resp.json();
 
       if (data) {
