@@ -37,7 +37,7 @@ export const preparedPinned = (data, period, githubUser) => {
       value: item?.user?.name ?? githubUser.user.login,
       href: `profile/${githubUser.user.login}`,
     },
-    score: { className: "md:w-40 w-32", value: item.score },
+    score: { className: "md:w-40 w-32", value: item?.score },
     rating: { className: "md:w-40 w-32", value: item?.rating },
     prs: { className: "md:w-40 w-32", value: item?.merged_prs },
     streak: {
