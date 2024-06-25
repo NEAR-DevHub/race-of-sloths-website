@@ -7,13 +7,13 @@ export const periods = [`${month < 10 ? 0 : ""}${month}${year}`, "all-time"];
 export const preparedData = (data, period) =>
   data.map((item, index) => {
     return {
-      place: { className: "md:w-24 w-24", value: index + 1 },
       name: {
-        className: "md:flex-1 w-64 min-w-64",
+        className: "md:flex-1 w-56 min-w-56",
         image: item.user.image,
         value: item.user.name ?? item.user.login,
         href: `profile/${item.user.login}`,
       },
+      score: { className: "md:w-40 w-32", value: item.score },
       rating: { className: "md:w-40 w-32", value: item.rating },
       prs: { className: "md:w-40 w-32", value: item.merged_prs },
       streak: {
@@ -31,16 +31,13 @@ export const preparedPinned = (data, period, githubUser) => {
   const item = data.find((d) => d.user.login === githubUser.user.login);
 
   return {
-    place: {
-      className: "md:w-24 w-24",
-      value: data.indexOf(item) === -1 ? null : data.indexOf(item) + 1,
-    },
     name: {
-      className: "md:flex-1 w-64 min-w-64",
+      className: "md:flex-1 w-56 min-w-56",
       image: githubUser.user.image,
       value: item?.user?.name ?? githubUser.user.login,
       href: `profile/${githubUser.user.login}`,
     },
+    score: { className: "md:w-40 w-32", value: item.score },
     rating: { className: "md:w-40 w-32", value: item?.rating },
     prs: { className: "md:w-40 w-32", value: item?.merged_prs },
     streak: {
@@ -53,8 +50,8 @@ export const preparedPinned = (data, period, githubUser) => {
 };
 
 export const headers = [
-  { value: "Place", className: "md:w-24 w-24" },
-  { value: "Name", className: "md:flex-1 w-64 min-w-64" },
+  { value: "Name", className: "md:flex-1 w-56 min-w-56" },
+  { value: "Score", className: "md:w-40 w-32" },
   { value: "Rating", className: "md:w-40 w-32" },
   { value: "Pull Requests", className: "md:w-40 w-32" },
   { value: "Streak", className: "md:w-40 w-32" },

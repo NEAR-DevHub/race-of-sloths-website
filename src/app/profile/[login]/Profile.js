@@ -36,7 +36,9 @@ export default function Profile() {
       const resp = await fetch(`${apiUrl}/users/${params.login}`);
       const data = await resp.json();
 
-      if (data) setProfile(data);
+      if (data) {
+        setProfile(data);
+      }
     } catch (err) {
       setProfile(null);
     }
