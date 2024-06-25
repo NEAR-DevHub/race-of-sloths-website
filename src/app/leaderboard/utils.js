@@ -22,6 +22,7 @@ const preparedDataObj = (item, period) => {
         </div>
       ),
       href: `profile/${item.user.login}`,
+      sortBy: item.user.name ?? item.user.login,
     },
     rating: { className: "md:w-40 w-32", value: item.rating },
     prs: { className: "md:w-40 w-32", value: item.merged_prs },
@@ -40,6 +41,7 @@ const preparedDataObj = (item, period) => {
           </div>
         </div>
       ),
+      sortBy: period === "all time" ? item.streak.longest : item.streak.current,
     },
   };
 };
