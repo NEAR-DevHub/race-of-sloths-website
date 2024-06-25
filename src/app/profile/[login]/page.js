@@ -1,8 +1,9 @@
-import { apiUrl } from "@/app/api/constants";
 import Profile from "./Profile";
 
 export async function generateMetadata({ params, searchParams }, parent) {
-  const resp = await fetch(`${apiUrl}/users/${params.login}/badge`);
+  const resp = await fetch(
+    `${process.env.API_URL}/users/${params.login}/badge`
+  );
   const data = await resp.text();
 
   return {

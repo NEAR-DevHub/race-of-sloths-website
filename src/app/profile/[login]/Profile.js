@@ -1,6 +1,5 @@
 "use client";
 
-import { apiUrl } from "@/app/api/constants";
 import { Badge, CopyButton, Table } from "@/components";
 import { Toggle } from "@/components/Toggle";
 import { Calendar, CalendarDots, Clock } from "@phosphor-icons/react";
@@ -22,7 +21,9 @@ export default function Profile() {
   const router = useRouter();
 
   async function fetchContributions() {
-    const resp = await fetch(`${apiUrl}/users/${params.login}/contributions`);
+    const resp = await fetch(
+      `${process.env.API_URL}/users/${params.login}/contributions`
+    );
     const data = await resp.json();
 
     if (data) {
@@ -33,7 +34,7 @@ export default function Profile() {
 
   async function fetchProfile() {
     try {
-      const resp = await fetch(`${apiUrl}/users/${params.login}`);
+      const resp = await fetch(`${process.env.API_URL}/users/${params.login}`);
       const data = await resp.json();
 
       if (data) {

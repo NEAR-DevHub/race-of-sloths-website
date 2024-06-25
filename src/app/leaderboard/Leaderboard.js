@@ -4,7 +4,6 @@ import { Table } from "@/components";
 import { useEffect, useState } from "react";
 import { headers, periods, preparedData, preparedPinned } from "./utils";
 import { Toggle } from "@/components/Toggle";
-import { apiUrl } from "../api/constants";
 import { useSession } from "next-auth/react";
 
 export default function Leaderboard() {
@@ -14,7 +13,9 @@ export default function Leaderboard() {
   const { data: githubUser } = useSession();
 
   async function fetchLeaderboard() {
-    const resp = await fetch(`${apiUrl}/leaderboard/users/${period}`);
+    const resp = await fetch(
+      `${process.env.API_URL}/leaderboard/users/${period}`
+    );
     const data = await resp.json();
 
     if (data) {

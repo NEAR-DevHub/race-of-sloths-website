@@ -3,13 +3,12 @@
 import { Table } from "@/components";
 import { useEffect, useState } from "react";
 import { headers, preparedData } from "./utils";
-import { apiUrl } from "../api/constants";
 
 export default function Projects() {
   const [repos, setRepos] = useState([]);
 
   async function fetchRepos() {
-    const resp = await fetch(`${apiUrl}/leaderboard/repos`);
+    const resp = await fetch(`${process.env.API_URL}/leaderboard/repos`);
     const data = await resp.json();
 
     if (data) {
