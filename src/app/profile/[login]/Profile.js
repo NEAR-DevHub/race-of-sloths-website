@@ -1,9 +1,9 @@
 "use client";
 
 import { apiUrl } from "@/app/api/constants";
-import { Badge, Table } from "@/components";
+import { Badge, CopyButton, Table } from "@/components";
 import { Toggle } from "@/components/Toggle";
-import { Clock, CopySimple } from "@phosphor-icons/react";
+import { Clock } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 
 export default function Profile() {
   const params = useParams();
-  const [profile, setProfile] = useState(null);
+  const [profile, setProfile] = useState(undefined);
   const [period, setPeriod] = useState(periods[0]);
   const [contributions, setContributions] = useState([]);
   const { data: githubUser } = useSession();
@@ -32,10 +32,14 @@ export default function Profile() {
   }
 
   async function fetchProfile() {
-    const resp = await fetch(`${apiUrl}/users/${params.login}`);
-    const data = await resp.json();
+    try {
+      const resp = await fetch(`${apiUrl}/users/${params.login}`);
+      const data = await resp.json();
 
-    if (data) setProfile(data);
+      if (data) setProfile(data);
+    } catch (err) {
+      setProfile(null);
+    }
   }
 
   useEffect(() => {
@@ -81,7 +85,7 @@ export default function Profile() {
                 <h2 className="text-_secondary">@{profile.user.login}</h2>
               </div>
             </div>
-            <Badge type="gold" />
+            <Badge bonus={profile.lifetime_bonus} />
           </div>
           <div>
             <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">
@@ -167,7 +171,7 @@ export default function Profile() {
               <>
                 {streak.achived ? (
                   <Section
-                    key={index}
+                    key={`section_1_${index}`}
                     style={{
                       background:
                         "radial-gradient(80% 80% at 90% 30%, rgba(42, 229, 186, 0.20) 0%, rgba(0, 0, 0, 0.00) 100%), linear-gradient(0deg, #161616 0%, #161616 100%), #222",
@@ -199,7 +203,7 @@ export default function Profile() {
                     </div>
                   </Section>
                 ) : (
-                  <Section key={index} className="w-full">
+                  <Section key={`section_2_${index}`} className="w-full">
                     <div className="flex flex-col justify-between md:h-24 h-full">
                       <div className="flex justify-between items-center">
                         <b className="text-lg">{streak.name}</b>
@@ -261,17 +265,9 @@ export default function Profile() {
                 ](https://streak-stats.demolab.com/?user={params.login}
                 )](https://git.io/streak-stats)
               </code>
-              <button
-                onClick={() =>
-                  navigator.clipboard.writeText(
-                    `[![Race Of Sloths](https://streak-stats.demolab.com/?user=${params.login})](https://git.io/streak-stats)`
-                  )
-                }
-                className="w-full p-2 flex justify-center items-center bg-white gap-2 rounded-md text-black font-semibold"
-              >
-                Copy Code
-                <CopySimple className="text-xl" />
-              </button>
+              <CopyButton
+                text={`[![Race Of Sloths](https://streak-stats.demolab.com/?user=${params.login})](https://git.io/streak-stats)`}
+              />
             </div>
           </Section>
         </div>
@@ -291,6 +287,8 @@ export default function Profile() {
       />
     </div>
   );
+
+  if (profile === undefined) return <></>;
 
   return (
     <div className="flex flex-col gap-[56px]">
