@@ -11,9 +11,9 @@ const CookieConsent = (props) => {
     setShowConsent(!hasCookie("localConsent"));
   }, []);
 
-  const acceptCookie = (value) => {
+  const acceptCookie = () => {
     setShowConsent(false);
-    setCookie("localConsent", value.toString(), {});
+    setCookie("localConsent", "true", {});
   };
 
   if (!showConsent) return null;
@@ -31,13 +31,13 @@ const CookieConsent = (props) => {
         <div className="flex md:flex-row flex-col gap-3">
           <button
             className="bg-black py-2 px-8 rounded text-white"
-            onClick={() => acceptCookie(true)}
+            onClick={acceptCookie}
           >
             Accept
           </button>
           <button
             className="bg-white border-2 border-black py-2 px-8 rounded text-black"
-            onClick={() => acceptCookie(false)}
+            onClick={() => setShowConsent(false)}
           >
             Reject
           </button>
