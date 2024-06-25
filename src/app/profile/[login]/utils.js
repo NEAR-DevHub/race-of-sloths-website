@@ -69,7 +69,8 @@ export const preparedData = (data) =>
       },
       rating: {
         className: "w-40 min-w-40",
-        value: item.total_rating,
+        value: `+${item.total_rating}`,
+        sortBy: item.total_rating,
       },
     };
   });
@@ -78,5 +79,5 @@ export const headers = [
   { value: "Contribution", className: "md:flex-1 w-64 min-w-64" },
   { value: "Date", className: "w-52 min-w-52" },
   { value: "Score", className: "w-40 min-w-40" },
-  { value: "Rating", className: "w-40 min-w-40" },
+  { value: "Sloth Points", className: "w-40 min-w-40" },
 ];
