@@ -3,7 +3,7 @@
 import { apiUrl } from "@/app/api/constants";
 import { Badge, CopyButton, Table } from "@/components";
 import { Toggle } from "@/components/Toggle";
-import { Clock } from "@phosphor-icons/react";
+import { Calendar, CalendarDots, Clock } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -58,6 +58,10 @@ export default function Profile() {
   }, [githubUser]);
 
   const isCurrentUser = githubUser?.user?.login === profile?.user?.login;
+  const contributionDays = daysLeft(
+    profile?.first_contribution,
+    new Date()
+  ).max;
 
   const Section = ({ children, className, style }) => (
     <div
@@ -87,7 +91,19 @@ export default function Profile() {
                 <h2 className="text-_secondary">@{profile.user.login}</h2>
               </div>
             </div>
-            <Badge bonus={profile.lifetime_bonus} />
+            {profile.lifetime_bonus === 0 ? (
+              <div className="p-4 flex items-center justify center rounded-xl gap-3 bg-[#222]">
+                <CalendarDots size={52} weight="thin" />
+                <div>
+                  <div className="capitalize text-xl">
+                    {contributionDays} {contributionDays === 1 ? "day" : "days"}
+                  </div>
+                  <div className="text-_secondary">Sloth age</div>
+                </div>
+              </div>
+            ) : (
+              <Badge bonus={profile.lifetime_bonus} />
+            )}
           </div>
           <div>
             <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">

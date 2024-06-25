@@ -20,8 +20,11 @@ export const Table = ({ headers, body, pinned }) => {
 
   function sortColumn(index) {
     const sortedBody = bodyData.sort((a, b) => {
-      const valA = Object.values(a)[index].value || "";
-      const valB = Object.values(b)[index].value || "";
+      const sortableField = (field) =>
+        Object.values(field)[index].sortBy || Object.values(field)[index].value;
+
+      const valA = sortableField(a) || "";
+      const valB = sortableField(b) || "";
 
       return asc[index] ? compare(valA, valB) : compare(valB, valA);
     });
@@ -31,57 +34,23 @@ export const Table = ({ headers, body, pinned }) => {
   }
 
   function Cell({ item, pinned }) {
-    const TextValue = () => (
-      <div className="truncate">
-        {item.href ? (
-          <Link href={item.href}>{item.value}</Link>
-        ) : (
-          <span className={item.value ?? "text-_secondary"}>
-            {item.value ?? "N/A"}
-          </span>
-        )}
-      </div>
-    );
-
-    const CellValue = () => (
-      <div className="flex gap-3 items-center truncate">
-        {item.image && item.value2 ? (
-          <>
-            <img
-              className={`w-[32px] h-[32px] rounded-md border-[1px] border-[#424242]`}
-              src={item.image}
-            />
-            <div className="flex flex-col gap-0">
-              <small className="text-xs text-_secondary">{item.value2}</small>
-              <TextValue />
-            </div>
-          </>
-        ) : item.image ? (
-          <>
-            <img
-              className="w-[32px] h-[32px] rounded-full border-[1px] border-[#424242]"
-              src={item.image}
-            />
-            {item.value && <TextValue />}
-          </>
-        ) : item.icon ? (
-          <>
-            <img src={item.icon} width={21} height={21} />
-            <TextValue />
-          </>
-        ) : (
-          <TextValue />
-        )}
-      </div>
-    );
-
     return (
       <div
         className={`flex items-center p-3 border-r-[1px] last:border-r-0 ${
           pinned ? "border-[#E6E6E6]" : "border-[#424242]"
         } ${item.className}`}
       >
-        <CellValue item={item} />
+        <div className="flex gap-3 items-center truncate">
+          <div className="truncate">
+            {item.href ? (
+              <Link href={item.href}>{item.value}</Link>
+            ) : (
+              <span className={item.value ?? "text-_secondary"}>
+                {item.value ?? "N/A"}
+              </span>
+            )}
+          </div>
+        </div>
       </div>
     );
   }
@@ -118,7 +87,7 @@ export const Table = ({ headers, body, pinned }) => {
             ))}
           </div>
         ))}
-        {pinned && (
+        {pinned?.user && (
           <div className="flex">
             <div className="flex md:w-full w-fit bg-white text-black">
               {Object.values(pinned).map((cell, i) => (

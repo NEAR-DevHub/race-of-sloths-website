@@ -1,3 +1,5 @@
+import { ArrowsClockwise, Check } from "@phosphor-icons/react";
+
 function formatDate(date) {
   const monthNames = [
     "January",
@@ -32,33 +34,49 @@ export const daysLeft = (start, end) => {
 };
 
 export const preparedData = (data) =>
-  data.map((contribution) => {
+  data.map((item) => {
     return {
       repository: {
         className: "md:flex-1 w-64 min-w-64",
-        image: contribution.organization.image,
-        value: contribution.repository,
-        value2: `${contribution.organization.name} /`,
-        href: `https://github.com/${contribution.organization.login}/${contribution.repository}`,
+        value: (
+          <div className="flex gap-3 items-center">
+            <img
+              className="rounded-lg w-[34px] h-[34px] border-[1px] border-[#313131]"
+              src={item.organization.image}
+              alt={item.organization.image}
+            />
+            <div>
+              <div className="text-_secondary text-xs">
+                {item.organization.name} /
+              </div>
+              <div className="flex gap-2 items-center">
+                {item.repository}{" "}
+                <span className="text-_secondary">#{item.pr_number}</span>
+              </div>
+            </div>
+          </div>
+        ),
+        href: item.pull_request_link,
+        sortBy: `${item.repository} #${item.pr_number}`,
       },
       date: {
-        className: "md:flex-1 w-44 min-w-44",
-        value: formatDate(contribution.created_at),
+        className: "w-52 min-w-52",
+        value: formatDate(item.created_at),
       },
       score: {
-        className: "md:flex-1 w-44 min-w-44",
-        value: contribution.score,
+        className: "w-40 min-w-40",
+        value: item.score,
       },
       rating: {
-        className: "md:flex-1 w-44 min-w-44",
-        value: contribution.total_rating,
+        className: "w-40 min-w-40",
+        value: item.total_rating,
       },
     };
   });
 
 export const headers = [
-  { value: "Repository", className: "md:flex-1 w-64 min-w-64" },
-  { value: "Date", className: "md:flex-1 w-44 min-w-44" },
-  { value: "Score", className: "md:flex-1 w-44 min-w-44" },
-  { value: "Rating", className: "md:flex-1 w-44 min-w-44" },
+  { value: "Contribution", className: "md:flex-1 w-64 min-w-64" },
+  { value: "Date", className: "w-52 min-w-52" },
+  { value: "Score", className: "w-40 min-w-40" },
+  { value: "Rating", className: "w-40 min-w-40" },
 ];

@@ -4,11 +4,6 @@ import Image from "next/image";
 
 export const Badge = ({ bonus }) => {
   const lifetimeBonus = {
-    0: {
-      title: "unranked",
-      textColor: "text-_secondary",
-      src: "/images/badge-unranked.svg",
-    },
     5: {
       title: "bronze",
       textColor: "text-_yellow",
@@ -55,9 +50,7 @@ export const Badge = ({ bonus }) => {
       />
       <div>
         <div className="capitalize text-xl">{lifetimeBonus[bonus].title}</div>
-        <div className={`text-sm ${1 ? "text-_secondary" : "text-_yellow"}`}>
-          {bonus}% Lifetime bonus
-        </div>
+        <div className={`text-sm text-_yellow`}>{bonus}% Lifetime bonus</div>
       </div>
     </div>
   );
