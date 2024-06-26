@@ -56,7 +56,7 @@ export const Badge = ({ bonus }) => {
           alt="badge"
         />
         <div>
-          <div className="capitalize text-xl">{lifetimeBonus[bonus].title}</div>
+          <div className="capitalize text-xl text-left">{lifetimeBonus[bonus].title}</div>
           <div className={`text-sm text-_yellow`}>{bonus}% Lifetime bonus</div>
         </div>
       </button>
