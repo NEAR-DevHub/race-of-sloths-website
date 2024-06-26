@@ -12,7 +12,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
       description: "Supercharge your open source project with Race of Sloths",
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: `Race of Sloths | ${params.login}`,
       description: "Supercharge your open source project with Race of Sloths",
     },
