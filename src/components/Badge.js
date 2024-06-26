@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 
 export const Badge = ({ bonus }) => {
   const lifetimeBonus = {
@@ -37,21 +38,36 @@ export const Badge = ({ bonus }) => {
     },
   };
 
+  const [hovered, setHovered] = useState(false);
+
   return (
-    <div
-      style={{ background: lifetimeBonus[bonus].gradient ?? "#222" }}
-      className="p-4 flex items-center justify center rounded-xl gap-3"
-    >
-      <Image
-        src={lifetimeBonus[bonus].src}
-        height={48}
-        width={48}
-        alt="badge"
-      />
-      <div>
-        <div className="capitalize text-xl">{lifetimeBonus[bonus].title}</div>
-        <div className={`text-sm text-_yellow`}>{bonus}% Lifetime bonus</div>
-      </div>
+    <div className="relative">
+      <button
+        onMouseOver={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+        data-tooltip-target="tooltip-default"
+        style={{ background: lifetimeBonus[bonus].gradient ?? "#222" }}
+        className="p-4 flex items-center justify-center rounded-xl gap-3"
+      >
+        <Image
+          src={lifetimeBonus[bonus].src}
+          height={48}
+          width={48}
+          alt="badge"
+        />
+        <div>
+          <div className="capitalize text-xl">{lifetimeBonus[bonus].title}</div>
+          <div className={`text-sm text-_yellow`}>{bonus}% Lifetime bonus</div>
+        </div>
+      </button>
+
+      {hovered && (
+        <div className="absolute w-[240px] -bottom-[66px] md:right-0 p-3 flex items-center bg-[#222] border-[1px] border-[#313131] rounded-xl leading-snug">
+          <small>
+            This bonut will be aplied to your every future contribution
+          </small>
+        </div>
+      )}
     </div>
   );
 };
