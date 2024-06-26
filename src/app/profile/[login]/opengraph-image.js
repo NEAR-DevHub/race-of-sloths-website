@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 
 const apiUrl = process.env.API_URL;
 
+export const size = { width: 1098, height: 506 };
 export const contentType = "image/png";
 
 export default async function Image({ params }) {
@@ -9,6 +10,7 @@ export default async function Image({ params }) {
   const data = await resp.text();
 
   return new ImageResponse(
-    <img src={`data:image/svg+xml;utf8,${encodeURIComponent(data)}`} />
+    <img src={`data:image/svg+xml;utf8,${encodeURIComponent(data)}`} />,
+    { ...size }
   );
 }
