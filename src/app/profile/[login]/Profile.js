@@ -336,7 +336,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
       ) : (
         <div className="flex flex-col gap-5 justify-center items-center h-[calc(100vh-200px)] leading-relaxed">
           <h2 className="text-4xl text-center">
-            You don't have any contributions <br /> within the Race yet
+            You don&apos;t have any contributions <br /> within the Race yet
           </h2>
           <p className="text-_secondary">
             <p>
