@@ -24,7 +24,10 @@ const CookieConsent = (props) => {
         <span className="text-base mr-16">
           This website uses cookies to improve user experience. By using our
           website you consent to all cookies in accordance with our{" "}
-          <Link className="text-_secondary hover:underline" href="/cookie">
+          <Link
+            className="text-_secondary hover:underline"
+            href="/policy#cookies"
+          >
             Cookie Policy.
           </Link>
         </span>

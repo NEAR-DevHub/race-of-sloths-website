@@ -37,6 +37,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
       const data = await resp.json();
 
       if (data) {
+        console.log(data);
         setProfile(data);
       }
     } catch (err) {
@@ -107,7 +108,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
           </div>
           <div>
             <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">
-              {profile?.contributions ?? "N/A"}
+              {profile?.global.contributions ?? "N/A"}
             </span>{" "}
             Total contributions
           </div>
@@ -147,7 +148,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
         <div className="grid md:grid-cols-4 grid-cols-2 justify-between items-center gap-2">
           <Statistic
             text="Sloth Points"
-            value={profile.rating}
+            value={period === "all-time" ? profile.global.rating : profile.monthly.rating}
             icon="/images/bolt.svg"
           />
           <Statistic

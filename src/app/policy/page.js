@@ -165,7 +165,7 @@ export default function ToS() {
         registration or otherwise, You are giving the Company permission to use,
         share, and store it in a manner consistent with this Privacy Policy.
       </p>
-      <h3>
+      <h3 id="cookies">
         <strong>Tracking Technologies and Cookies</strong>
       </h3>
       <p>
