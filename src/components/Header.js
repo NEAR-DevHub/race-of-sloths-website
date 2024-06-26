@@ -74,7 +74,7 @@ export const Header = () => {
         <div className="md:flex hidden">
           <Navigation
             links={[
-              { title: "About", href: "/" },
+              { title: "Home", href: "/" },
               { title: "Leaderboard", href: "/leaderboard" },
               { title: "Projects", href: "/projects" },
               { title: "Profile", href: `/profile/${githubUser?.user?.login}` },
@@ -94,7 +94,7 @@ export const Header = () => {
         <Navigation
           mobile={true}
           links={[
-            { title: "About", href: "/", icon: <House size={28} /> },
+            { title: "Home", href: "/", icon: <House size={28} /> },
             {
               title: "Leaderboard",
               href: "/leaderboard",

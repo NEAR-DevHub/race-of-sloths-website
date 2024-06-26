@@ -37,7 +37,7 @@ export const preparedData = (data) =>
 
 export const headers = [
   { value: "Repository", className: "md:flex-1 w-64 min-w-64" },
-  { value: "Contributor", className: "md:flex-1 w-44 min-w-44" },
+  { value: "Contributor of the Month", className: "md:flex-1 w-44 min-w-44" },
   { value: "Language", className: "md:w-40 w-32" },
   { value: "Open Issues", className: "md:w-40 w-32" },
   { value: "Sloths PRs", className: "md:w-40 w-32" },

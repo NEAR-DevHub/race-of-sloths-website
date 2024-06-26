@@ -1,5 +1,6 @@
 "use client";
 
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -18,6 +19,7 @@ const FooterItems = ({ links }) => (
 
 export const Footer = () => {
   const page = usePathname();
+  const { data: githubUser } = useSession();
 
   return (
     <>
@@ -42,14 +44,19 @@ export const Footer = () => {
               links={[
                 { title: "Leaderboard", href: "/leaderboard" },
                 { title: "Projects", href: "/projects" },
-                { title: "My Profile", href: "/profile" },
+                {
+                  title: "My Profile",
+                  href: `/profile/${githubUser?.user.login}`,
+                },
               ]}
             />
             <FooterItems
               links={[
-                { title: "About", href: "/about" },
-                { title: "Contacts", href: "/contacts" },
-                { title: "FAQ", href: "/faq" },
+                { title: "Home", href: "/" },
+                {
+                  title: "Feedback",
+                  href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
+                },
               ]}
             />
             <FooterItems

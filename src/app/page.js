@@ -107,9 +107,9 @@ const StreaksRating = () => {
   const items = [
     [
       {
-        title: "Valueble Contriblution",
+        title: "Valuable Contribution",
         description:
-          "Earn +10 rating points per each of your score point earned by submitting valuable pull requests",
+          "Earn +10 Sloth points per each of your score point earned by submitting valuable pull requests",
         image: "/images/rating1.svg",
       },
       {
@@ -123,13 +123,13 @@ const StreaksRating = () => {
       {
         title: "Monthly streak",
         description:
-          "Keep your monthly streak of high-valuable pull request (scored 8 or above) to receive additional bonus at the end of the month",
+          "Keep your monthly streak of high-valuable pull requests (scored 8 or above) to receive additional bonus at the end of the month",
         image: "/images/rating3.svg",
       },
       {
         title: "Lifetime bonus",
         description:
-          "Keep rocking with your streaks to receive a lifetime bonus to your rating",
+          "Keep rocking with your streaks to receive a lifetime bonus to your Sloth points",
         image: "/images/rating4.svg",
       },
     ],

@@ -61,7 +61,7 @@ export const preparedPinned = (data, period, githubUser) => {
 export const headers = [
   { value: "Place", className: "md:w-24 w-24" },
   { value: "Name", className: "md:flex-1 w-56 min-w-56" },
-  { value: "Rating", className: "md:w-40 w-32" },
+  { value: "Sloth points", className: "md:w-40 w-32" },
   { value: "Pull Requests", className: "md:w-40 w-32" },
   { value: "Streak", className: "md:w-40 w-32" },
 ];

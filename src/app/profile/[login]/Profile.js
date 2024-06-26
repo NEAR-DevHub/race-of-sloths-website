@@ -11,6 +11,7 @@ import { periods } from "@/app/leaderboard/utils";
 import { GithubButton, ProgressBar } from "@/components/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Profile({ apiUrl, badgeUrl }) {
   const params = useParams();
@@ -121,7 +122,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
         <div className="flex flex-row gap-2 md:items-start items-center">
           <Image src={icon} height={40} width={40} alt={text} />
           <div className="flex flex-col">
-            <h2 className="md:text-4xl text-3xl">{value}</h2>
+            <h2 className="md:text-4xl text-3xl">{value ?? 0}</h2>
             <h2 className="text-_secondary md:text-base text-xs md:leading-normal leading-tight">
               {text}
             </h2>
@@ -321,7 +322,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
           <Contributions />
         </>
       ) : params.login === "undefined" && !githubUser ? (
-        <div className="flex flex-col gap-5 justify-center items-center h-[calc(100vh-200px)]">
+        <div className="flex flex-col gap-5 justify-center items-center h-[calc(100vh-200px)] leading-relaxed">
           <h2 className="text-4xl">Profile</h2>
           <p className="text-_secondary">Log in using your Github account</p>
           <div className="mt-5">
@@ -332,10 +333,27 @@ export default function Profile({ apiUrl, badgeUrl }) {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col gap-5 justify-center items-center h-[calc(100vh-200px)]">
-          <h2 className="text-4xl">Profile</h2>
+        <div className="flex flex-col gap-5 justify-center items-center h-[calc(100vh-200px)] leading-relaxed">
+          <h2 className="text-4xl text-center">
+            You don't have any contributions <br /> within the Race yet
+          </h2>
           <p className="text-_secondary">
-            User <b>{params.login}</b> is not found
+            <p>
+              1. Check out{" "}
+              <Link className="text-_green hover:underline" href="/">
+                how it works
+              </Link>
+            </p>
+            <p>
+              2. Pick a{" "}
+              <Link className="text-_green hover:underline" href="/projects">
+                repository
+              </Link>{" "}
+              to contribute
+            </p>
+            <p>
+              3. Make at least one contribution, get scored and start the Race!
+            </p>
           </p>
         </div>
       )}
