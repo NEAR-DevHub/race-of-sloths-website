@@ -36,7 +36,6 @@ const preparedDataObj = (item, period) => {
             src={"/images/fire2.svg"}
             alt={"fire"}
           />
-          {console.log(item)}
           <div>
             {period === "all-time" ? item.streak.longest : item.streak.current}
           </div>

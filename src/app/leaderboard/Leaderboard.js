@@ -24,7 +24,7 @@ export default function Leaderboard({ apiUrl }) {
       setUserData(githubUserData);
     }
   }
-
+  
   useEffect(() => {
     if (period) fetchLeaderboard();
   }, [period, githubUser]);

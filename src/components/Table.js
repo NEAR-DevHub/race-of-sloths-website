@@ -87,7 +87,7 @@ export const Table = ({ headers, body, pinned }) => {
             ))}
           </div>
         ))}
-        {pinned?.user && (
+        {pinned && (
           <div className="flex">
             <div className="flex md:w-full w-fit bg-white text-black">
               {Object.values(pinned).map((cell, i) => (

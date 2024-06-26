@@ -37,7 +37,6 @@ export default function Profile({ apiUrl, badgeUrl }) {
       const data = await resp.json();
 
       if (data) {
-        console.log(data);
         setProfile(data);
       }
     } catch (err) {
