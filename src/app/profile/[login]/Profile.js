@@ -6,7 +6,13 @@ import { Calendar, CalendarDots, Clock } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { daysLeft, headers, preparedData } from "./utils";
+import {
+  daysLeft,
+  headers,
+  monthlyStrickRewardsMap,
+  preparedData,
+  weeklyStrickRewardsMap,
+} from "./utils";
 import { periods } from "@/app/leaderboard/utils";
 import { GithubButton, ProgressBar } from "@/components/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
@@ -147,7 +153,11 @@ export default function Profile({ apiUrl, badgeUrl }) {
         <div className="grid md:grid-cols-4 grid-cols-2 justify-between items-center gap-2">
           <Statistic
             text="Sloth Points"
-            value={period === "all-time" ? profile.global.rating : profile.monthly.rating}
+            value={
+              period === "all-time"
+                ? profile.global.rating
+                : profile.monthly.rating
+            }
             icon="/images/bolt.svg"
           />
           <Statistic
@@ -184,7 +194,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
         <div className="flex md:flex-row flex-col justify-between items-center gap-2">
           {profile.streaks.map((streak, index) => {
             const dateDiff = daysLeft(streak.start_time, streak.end_time);
-
+            console.log(streak);
             return (
               <>
                 {streak.achived ? (
@@ -210,7 +220,20 @@ export default function Profile({ apiUrl, badgeUrl }) {
                         Well done! Next challenge in 3 days
                       </p>
                       <p className="text-[#0DC268] flex gap-2">
-                        <span>Earned +50 </span>
+                        <span>
+                          Earned{" "}
+                          {streak.streak_type === "Weekly"
+                            ? weeklyStrickRewardsMap[
+                                streak.achived
+                                  ? streak.current + 1
+                                  : streak.current
+                              ]
+                            : monthlyStrickRewardsMap[
+                                streak.achived
+                                  ? streak.current + 1
+                                  : streak.current
+                              ]}
+                        </span>
                         <Image
                           src="/images/bolt.svg"
                           width={20}

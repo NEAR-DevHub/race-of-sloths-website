@@ -47,7 +47,7 @@ export const preparedData = (data) =>
             />
             <div>
               <div className="text-_secondary text-xs">
-                {item.organization.name} /
+                {item.organization.name ?? item.organization.login} /
               </div>
               <div className="flex gap-2 items-center">
                 {item.repository}{" "}
@@ -81,3 +81,42 @@ export const headers = [
   { value: "Score", className: "w-40 min-w-40" },
   { value: "Sloth Points", className: "w-40 min-w-40" },
 ];
+
+export const weeklyStrickRewardsMap = {
+  1: "+10",
+  2: "+15",
+  3: "+20",
+  4: "+25",
+  5: "+5%",
+  6: "+30",
+  7: "+35",
+  8: "+40",
+  9: "+45",
+  10: "+5%",
+  11: "+50",
+  12: "+55",
+  13: "+60",
+  14: "+65",
+  16: "+70",
+  15: "+75",
+  17: "+80",
+  18: "+85",
+  19: "+90",
+  20: "+5%",
+  21: "+100",
+};
+
+export const monthlyStrickRewardsMap = {
+  1: "+10",
+  2: "+20",
+  3: "+40",
+  4: "+60",
+  5: "+5%",
+  6: "+80",
+  7: "+100",
+  8: "+120",
+  9: "+140",
+  10: "+5%",
+  11: "+160",
+  12: "+200",
+}; 

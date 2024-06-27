@@ -10,11 +10,19 @@ export async function generateMetadata({ params, searchParams }, parent) {
     openGraph: {
       title: `Race of Sloths | ${params.login}`,
       description: "Supercharge your open source project with Race of Sloths",
+      images: [
+        {
+          url: `https://badge.staging.race-of-sloths.com/${params.login}?type=meta`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `Race of Sloths | ${params.login}`,
       description: "Supercharge your open source project with Race of Sloths",
+      images: {
+        url: `https://badge.staging.race-of-sloths.com/${params.login}?type=meta`,
+      },
     },
   };
 }

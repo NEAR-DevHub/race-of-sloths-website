@@ -12,7 +12,7 @@ export const preparedData = (data) =>
             />
             <div>
               <div className="text-_secondary text-xs">
-                {project.organization.name} /
+                {project.organization.name ?? project.organization.login} /
               </div>
               <div>{project.name}</div>
             </div>
@@ -23,14 +23,28 @@ export const preparedData = (data) =>
       },
       contributor: {
         className: "md:flex-1 w-44 min-w-44",
-        value: project.contributor_of_the_month?.login,
+        value: (
+          <>
+            {project.contributor_of_the_month && (
+              <div className="flex gap-3 items-center">
+                <img
+                  className="rounded-full w-[34px] h-[34px]"
+                  src={project.contributor_of_the_month.image}
+                  alt={project.contributor_of_the_month.image}
+                />
+                <div>{project.contributor_of_the_month.login}</div>
+              </div>
+            )}
+          </>
+        ),
         href: `profile/${project.contributor_of_the_month?.login}`,
+        sortBy: project.contributor_of_the_month?.login,
       },
       language: { className: "md:w-40 w-32", value: project.repo_language },
       openIssues: { className: "md:w-40 w-32", value: project.open_issues },
       prs: {
         className: "md:w-40 w-32",
-        value: project.projects_with_sloth,
+        value: project.contributions_with_sloth,
       },
     };
   });
