@@ -30,7 +30,7 @@ const HowItWorks = () => {
       },
       title: "3. Maintainer score command",
       description:
-        "Maintainer responds with a fibonnaci score of [0,1,2,3,5,8,13]",
+        "Maintainer responds with a Fibonnaci score of [0,1,2,3,5,8,13]",
     },
     {
       image: {
