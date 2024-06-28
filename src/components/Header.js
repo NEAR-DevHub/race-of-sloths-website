@@ -75,7 +75,7 @@ export const Header = () => {
         <div className="md:flex hidden">
           <Navigation
             links={[
-              { title: "About", href: "/" },
+              { title: "Home", href: "/" },
               { title: "Leaderboard", href: "/leaderboard" },
               { title: "Projects", href: "/projects" },
             ]}
