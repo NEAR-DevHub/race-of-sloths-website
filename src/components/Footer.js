@@ -1,6 +1,11 @@
 "use client";
 
-import { TelegramLogo, TwitterLogo, XLogo } from "@phosphor-icons/react";
+import {
+  GithubLogo,
+  TelegramLogo,
+  TwitterLogo,
+  XLogo,
+} from "@phosphor-icons/react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -51,7 +56,7 @@ export const Footer = () => {
         />
         <FooterItems
           links={[
-            { title: "Home", href: "/" },
+            { title: "About project", href: "/" },
             {
               title: "Feedback",
               href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
@@ -71,6 +76,9 @@ export const Footer = () => {
         </a>
         <a href="https://t.me/race_of_sloths" target="_blank">
           <TelegramLogo size={32} />
+        </a>
+        <a href="https://github.com/race-of-sloths" target="_blank">
+          <GithubLogo size={32} />
         </a>
       </section>
     </footer>

@@ -63,7 +63,7 @@ export const Table = ({ headers, body, pinned }) => {
     <div
       className={`w-full flex flex-col bg-[#1d1d1d] border-[1px] border-[#424242] rounded-xl p-[2px]`}
     >
-      <div className="no-scrollbar overflow-y-auto overflow-x-auto max-h-[860px]">
+      <div className="no-scrollbar overflow-y-auto overflow-x-auto max-h-[840px]">
         <div className="flex md:w-full w-fit">
           {headers.map((item, idx) => (
             <div
@@ -87,16 +87,16 @@ export const Table = ({ headers, body, pinned }) => {
             ))}
           </div>
         ))}
-        {pinned && (
-          <div className="flex">
-            <div className="flex md:w-full w-fit bg-white text-black">
-              {Object.values(pinned).map((cell, i) => (
-                <Cell key={i} item={cell} pinned={true} />
-              ))}
-            </div>
-          </div>
-        )}
       </div>
+      {pinned && (
+        <div className="flex">
+          <div className="flex md:w-full w-fit bg-white text-black">
+            {Object.values(pinned).map((cell, i) => (
+              <Cell key={i} item={cell} pinned={true} />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

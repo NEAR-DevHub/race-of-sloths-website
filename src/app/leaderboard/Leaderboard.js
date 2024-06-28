@@ -28,7 +28,8 @@ export default function Leaderboard({ apiUrl }) {
   useEffect(() => {
     if (period) fetchLeaderboard();
   }, [period, githubUser]);
-
+  console.log(leaderboard);
+  console.log(userData);
   return (
     <div className="flex flex-col gap-5">
       <div className="flex md:flex-row flex-col justify-between gap-5">
@@ -44,7 +45,7 @@ export default function Leaderboard({ apiUrl }) {
       <Table
         headers={headers}
         body={leaderboard}
-        pinned={userData}
+        pinned={userData.place > 14 ? userData : null}
         fallbackMsg="There are no activity"
       />
     </div>

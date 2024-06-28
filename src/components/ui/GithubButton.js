@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const GithubButton = ({ title, onClick, href }) => {
+export const GithubButton = ({ title, onClick, href, icon }) => {
   const Icon = () => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -17,14 +17,36 @@ export const GithubButton = ({ title, onClick, href }) => {
   return (
     <div className="py-2 px-4 flex justify-center items-center bg-white hover:bg-gray-300  text-black transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
       {href ? (
-        <Link className="flex items-center" href={href}>
-          <Icon />
-          {title}
+        <Link className="flex items-center gap-2" href={href}>
+          {icon ? (
+            <>
+              {title}
+              {icon}
+            </>
+          ) : (
+            <>
+              <Icon />
+              {title}
+            </>
+          )}
         </Link>
       ) : (
-        <button type="button" className="flex items-center" onClick={onClick}>
-          <Icon />
-          {title}
+        <button
+          type="button"
+          className="flex items-center gap-2"
+          onClick={onClick}
+        >
+          {icon ? (
+            <>
+              {title}
+              {icon}
+            </>
+          ) : (
+            <>
+              <Icon />
+              {title}
+            </>
+          )}
         </button>
       )}
     </div>

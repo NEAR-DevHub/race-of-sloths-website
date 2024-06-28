@@ -38,7 +38,7 @@ export const preparedData = (data) =>
           </>
         ),
         href: `profile/${project.contributor_of_the_month?.login}`,
-        sortBy: project.contributor_of_the_month?.login,
+        sortBy: project.contributor_of_the_month?.login ?? " ",
       },
       language: { className: "md:w-40 w-32", value: project.repo_language },
       openIssues: { className: "md:w-40 w-32", value: project.open_issues },

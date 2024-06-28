@@ -2,7 +2,7 @@
 
 import { Badge, CopyButton, Table } from "@/components";
 import { Toggle } from "@/components/Toggle";
-import { Calendar, CalendarDots, Clock } from "@phosphor-icons/react";
+import { Calendar, CalendarDots, Clock, SignOut } from "@phosphor-icons/react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -82,7 +82,13 @@ export default function Profile({ apiUrl, badgeUrl }) {
     <div>
       <div className="flex justify-between items-center my-5">
         <h2 className="text-4xl">Profile</h2>
-        {isCurrentUser && <GithubButton title="Sign Out" onClick={signOut} />}
+        {isCurrentUser && (
+          <GithubButton
+            title="Sign Out"
+            onClick={signOut}
+            icon={<SignOut weight="bold" />}
+          />
+        )}
       </div>
       <div className="flex justify-between items-center">
         <Section className="w-full flex flex-col gap-[24px]">
@@ -93,23 +99,11 @@ export default function Profile({ apiUrl, badgeUrl }) {
                 src={profile.user.image}
               />
               <div className="flex flex-col">
-                <h2 className="text-2xl">{profile.user.name ?? "N/A"}</h2>
+                <h2 className="text-2xl">{profile.user.name ?? "Unknown"}</h2>
                 <h2 className="text-_secondary">@{profile.user.login}</h2>
               </div>
             </div>
-            {profile.lifetime_bonus === 0 ? (
-              <div className="p-4 flex items-center justify center rounded-xl gap-3 bg-[#222]">
-                <CalendarDots size={52} weight="thin" />
-                <div>
-                  <div className="capitalize text-xl">
-                    {contributionDays} {contributionDays === 1 ? "day" : "days"}
-                  </div>
-                  <div className="text-_secondary">Sloth age</div>
-                </div>
-              </div>
-            ) : (
-              <Badge bonus={profile.lifetime_bonus} />
-            )}
+            <Badge bonus={profile.lifetime_bonus} lifetime={contributionDays} />
           </div>
           <div>
             <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">
@@ -347,8 +341,8 @@ export default function Profile({ apiUrl, badgeUrl }) {
           <p className="text-_secondary">Log in using your Github account</p>
           <div className="mt-5">
             <GithubButton
-              title={githubUser ? "Sign Out" : "Continue with GitHub"}
-              onClick={() => (githubUser ? signOut() : signIn("github"))}
+              title={"Continue with GitHub"}
+              onClick={() => signIn("github")}
             />
           </div>
         </div>

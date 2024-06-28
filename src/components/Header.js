@@ -4,8 +4,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Navigation } from "./Navigation";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { BookOpen, House, Ranking, User } from "@phosphor-icons/react";
+import { GithubButton } from "./ui";
 
 const Hero = () => (
   <>
@@ -74,14 +75,27 @@ export const Header = () => {
         <div className="md:flex hidden">
           <Navigation
             links={[
-              { title: "Home", href: "/" },
+              { title: "About", href: "/" },
               { title: "Leaderboard", href: "/leaderboard" },
               { title: "Projects", href: "/projects" },
-              { title: "Profile", href: `/profile/${githubUser?.user?.login}` },
             ]}
           />
         </div>
-        <div className="w-[200px]" />
+        <div className="md:flex hidden">
+          {githubUser ? (
+            <Link href={`/profile/${githubUser.user.login}`}>
+              <img
+                className="rounded-full w-[40px] h-[40px]"
+                src={githubUser.user.image}
+              />
+            </Link>
+          ) : (
+            <GithubButton
+              title={"Continue with GitHub"}
+              onClick={() => signIn("github")}
+            />
+          )}
+        </div>
       </div>
 
       {page === "/" && (
