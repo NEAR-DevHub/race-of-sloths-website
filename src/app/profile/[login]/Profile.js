@@ -162,14 +162,14 @@ export default function Profile({ apiUrl, badgeUrl }) {
           <Statistic
             text="Week Streak"
             value={
-              profile.streaks.find((s) => s.streak_type == "Weekly").longest
+              profile.streaks.find((s) => s.streak_type == "Weekly").current
             }
             icon="/images/fire.svg"
           />
           <Statistic
             text="Month Streak"
             value={
-              profile.streaks.find((s) => s.streak_type == "Monthly").longest
+              profile.streaks.find((s) => s.streak_type == "Monthly").current
             }
             icon="/images/fire.svg"
           />
