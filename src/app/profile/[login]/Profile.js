@@ -162,14 +162,18 @@ export default function Profile({ apiUrl, badgeUrl }) {
           <Statistic
             text="Week Streak"
             value={
-              profile.streaks.find((s) => s.streak_type == "Weekly").current
+              profile.streaks.find((s) => s.streak_type == "Weekly")[
+                period === "all-time" ? "longest" : "current"
+              ]
             }
             icon="/images/fire.svg"
           />
           <Statistic
             text="Month Streak"
             value={
-              profile.streaks.find((s) => s.streak_type == "Monthly").current
+              profile.streaks.find((s) => s.streak_type == "Monthly")[
+                period === "all-time" ? "longest" : "current"
+              ]
             }
             icon="/images/fire.svg"
           />
@@ -211,7 +215,8 @@ export default function Profile({ apiUrl, badgeUrl }) {
                         />
                       </div>
                       <p className="text-_secondary">
-                        Well done! Next challenge in 3 days
+                        Well done! Next challenge in{" "}
+                        {daysLeft(new Date(), streak.end_time).current} days
                       </p>
                       <p className="text-[#0DC268] flex gap-2">
                         <span>
