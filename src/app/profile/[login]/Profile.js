@@ -18,6 +18,7 @@ import { GithubButton, ProgressBar } from "@/components/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import NotFound from "@/app/not-found";
 
 export default function Profile({ apiUrl, badgeUrl }) {
   const params = useParams();
@@ -63,7 +64,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
       router.push(`/profile/${githubUser.user.login}`, { scroll: false });
   }, [githubUser]);
 
-  const isCurrentUser = githubUser?.user?.login === profile?.user?.login;
+  const isCurrentUser = githubUser?.user?.login === params.login;
   const contributionDays = daysLeft(
     profile?.first_contribution,
     new Date()
@@ -336,6 +337,38 @@ export default function Profile({ apiUrl, badgeUrl }) {
     </div>
   );
 
+  const NoContribution = () => (
+    <div className="flex flex-col gap-5 justify-center items-center h-[calc(100vh-200px)] leading-relaxed">
+      <h2 className="text-4xl text-center">
+        You don&apos;t have any contributions <br /> within the Race yet
+      </h2>
+      <p className="text-_secondary">
+        <p>
+          1. Check out{" "}
+          <Link className="text-_green hover:underline" href="/">
+            how it works
+          </Link>
+        </p>
+        <p>
+          2. Pick a{" "}
+          <Link className="text-_green hover:underline" href="/projects">
+            repository
+          </Link>{" "}
+          to contribute
+        </p>
+        <p>3. Make at least one contribution, get scored and start the Race!</p>
+      </p>
+
+      <div className="mt-5">
+        <GithubButton
+          title="Sign Out"
+          onClick={signOut}
+          icon={<SignOut weight="bold" />}
+        />
+      </div>
+    </div>
+  );
+
   if (profile === undefined) return <></>;
 
   return (
@@ -352,7 +385,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
           )}
           <Contributions />
         </>
-      ) : params.login === "undefined" && !githubUser ? (
+      ) : !githubUser ? (
         <div className="flex flex-col gap-5 justify-center items-center h-[calc(100vh-200px)] leading-relaxed">
           <h2 className="text-4xl">Profile</h2>
           <p className="text-_secondary">Log in using your Github account</p>
@@ -363,30 +396,10 @@ export default function Profile({ apiUrl, badgeUrl }) {
             />
           </div>
         </div>
+      ) : githubUser && isCurrentUser && !profile ? (
+        <NoContribution />
       ) : (
-        <div className="flex flex-col gap-5 justify-center items-center h-[calc(100vh-200px)] leading-relaxed">
-          <h2 className="text-4xl text-center">
-            You don&apos;t have any contributions <br /> within the Race yet
-          </h2>
-          <p className="text-_secondary">
-            <p>
-              1. Check out{" "}
-              <Link className="text-_green hover:underline" href="/">
-                how it works
-              </Link>
-            </p>
-            <p>
-              2. Pick a{" "}
-              <Link className="text-_green hover:underline" href="/projects">
-                repository
-              </Link>{" "}
-              to contribute
-            </p>
-            <p>
-              3. Make at least one contribution, get scored and start the Race!
-            </p>
-          </p>
-        </div>
+        <NotFound />
       )}
     </div>
   );
