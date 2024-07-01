@@ -192,6 +192,14 @@ export default function Profile({ apiUrl, badgeUrl }) {
         <div className="flex md:flex-row flex-col justify-between items-center gap-2">
           {profile.streaks.map((streak, index) => {
             const dateDiff = daysLeft(streak.start_time, streak.end_time);
+            const bonus =
+              streak.streak_type === "Weekly"
+                ? weeklyStrickRewardsMap[streak.current]
+                : monthlyStrickRewardsMap[streak.current];
+            const nextBonus =
+              streak.streak_type === "Weekly"
+                ? weeklyStrickRewardsMap[streak.current + 1]
+                : monthlyStrickRewardsMap[streak.current + 1];
 
             return (
               <>
@@ -219,18 +227,17 @@ export default function Profile({ apiUrl, badgeUrl }) {
                         {daysLeft(new Date(), streak.end_time).current} days
                       </p>
                       <p className="text-[#0DC268] flex gap-2">
-                        <span>
-                          Earned{" "}
-                          {streak.streak_type === "Weekly"
-                            ? weeklyStrickRewardsMap[streak.current]
-                            : monthlyStrickRewardsMap[streak.current]}
-                        </span>
-                        <Image
-                          src="/images/bolt.svg"
-                          width={20}
-                          height={20}
-                          alt="bolt"
-                        />
+                        <span>Earned {bonus.value}</span>
+                        {bonus.percent ? (
+                          <span>Lifetime bonus</span>
+                        ) : (
+                          <Image
+                            src="/images/bolt.svg"
+                            width={20}
+                            height={20}
+                            alt="bolt"
+                          />
+                        )}
                       </p>
                     </div>
                   </Section>
@@ -242,16 +249,21 @@ export default function Profile({ apiUrl, badgeUrl }) {
                       </div>
                       <div className="flex md:flex-row flex-col justify-between">
                         <p>
-                          <span className="text-_secondary">
-                            Next earning:{" "}
-                          </span>
-                          <span className="text-[#FFD400]">
-                            {streak.streak_type === "Weekly"
-                              ? weeklyStrickRewardsMap[streak.current + 1]
-                              : monthlyStrickRewardsMap[
-                                  streak.current + 1
-                                ]}{" "}
-                            Lifetime bonus
+                          <span className="text-_secondary flex gap-2">
+                            <span>Next earning:</span>
+                            <span className="text-[#FFD400] flex">
+                              <span>{nextBonus.value}</span>
+                              {nextBonus.percent ? (
+                                <span>Lifetime bonus</span>
+                              ) : (
+                                <Image
+                                  src="/images/bolt.svg"
+                                  width={20}
+                                  height={20}
+                                  alt="bolt"
+                                />
+                              )}
+                            </span>
                           </span>
                         </p>
                         <span className="text-_secondary md:my-0 my-3 flex gap-2 items-center justify-end">
