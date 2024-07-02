@@ -8,9 +8,9 @@ export const periods = [`${month < 10 ? 0 : ""}${month}${year}`, "all-time"];
 
 const preparedDataObj = (item, period) => {
   return {
-    place: { className: "md:w-24 w-24", value: item.place },
+    place: { className: "md:w-24 w-24 min-w-24", value: item.place },
     name: {
-      className: "md:flex-1 w-56 min-w-56",
+      className: "md:flex-1 w-52 min-w-52",
       value: (
         <div className="flex gap-3 items-center">
           <img
@@ -24,10 +24,10 @@ const preparedDataObj = (item, period) => {
       href: `profile/${item.user.login}`,
       sortBy: item.user.name ?? item.user.login,
     },
-    rating: { className: "md:w-40 w-32", value: item.rating },
-    prs: { className: "md:w-40 w-32", value: item.merged_prs },
+    rating: { className: "md:w-40 w-40 min-w-40", value: item.rating },
+    prs: { className: "md:w-40 w-40 min-w-40", value: item.merged_prs },
     streak: {
-      className: "md:w-40 w-32",
+      className: "md:w-40 w-40 min-w-40",
       value: (
         <div className="flex gap-3">
           <Image
@@ -59,9 +59,9 @@ export const preparedPinned = (data, period, githubUser) => {
 };
 
 export const headers = [
-  { value: "Place", className: "md:w-24 w-24" },
-  { value: "Name", className: "md:flex-1 w-56 min-w-56" },
-  { value: "Sloth points", className: "md:w-40 w-32" },
-  { value: "Pull Requests", className: "md:w-40 w-32" },
-  { value: "Streak", className: "md:w-40 w-32" },
+  { value: "Place", className: "md:w-24 w-24 min-w-24" },
+  { value: "Name", className: "md:flex-1 w-52 min-w-52" },
+  { value: "Sloth points", className: "md:w-40 w-40 min-w-40" },
+  { value: "Pull Requests", className: "md:w-40 w-40 min-w-40" },
+  { value: "Streak", className: "md:w-40 w-40 min-w-40" },
 ];

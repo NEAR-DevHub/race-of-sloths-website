@@ -2,7 +2,7 @@ export const preparedData = (data) =>
   data.map((project) => {
     return {
       project: {
-        className: "md:flex-1 w-64 min-w-64",
+        className: "md:flex-1 w-52 min-w-52",
         value: (
           <div className="flex gap-3 items-center">
             <img
@@ -22,7 +22,7 @@ export const preparedData = (data) =>
         sortBy: project.name,
       },
       contributor: {
-        className: "md:flex-1 w-44 min-w-44",
+        className: "md:flex-1 w-64 min-w-64",
         value: (
           <>
             {project.contributor_of_the_month && (
@@ -40,19 +40,19 @@ export const preparedData = (data) =>
         href: `profile/${project.contributor_of_the_month?.login}`,
         sortBy: project.contributor_of_the_month?.login ?? " ",
       },
-      language: { className: "md:w-40 w-32", value: project.repo_language },
-      openIssues: { className: "md:w-40 w-32", value: project.open_issues },
+      language: { className: "w-40 min-w-40", value: project.repo_language },
+      openIssues: { className: "w-40 min-w-40", value: project.open_issues },
       prs: {
-        className: "md:w-40 w-32",
+        className: "w-40 min-w-40",
         value: project.contributions_with_sloth,
       },
     };
   });
 
 export const headers = [
-  { value: "Repository", className: "md:flex-1 w-64 min-w-64" },
-  { value: "Contributor of the Month", className: "md:flex-1 w-44 min-w-44" },
-  { value: "Language", className: "md:w-40 w-32" },
-  { value: "Open Issues", className: "md:w-40 w-32" },
-  { value: "Sloths PRs", className: "md:w-40 w-32" },
+  { value: "Repository", className: "md:flex-1 w-52 min-w-52" },
+  { value: "Contributor of the Month", className: "md:flex-1 w-64 min-w-64" },
+  { value: "Language", className: "w-40 min-w-40" },
+  { value: "Open Issues", className: "w-40 min-w-40" },
+  { value: "Sloths PRs", className: "w-40 min-w-40" },
 ];
