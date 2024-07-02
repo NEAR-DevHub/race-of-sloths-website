@@ -12,7 +12,7 @@ const HowItWorks = () => {
       },
       title: "1. Tag the Bot",
       description:
-        "Contributor mentions @race-of-sloths in their pull request on GitHub to join the Race",
+        "Contributor mentions @race-of-sloths in their pull request on GitHub to join the Race.",
     },
     {
       image: {
@@ -21,7 +21,7 @@ const HowItWorks = () => {
         secondary: "/images/firework-sm.svg",
       },
       title: "2. Bot Responds",
-      description: "The pull request is now a part of the Race",
+      description: "The pull request is now a part of the Race.",
     },
     {
       image: {
@@ -30,7 +30,7 @@ const HowItWorks = () => {
       },
       title: "3. Maintainer Scores",
       description:
-        "Repository maintainer scores the pull request using a Fibonacci scale [0, 1, 2, 3, 5, 8, 13]",
+        "Repository maintainer scores the pull request using a Fibonacci scale [0, 1, 2, 3, 5, 8, 13].",
     },
     {
       image: {
@@ -39,7 +39,7 @@ const HowItWorks = () => {
       },
       title: "4. Leaderboard Updates",
       description:
-        "After 24 hours from the merge, the bot finalizes the score and updates the leaderboard",
+        "After 24 hours from the merge, the bot finalizes the score and updates the leaderboard.",
     },
   ];
 
@@ -114,13 +114,13 @@ const StreaksRating = () => {
       {
         title: "Monthly streak",
         description:
-          "Keep your monthly streak of high-valuable pull requests (scored 8 or above) to receive additional bonus at the end of the month",
+          "Keep your monthly streak of high-valuable pull requests (scored 8 or above) to receive additional bonus at the end of the month.",
         image: "/images/rating3.svg",
       },
       {
         title: "Lifetime bonus",
         description:
-          "Keep rocking with your streaks to receive a lifetime bonus to your Sloth points",
+          "Keep rocking with your streaks to receive a lifetime bonus to your Sloth points.",
         image: "/images/rating4.svg",
       },
     ],
