@@ -12,16 +12,13 @@ const Hero = () => (
   <>
     <article className="md:flex hidden gap-10 justify-between items-center">
       <section className="flex flex-col gap-[24px] pl-24">
-        <p className="text-_green">Supercharge your open source project</p>
+        <p className="text-_green">Open source, gamified</p>
         <h1 className="text-4xl">
-          Engage your
+          A fun way to contribute
           <br />
-          open source community
+          to open source.
         </h1>
-        <p>
-          Gamify developers&apos; daily routine with friendly competition
-          managed by GitHub bot
-        </p>
+        <p>Contribute, get recognized, and boost your profile</p>
       </section>
       <section>
         <Image

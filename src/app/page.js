@@ -10,8 +10,9 @@ const HowItWorks = () => {
         desktop: "/images/bot1.svg",
         mobile: "/images/bot1-m.svg",
       },
-      title: "1. Include command",
-      description: "Contributor tags @race-of-sloths on the pull request",
+      title: "1. Tag the Bot",
+      description:
+        "Contributor mentions @race-of-sloths in their pull request on GitHub to join the Race",
     },
     {
       image: {
@@ -19,36 +20,26 @@ const HowItWorks = () => {
         mobile: "/images/bot2-m.svg",
         secondary: "/images/firework-sm.svg",
       },
-      title: "2. Bot Response",
-      description:
-        "Bot responds with a confirmation with additional info in details",
+      title: "2. Bot Responds",
+      description: "The pull request is now a part of the Race",
     },
     {
       image: {
         desktop: "/images/bot3.svg",
         mobile: "/images/bot3-m.svg",
       },
-      title: "3. Maintainer score command",
+      title: "3. Maintainer Scores",
       description:
-        "Maintainer responds with a Fibonnaci score of [0,1,2,3,5,8,13]",
+        "Repository maintainer scores the pull request using a Fibonacci scale [0, 1, 2, 3, 5, 8, 13]",
     },
     {
       image: {
         desktop: "/images/bot4.svg",
         mobile: "/images/bot4-m.svg",
       },
-      title: "4. Bot Response",
+      title: "4. Leaderboard Updates",
       description:
-        "Bot responds with a confirmation with additional info in details",
-    },
-    {
-      image: {
-        desktop: "/images/bot5.svg",
-        mobile: "/images/bot5-m.svg",
-      },
-      title: "Final",
-      description:
-        "After 24 hours from the merge, the bot finalizes score and updates the leaderboard",
+        "After 24 hours from the merge, the bot finalizes the score and updates the leaderboard",
     },
   ];
 
@@ -88,7 +79,7 @@ const HowItWorks = () => {
 
   return (
     <article className="flex flex-col md:gap-0 gap-[40px]">
-      <h1 className="text-3xl">How it works</h1>
+      <h1 className="text-3xl">Race to the Top: How it works</h1>
       <div className="flex flex-col relative md:gap-[0] gap-[40px]">
         {items.map((item, index) => (
           <HowItWorksItems
@@ -109,13 +100,13 @@ const StreaksRating = () => {
       {
         title: "Valuable Contribution",
         description:
-          "Earn +10 Sloth points per each of your score point earned by submitting valuable pull requests",
+          "Earn +10 Sloth points for each of point by submitting valuable pull requests.",
         image: "/images/rating1.svg",
       },
       {
         title: "Weekly streak",
         description:
-          "Keep your weekly streak with at least one contribution to receive a bonus at the end of the week",
+          "KeMake at least one contribution each week and earn a bonus on top of your Sloth Points. Consistency is key!",
         image: "/images/rating2.svg",
       },
     ],
@@ -138,7 +129,7 @@ const StreaksRating = () => {
   return (
     <article className="flex flex-col gap-[40px] w-full">
       <h1 className="text-3xl">
-        Streaks <span className="text-_red">&</span> Rating
+        Earn Sloth Points <span className="text-_red">&</span> Recognition
       </h1>
       {items.map((row, i) => (
         <div
@@ -194,11 +185,11 @@ const OurMission = () => (
 const HaveFun = () => (
   <article className="flex items-center flex-col gap-3">
     <h1 className="text-4xl text-center">
-      Have a fun <span className="text-_blue">&</span> Contribute
+      Have Fun <span className="text-_blue">&</span> Contribute
     </h1>
     <Link href="/projects">
       <div className="flex gap-2">
-        <h2 className="text-2xl text-center">Pick the Project</h2>
+        <h2 className="text-2xl text-center">Pick a Project</h2>
         <Image
           src="/images/have-a-fun.svg"
           height={29}
