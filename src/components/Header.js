@@ -38,17 +38,14 @@ const Hero = () => (
           alt={"Sloth image"}
         />
       </section>
-      <section className="flex flex-col gap-[24px] px-[16px]">
-        <p className="text-_green">Supercharge your open source project</p>
+      <section className="flex flex-col gap-[24px] px-[16px] justify-start w-full">
+        <p className="text-_green">Open source, gamified</p>
         <h1 className="text-4xl">
-          Engage your
+          A fun way to contribute
           <br />
-          open source community
+          to open source.
         </h1>
-        <p>
-          Gamify developers&apos; daily routine with friendly competition
-          managed by GitHub bot
-        </p>
+        <p>Contribute, get recognized, and boost your profile</p>
       </section>
     </article>
   </>
