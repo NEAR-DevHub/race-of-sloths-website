@@ -33,12 +33,14 @@ export const Table = ({ headers, body, pinned }) => {
     setBodyData(sortedBody);
   }
 
-  function Cell({ item, pinned }) {
+  function Cell({ item, pinned, last }) {
     return (
       <div
-        className={`flex items-center p-3 border-r-[1px] last:border-r-0 ${
-          pinned ? "border-[#E6E6E6]" : "border-[#424242]"
-        } ${item.className}`}
+        className={`flex items-center p-3 border-b-[1px] border-r-[1px] last:border-r-0 ${
+          last ? "border-b-0" : ""
+        } ${pinned ? "border-[#E6E6E6]" : "border-[#424242]"} ${
+          item.className
+        }`}
       >
         <div className="flex gap-3 items-center truncate">
           <div className="truncate">
@@ -64,7 +66,7 @@ export const Table = ({ headers, body, pinned }) => {
       className={`w-full flex flex-col bg-[#1d1d1d] border-[1px] border-[#424242] rounded-xl p-[2px]`}
     >
       <div className="no-scrollbar overflow-y-auto overflow-x-auto max-h-[840px]">
-        <div className="flex md:w-full w-fit">
+        <div className="flex">
           {headers.map((item, idx) => (
             <div
               role="button"
@@ -78,12 +80,9 @@ export const Table = ({ headers, body, pinned }) => {
           ))}
         </div>
         {bodyData.map((row, i) => (
-          <div
-            key={i}
-            className={`flex md:w-full w-fit border-b-[1px] last:border-b-0 hover:bg-[#222] border-[#424242]`}
-          >
+          <div key={i} className={`flex hover:bg-[#222] border-[#424242]`}>
             {Object.values(row).map((cell, j) => (
-              <Cell key={j} item={cell} />
+              <Cell key={j} item={cell} last={bodyData.length - 1 === i} />
             ))}
           </div>
         ))}
@@ -92,7 +91,7 @@ export const Table = ({ headers, body, pinned }) => {
         <div className="flex">
           <div className="flex md:w-full w-fit bg-white text-black">
             {Object.values(pinned).map((cell, i) => (
-              <Cell key={i} item={cell} pinned={true} />
+              <Cell key={i} item={cell} pinned={true} last={true} />
             ))}
           </div>
         </div>
