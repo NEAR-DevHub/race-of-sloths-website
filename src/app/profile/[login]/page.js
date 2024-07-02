@@ -12,7 +12,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
       description: "Supercharge your open source project with Race of Sloths",
       images: [
         {
-          url: `${BADGE_URL}/${params.login}?type=meta`,
+          url: `${badgeUrl}/${params.login}?type=meta`,
         },
       ],
     },
@@ -21,7 +21,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
       title: `Race of Sloths | ${params.login}`,
       description: "Supercharge your open source project with Race of Sloths",
       images: {
-        url: `${BADGE_URL}/${params.login}?type=meta`,
+        url: `${badgeUrl}/${params.login}?type=meta`,
       },
     },
   };
