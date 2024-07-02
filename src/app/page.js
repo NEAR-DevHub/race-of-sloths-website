@@ -138,7 +138,7 @@ const StreaksRating = () => {
   return (
     <article className="flex flex-col gap-[40px] w-full">
       <h1 className="text-3xl">
-        Streaks <span className="text-_red">it</span> Rating
+        Streaks <span className="text-_red">&</span> Rating
       </h1>
       {items.map((row, i) => (
         <div
