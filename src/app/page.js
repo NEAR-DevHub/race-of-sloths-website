@@ -100,13 +100,13 @@ const StreaksRating = () => {
       {
         title: "Valuable Contribution",
         description:
-          "Earn +10 Sloth points for each of point by submitting valuable pull requests.",
+          "Earn +10 Sloth points for each points by submitting valuable pull requests.",
         image: "/images/rating1.svg",
       },
       {
         title: "Weekly streak",
         description:
-          "KeMake at least one contribution each week and earn a bonus on top of your Sloth Points. Consistency is key!",
+          "Make at least one contribution each week and earn a bonus on top of your Sloth Points. Consistency is a key!",
         image: "/images/rating2.svg",
       },
     ],
