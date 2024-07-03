@@ -12,7 +12,7 @@ const HowItWorks = () => {
       },
       title: "1. Tag the Bot",
       description:
-        "Contributor mentions @race-of-sloths in their pull request on GitHub to join the Race.",
+        "Contributor mentions @race-of-sloths in their pull request on GitHub to join the Race",
     },
     {
       image: {
@@ -21,7 +21,7 @@ const HowItWorks = () => {
         secondary: "/images/firework-sm.svg",
       },
       title: "2. Bot Responds",
-      description: "The pull request is now a part of the Race.",
+      description: "The pull request is now a part of the Race",
     },
     {
       image: {
@@ -30,7 +30,7 @@ const HowItWorks = () => {
       },
       title: "3. Maintainer Scores",
       description:
-        "Repository maintainer scores the pull request using a Fibonacci scale [0, 1, 2, 3, 5, 8, 13].",
+        "Repository maintainer scores the pull request using a Fibonacci scale [0, 1, 2, 3, 5, 8, 13]",
     },
     {
       image: {
@@ -39,7 +39,7 @@ const HowItWorks = () => {
       },
       title: "4. Leaderboard Updates",
       description:
-        "After 24 hours from the merge, the bot finalizes the score and updates the leaderboard.",
+        "After 24 hours from the merge, the bot finalizes the score and updates the leaderboard",
     },
   ];
 
@@ -79,7 +79,7 @@ const HowItWorks = () => {
 
   return (
     <article className="flex flex-col md:gap-0 gap-[40px]">
-      <h1 className="text-3xl">Race to the Top: How it works</h1>
+      <h1 className="text-3xl">How it works</h1>
       <div className="flex flex-col relative md:gap-[0] gap-[40px]">
         {items.map((item, index) => (
           <HowItWorksItems
@@ -100,7 +100,7 @@ const StreaksRating = () => {
       {
         title: "Valuable Contribution",
         description:
-          "Earn +10 Sloth points for each points by submitting valuable pull requests.",
+          "Earn +10 Sloth points for each score point by submitting valuable pull requests.",
         image: "/images/rating1.svg",
       },
       {
@@ -114,7 +114,7 @@ const StreaksRating = () => {
       {
         title: "Monthly streak",
         description:
-          "Keep your monthly streak of high-valuable pull requests (scored 8 or above) to receive additional bonus at the end of the month.",
+          "Keep your monthly streak of high-valuable pull requests scored 8 or 13 to receive additional bonus at the end of the month.",
         image: "/images/rating3.svg",
       },
       {
@@ -137,7 +137,7 @@ const StreaksRating = () => {
           className="flex md:flex-row flex-col justify-between gap-[64px]"
         >
           {row.map((item, j) => (
-            <div key={`${i}${j}`} className="flex gap-4">
+            <div key={`${i}${j}`} className="flex gap-4 items-center">
               <Image
                 src={item.image}
                 height={100}

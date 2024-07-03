@@ -12,7 +12,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const FooterItems = ({ links }) => (
-  <ul className="flex flex-col gap-2">
+  <ul className="flex flex-col gap-2 md:items-start items-center">
     {links.map((link, index) => (
       <li key={index}>
         <Link href={link.href}>
@@ -29,7 +29,7 @@ export const Footer = () => {
 
   return (
     <footer className="flex flex-col gap-5 w-full md:px-24 px-[16px] md:pb-12 pb-28">
-      <section className="flex md:flex-row flex-col w-full justify-between items-start gap-[24px]">
+      <section className="flex md:flex-row flex-col w-full justify-between md:items-start items-center gap-[24px]">
         <Image
           className="md:hidden block"
           src={"/images/logo-header.svg"}
@@ -48,15 +48,14 @@ export const Footer = () => {
           links={[
             { title: "Leaderboard", href: "/leaderboard" },
             { title: "Projects", href: "/projects" },
-            {
-              title: "My Profile",
-              href: `/profile/${githubUser?.user.login}`,
-            },
           ]}
         />
         <FooterItems
           links={[
-            { title: "About project", href: "/" },
+            {
+              title: "My Profile",
+              href: `/profile/${githubUser?.user.login}`,
+            },
             {
               title: "Feedback",
               href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
@@ -70,7 +69,7 @@ export const Footer = () => {
           ]}
         />
       </section>
-      <section className="flex md:flex-row w-full justify-center items-start gap-12 text-white">
+      <section className="flex md:flex-row w-full justify-center items-start gap-12 mt-3 text-white">
         <a href="https://x.com/race_of_sloths" target="_blank">
           <XLogo size={32} />
         </a>

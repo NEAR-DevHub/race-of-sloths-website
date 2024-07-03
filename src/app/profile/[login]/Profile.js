@@ -108,9 +108,13 @@ export default function Profile({ apiUrl, badgeUrl }) {
           </div>
           <div>
             <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">
-              {profile?.global.contributions ?? "N/A"}
+              {profile?.global?.contributions ?? "N/A"}
             </span>{" "}
-            Total contributions
+            Total contribution
+            {profile?.global?.contributions &&
+            profile?.global?.contributions > 1
+              ? "s"
+              : ""}
           </div>
         </Section>
       </div>
@@ -161,20 +165,25 @@ export default function Profile({ apiUrl, badgeUrl }) {
             icon="/images/cup.svg"
           />
           <Statistic
-            text="Week Streak"
+            text={`Week${
+              profile.streaks.find((s) => s.streak_type == "Weekly").current > 1
+                ? "s"
+                : ""
+            } Streak`}
             value={
-              profile.streaks.find((s) => s.streak_type == "Weekly")[
-                period === "all-time" ? "longest" : "current"
-              ]
+              profile.streaks.find((s) => s.streak_type == "Weekly").current
             }
             icon="/images/fire.svg"
           />
           <Statistic
-            text="Month Streak"
+            text={`Month${
+              profile.streaks.find((s) => s.streak_type == "Monthly").current >
+              1
+                ? "s"
+                : ""
+            } Streak`}
             value={
-              profile.streaks.find((s) => s.streak_type == "Monthly")[
-                period === "all-time" ? "longest" : "current"
-              ]
+              profile.streaks.find((s) => s.streak_type == "Monthly").current
             }
             icon="/images/fire.svg"
           />
@@ -297,7 +306,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
     return (
       <div className="flex md:flex-row flex-col justify-between items-center gap-2">
         <div className="flex w-full flex-col gap-3">
-          <h2 className="text-3xl">Share your achivemets</h2>
+          <h2 className="text-3xl">Share your achievemets</h2>
           <ul className="list-disc list-inside p-3">
             <li>Dynamically rendered</li>
             <li>Shareable across the internet</li>

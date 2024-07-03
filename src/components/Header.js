@@ -16,7 +16,7 @@ const Hero = () => (
         <h1 className="text-4xl">
           A fun way to contribute
           <br />
-          to open source.
+          to open source
         </h1>
         <p>Contribute, get recognized, and boost your profile</p>
       </section>
@@ -43,7 +43,7 @@ const Hero = () => (
         <h1 className="text-4xl">
           A fun way to contribute
           <br />
-          to open source.
+          to open source
         </h1>
         <p>Contribute, get recognized, and boost your profile</p>
       </section>
