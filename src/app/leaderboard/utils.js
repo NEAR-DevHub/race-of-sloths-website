@@ -18,11 +18,11 @@ const preparedDataObj = (item, period) => {
             src={item.user.image}
             alt={item.user.image}
           />
-          <div>{item.user.name ?? item.user.login}</div>
+          <div>{item.user.login}</div>
         </div>
       ),
       href: `profile/${item.user.login}`,
-      sortBy: item.user.name ?? item.user.login,
+      sortBy: item.user.login,
     },
     rating: { className: "md:w-40 w-40 min-w-40", value: item.rating },
     prs: { className: "md:w-40 w-40 min-w-40", value: item.merged_prs },

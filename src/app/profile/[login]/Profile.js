@@ -100,8 +100,10 @@ export default function Profile({ apiUrl, badgeUrl }) {
                 src={profile.user.image}
               />
               <div className="flex flex-col">
-                <h2 className="text-2xl">{profile.user.name ?? "Unknown"}</h2>
-                <h2 className="text-_secondary">@{profile.user.login}</h2>
+                <h2 className="text-2xl">{profile.user.login}</h2>
+                <h2 className="text-_secondary">
+                  Sloth#{String(profile.user_id).padStart(4, "0")}
+                </h2>
               </div>
             </div>
             <Badge bonus={profile.lifetime_bonus} lifetime={contributionDays} />
