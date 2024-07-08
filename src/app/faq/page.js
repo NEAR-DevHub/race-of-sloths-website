@@ -110,6 +110,20 @@ export default function FAQ() {
             request in the maintainer&apos;s hands. To have a fair competition
             between repositories, we propose the following criteria:
           </p>
+          <ul className="list-disc px-5 mt-2">
+            <li>0/exclude - comma fix, trivial with no added value</li>
+            <li>1 - small non-priority feature</li>
+            <li>2 - medium non-priority feature, small bug-fix</li>
+            <li>3 - small prioritized feature, bug-fix, major improvement</li>
+            <li>
+              5 - medium prioritized feature, small security vulnerability fix,
+              a time-consuming trivial task
+            </li>
+            <li>8 - critical feature, medium vulnerability fix</li>
+            <li>
+              13 - significant vulnerability fix, game-changer contribution
+            </li>
+          </ul>
         </div>
       </div>
     </div>
