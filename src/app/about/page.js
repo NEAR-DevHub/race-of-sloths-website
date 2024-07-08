@@ -13,14 +13,14 @@ export default function ToS() {
         <p>
           Race of Sloths story is rooted in the back of the minds of the people
           behind it and originated from the first days of playing with
-          open-source software in the early 2000s, but let’s cut it to the race
-          (pun intended) and say that we started actively working on it on April
-          19th, 2024 as part of NEAR DevHub initiative of the idea of bringing
-          more developers to the NEAR ecosystem. Vlad Frolov proposed the
-          initial design of a gamified open-source contributions project which
-          did not have a proper name at that time but had a very clear goal, how
-          the success could look like, why it should work, and why it could
-          fail.
+          open-source software in the early 2000s, but let&apos;s cut it to the
+          race (pun intended) and say that we started actively working on it on
+          April 19th, 2024 as part of NEAR DevHub initiative of the idea of
+          bringing more developers to the NEAR ecosystem. Vlad Frolov proposed
+          the initial design of a gamified open-source contributions project
+          which did not have a proper name at that time but had a very clear
+          goal, how the success could look like, why it should work, and why it
+          could fail.
         </p>
 
         <p>
@@ -44,19 +44,19 @@ export default function ToS() {
           Sloths Points immediately and keep your streaks continuous.
         </p>
         <p>
-          We’d like to keep it all friendly and fair, so we are starting small
-          with only several dozen projects for which we had support from the
-          maintainers.We’d like to expand the list with the open - source
-          packages that helped us to develop NEAR, and then expand it further
-          with the most influential open - source packages overall.
+          We&apos;d like to keep it all friendly and fair, so we are starting
+          small with only several dozen projects for which we had support from
+          the maintainers.We&apos;d like to expand the list with the open -
+          source packages that helped us to develop NEAR, and then expand it
+          further with the most influential open - source packages overall.
         </p>
 
         <p>
           With the growing number of contributors and projects, we will
-          introduce thematic quests for various ecosystems(NEAR, Rust, JS,
+          introduce thematic quests for various ecosystems (NEAR, Rust, JS,
           Python, and more), so you can join the camps.The open - source is not
           about competition, at the end of the day it is about collaboration, so
-          let’s race together!
+          let&apos;s race together!
         </p>
 
         <p>Yours, Race of Sloths Team</p>

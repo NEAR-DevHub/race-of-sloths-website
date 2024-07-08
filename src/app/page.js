@@ -160,19 +160,20 @@ const OurMission = () => (
   <article className="flex md:flex-row flex-col gap-[32px] justify-between md:items-center">
     <section className="flex flex-col gap-[16px]">
       <h1 className="text-3xl">Our mission</h1>
+      <p>We&apos;re developers aiming to make open-source fun and rewarding.</p>
       <p>
-        We're developers aiming to make open-source fun and rewarding.
+        Open-source drives global innovation, and we want more people to join
+        in. With many open issues in open-source projects, why not make it
+        enjoyable to solve them?
       </p>
       <p>
-        Open-source drives global innovation, and we want more people to join in.
-        With many open issues in open-source projects, why not make it enjoyable to solve them?
+        Join the Sloths community to earn Sloth Points in weekly quests while
+        contributing to open-source.
       </p>
       <p>
-        Join the Sloths community to earn Sloth Points in weekly quests while contributing to open-source.
-      </p>
-      <p>
-        The Race of Sloths originated from NEAR ecosystem, so we want to begin the race
-        with the projects that helped to build NEAR and expand it from there.
+        The Race of Sloths originated from NEAR ecosystem, so we want to begin
+        the race with the projects that helped to build NEAR and expand it from
+        there.
       </p>
     </section>
     <Image
