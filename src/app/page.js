@@ -161,15 +161,17 @@ const OurMission = () => (
     <section className="flex flex-col gap-[16px]">
       <h1 className="text-3xl">Our mission</h1>
       <p>
-        We are developers and we want to bring fun and profit to the
-        open-source. The open-source software movement leads the world
-        innovation and we want to bring more contributors to the space. There
-        are plenty of open issues in the open-source projects, but how to make
-        it fun? Join Sloths community to collect race points in weekly quests
-        while contributing to the open-source projects.
+        We're developers aiming to make open-source fun and rewarding.
       </p>
       <p>
-        The Race of Sloths originated from NEAR ecosystem, so we want to start
+        Open-source drives global innovation, and we want more people to join in.
+        With many open issues in open-source projects, why not make it enjoyable to solve them?
+      </p>
+      <p>
+        Join the Sloths community to earn Sloth Points in weekly quests while contributing to open-source.
+      </p>
+      <p>
+        The Race of Sloths originated from NEAR ecosystem, so we want to begin the race
         with the projects that helped to build NEAR and expand it from there.
       </p>
     </section>
@@ -177,7 +179,8 @@ const OurMission = () => (
       src="/images/our-mission.png"
       height={427}
       width={337}
-      alt={"our mission"}
+      alt={"XKCD comic - Dependency - https://xkcd.com/2347/"}
+      title={"XKCD comic - Dependency - https://xkcd.com/2347/"}
     />
   </article>
 );
