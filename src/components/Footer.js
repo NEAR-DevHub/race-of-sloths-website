@@ -48,17 +48,21 @@ export const Footer = () => {
           links={[
             { title: "Leaderboard", href: "/leaderboard" },
             { title: "Projects", href: "/projects" },
+            {
+              title: "My Profile",
+              href: `/profile/${githubUser?.user.login}`,
+            },
           ]}
         />
         <FooterItems
           links={[
             {
-              title: "My Profile",
-              href: `/profile/${githubUser?.user.login}`,
-            },
-            {
               title: "Feedback",
               href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
+            },
+            {
+              title: "About",
+              href: "/about",
             },
           ]}
         />
