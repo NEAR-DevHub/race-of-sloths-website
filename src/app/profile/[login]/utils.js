@@ -119,4 +119,4 @@ export const monthlyStrickRewardsMap = {
   10: { value: "+5%", percent: true },
   11: { value: "+160", percent: false },
   12: { value: "+200", percent: false },
-}; 
+};
