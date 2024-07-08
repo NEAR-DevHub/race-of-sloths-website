@@ -64,6 +64,10 @@ export const Footer = () => {
               title: "About",
               href: "/about",
             },
+            {
+              title: "FAQ",
+              href: "/faq",
+            },
           ]}
         />
         <FooterItems
