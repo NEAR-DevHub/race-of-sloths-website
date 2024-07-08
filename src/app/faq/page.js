@@ -15,7 +15,7 @@ export default function FAQ() {
           <p>
             The name is somewhat ironic. Open-source contributions can take time
             to be reviewed and released, which might be perceived as slow-paced.
-            However, open source always wins in the long run. The name was also
+            However, open-source always wins in the long run. The name was also
             inspired by{" "}
             <a
               href="https://www.youtube.com/watch?v=LUXUeCw0-1c"
@@ -24,6 +24,16 @@ export default function FAQ() {
               a sloth from the Zootopia animated film
             </a>
             .
+          </p>
+        </div>
+        <div>
+          <h2 className="text-xl font-semibold mb-1">
+            May I participate?
+          </h2>
+          <p>
+            Yes. Full-time, part-time, and one-time contributors are eligible
+            and <i>encouraged</i> to participate! You cannot score your own pull
+            requests, but other maintainers can score them.
           </p>
         </div>
         <div>

@@ -63,9 +63,9 @@ export default function ToS() {
         <p>
           We&apos;d like to keep it all friendly and fair, so we are starting
           small with only several dozen projects for which we had support from
-          the maintainers. We&apos;d like to expand the list with the open -
-          source packages that helped us to develop NEAR, and then expand it
-          further with the most influential open - source packages overall.
+          the maintainers. We&apos;d like to expand the list with the
+          open-source packages that helped us to develop NEAR, and then expand
+          it further with the most influential open-source packages overall.
         </p>
 
         <p>
