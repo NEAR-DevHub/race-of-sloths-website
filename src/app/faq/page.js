@@ -14,10 +14,16 @@ export default function FAQ() {
           </h3>
           <p>
             The name is somewhat ironic. Open-source contributions can take time
-            to be reviewed and released, and as such it&apos;s somewhat
-            slow-paced. However, open source always prevails in the long run.
-            The name was also inspired by a sloth named Flash from the Zootopia
-            animated film.
+            to be reviewed and released, which might be perceived as slow-paced.
+            However, open source always wins in the long run. The name was also
+            inspired by{" "}
+            <a
+              href="https://www.youtube.com/watch?v=LUXUeCw0-1c"
+              className="underline"
+            >
+              a sloth from the Zootopia animated film
+            </a>
+            .
           </p>
         </div>
         <div>
@@ -26,11 +32,21 @@ export default function FAQ() {
           </h3>
           <p>
             Yes, we have implemented the leaderboard and all the scoring logic
-            on the NEAR Protocol. As a result, user profiles are completely
-            public and we encourage developers to be creative and build their
-            extensions based on the stream of reviewed contributions and
-            leaderboard scores of Race of Sloths. It is completely
-            permissionless and fully transparent.
+            on the{" "}
+            <a href="https://near.org" className="underline">
+              NEAR Protocol
+            </a>
+            . As a result, user profiles are completely public and we encourage
+            developers to be creative and build their extensions based on the
+            stream of reviewed contributions and leaderboard scores of Race of
+            Sloths from{" "}
+            <a
+              href="https://explorer.near.org/accounts/race-of-sloths.near"
+              className="underline"
+            >
+              race-of-sloths.near
+            </a>
+            . It is completely permissionless and fully transparent.
           </p>
         </div>
         <div>
