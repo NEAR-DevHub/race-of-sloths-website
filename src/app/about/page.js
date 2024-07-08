@@ -6,26 +6,37 @@ export const metadata = {
 export default function ToS() {
   return (
     <div className="flex flex-col gap-5">
-      <h2 className="text-4xl">About</h2>
-      <div className="flex flex-col gap-3">
-        <p>Race of Sloths - gamified open-source contributions.</p>
-
+      <h1 className="text-4xl">About</h1>
+      <div className="flex flex-col gap-5 max-w-screen-sm tracking-wide leading-7">
         <p>
-          Race of Sloths story is rooted in the back of the minds of the people
-          behind it and originated from the first days of playing with
-          open-source software in the early 2000s, but let&apos;s cut it to the
-          race (pun intended) and say that we started actively working on it on
-          April 19th, 2024 as part of NEAR DevHub initiative of the idea of
-          bringing more developers to the NEAR ecosystem. Vlad Frolov proposed
-          the initial design of a gamified open-source contributions project
-          which did not have a proper name at that time but had a very clear
-          goal, how the success could look like, why it should work, and why it
-          could fail.
+          <b>Race of Sloths</b> &mdash; gamified open-source contributions.
         </p>
 
         <p>
+          Race of Sloths story is rooted in the back of the minds of the people
+          behind it since the first days of playing with open-source software
+          back in 2000s.
+        </p>
+        <p>
+          Let&apos;s cut it to the race (pun intended) and say that we started
+          actively working on it on April 19th, 2024 as part of{" "}
+          <a href="https://devhub.near.page" className="underline">
+            NEAR DevHub
+          </a>{" "}
+          initiative to bring more developers to the{" "}
+          <a href="https://near.org" className="underline">
+            NEAR
+          </a>{" "}
+          ecosystem. Vlad Frolov proposed the initial design of a gamified
+          open-source contributions project which did not have a proper name at
+          that time but had a very clear goal, how the success could look like,
+          why it should work, and why it could fail.
+        </p>
+
+        <h2 className="text-xl font-semibold mb-1">Get Set, Go!</h2>
+        <p>
           Long story short, on April 25th, we already had a great team of 7
-          superhumans working on Race of Sloths naming, visual design,
+          superhumans working on <b>Race of Sloths</b> naming, visual design,
           implementation, and a ton of other tiny details! Fast-forward to July
           8th, we are live in production!
         </p>
@@ -39,14 +50,20 @@ export default function ToS() {
         </p>
 
         <p>
-          @race-of-sloths is a friendly GitHub bot that you, as a contributor,
-          can mention in your pull requests on GitHub and start collecting
-          Sloths Points immediately and keep your streaks continuous.
+          <a href="https://github.com/race-of-sloths">
+            <b>@race-of-sloths</b>
+          </a>{" "}
+          is a friendly GitHub bot that you, as a contributor, can mention in
+          pull requests on GitHub and start collecting Sloths Points immediately
+          and keep your streaks continuous.
         </p>
+
+        <h2 className="text-xl font-semibold mb-1">What is Next?</h2>
+
         <p>
           We&apos;d like to keep it all friendly and fair, so we are starting
           small with only several dozen projects for which we had support from
-          the maintainers.We&apos;d like to expand the list with the open -
+          the maintainers. We&apos;d like to expand the list with the open -
           source packages that helped us to develop NEAR, and then expand it
           further with the most influential open - source packages overall.
         </p>
@@ -54,12 +71,14 @@ export default function ToS() {
         <p>
           With the growing number of contributors and projects, we will
           introduce thematic quests for various ecosystems (NEAR, Rust, JS,
-          Python, and more), so you can join the camps.The open - source is not
+          Python, and more), so you can join the camps. The open-source is not
           about competition, at the end of the day it is about collaboration, so
           let&apos;s race together!
         </p>
 
-        <p>Yours, Race of Sloths Team</p>
+        <h2 className="text-xl font-semibold mb-1">
+          Yours, Race of Sloths Team
+        </h2>
         <p>
           <ul className="list-disc px-5">
             <li>Artur-Yurii Korchynskyi</li>

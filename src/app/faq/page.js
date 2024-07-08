@@ -6,12 +6,12 @@ export const metadata = {
 export default function FAQ() {
   return (
     <div className="flex flex-col gap-3">
-      <h2 className="text-4xl mb-1">FAQ</h2>
-      <div className="flex flex-col gap-5">
+      <h1 className="text-4xl mb-1">FAQ</h1>
+      <div className="flex flex-col gap-5 max-w-screen-sm tracking-wide leading-7">
         <div>
-          <h3 className="text-xl font-semibold mb-1">
+          <h2 className="text-xl font-semibold mb-1">
             Why is it called Race of Sloths?
-          </h3>
+          </h2>
           <p>
             The name is somewhat ironic. Open-source contributions can take time
             to be reviewed and released, which might be perceived as slow-paced.
@@ -27,9 +27,9 @@ export default function FAQ() {
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-1">
+          <h2 className="text-xl font-semibold mb-1">
             Is it powered by the NEAR Protocol?
-          </h3>
+          </h2>
           <p>
             Yes, we have implemented the leaderboard and all the scoring logic
             on the{" "}
@@ -50,7 +50,7 @@ export default function FAQ() {
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-1">Why should I care?</h3>
+          <h2 className="text-xl font-semibold mb-1">Why should I care?</h2>
           <p>
             We believe that Race of Sloths will add extra motivation and fun to
             the process of contributing to open-source projects. If you are on
@@ -59,9 +59,9 @@ export default function FAQ() {
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-1">
+          <h2 className="text-xl font-semibold mb-1">
             How hard is it to contribute to Race of Sloths projects?
-          </h3>
+          </h2>
           <p>
             Each project has its complexity and requires relevant skill and/or
             perseverance, and yet it is often rewarding to crack the challenge.
@@ -75,7 +75,7 @@ export default function FAQ() {
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-1">What is Sloth Point?</h3>
+          <h2 className="text-xl font-semibold mb-1">What is Sloth Point?</h2>
           <p>
             You should think about the Sloth Point in the same way you think
             about rating or experience in games. There is no other value in
@@ -83,18 +83,18 @@ export default function FAQ() {
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-1">
+          <h2 className="text-xl font-semibold mb-1">
             Why should I do streaks?
-          </h3>
+          </h2>
           <p>
             Streak completion grants you bonus Sloth Points, and certain streak
             milestones grant you a new Sloth rank and a lifetime bonus
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-1">
+          <h2 className="text-xl font-semibold mb-1">
             What is a lifetime bonus?
-          </h3>
+          </h2>
           <p>
             Once you reach certain milestones in your weekly and monthly
             streaks, you get a new Sloth rank and a lifetime bonus to the Sloth
@@ -104,10 +104,10 @@ export default function FAQ() {
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-1">
+          <h2 className="text-xl font-semibold mb-1">
             I am tagging the bot, but the maintainer doesn&apos;t score me. What
             should I do?
-          </h3>
+          </h2>
           <p>
             Please note that Race participation is voluntary both for
             maintainers and contributors. The project is completely non-profit,
@@ -118,9 +118,9 @@ export default function FAQ() {
           </p>
         </div>
         <div>
-          <h3 className="text-xl font-semibold mb-1">
+          <h2 className="text-xl font-semibold mb-1">
             What are the scoring criteria?
-          </h3>
+          </h2>
           <p>
             We put all the power to decide how to score the particular pull
             request in the maintainer&apos;s hands. To have a fair competition
