@@ -57,21 +57,25 @@ export const Footer = () => {
         <FooterItems
           links={[
             {
-              title: "Feedback",
-              href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
-            },
-            {
               title: "About Project",
               href: "/about",
             },
             {
-              title: "FAQ",
-              href: "/faq",
+              title: "Submit Project",
+              href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
+            },
+            {
+              title: "Feedback",
+              href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
             },
           ]}
         />
         <FooterItems
           links={[
+            {
+              title: "FAQ",
+              href: "/faq",
+            },
             { title: "Privacy policy", href: "/policy" },
             { title: "Terms of Service", href: "/tos" },
           ]}

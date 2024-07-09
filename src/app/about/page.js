@@ -5,9 +5,9 @@ export const metadata = {
 
 export default function ToS() {
   return (
-    <div className="flex flex-col gap-5">
-      <h1 className="text-4xl">About</h1>
-      <div className="w-full flex flex-col gap-5 tracking-wide leading-7">
+    <div className="flex w-full flex-col gap-5 items-center">
+      <div className="w-full flex flex-col gap-5 md:w-[600px] tracking-wide leading-7">
+        <h1 className="text-4xl">About</h1>
         <p className="uppercase font-semibold tracking-wide">
           <b>Race of Sloths</b> &mdash; gamified open-source contributions.
         </p>

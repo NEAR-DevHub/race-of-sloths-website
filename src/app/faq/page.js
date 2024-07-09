@@ -5,9 +5,9 @@ export const metadata = {
 
 export default function FAQ() {
   return (
-    <div className="flex flex-col gap-3">
-      <h1 className="text-4xl mb-1">FAQ</h1>
-      <div className="w-full flex flex-col gap-5 tracking-wide leading-7">
+    <div className="flex w-full flex-col gap-5 items-center">
+      <div className="w-full flex flex-col gap-5 md:w-[600px] tracking-wide leading-7">
+        <h1 className="text-4xl mb-1">FAQ</h1>
         <div>
           <h2 className="text-xl font-semibold mb-1">
             Why is it called Race of Sloths?
