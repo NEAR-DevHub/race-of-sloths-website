@@ -7,7 +7,7 @@ export default function FAQ() {
   return (
     <div className="flex flex-col gap-3">
       <h1 className="text-4xl mb-1">FAQ</h1>
-      <div className="flex flex-col gap-5 max-w-screen-sm tracking-wide leading-7">
+      <div className="w-full flex flex-col gap-5 tracking-wide leading-7">
         <div>
           <h2 className="text-xl font-semibold mb-1">
             Why is it called Race of Sloths?
@@ -27,9 +27,7 @@ export default function FAQ() {
           </p>
         </div>
         <div>
-          <h2 className="text-xl font-semibold mb-1">
-            May I participate?
-          </h2>
+          <h2 className="text-xl font-semibold mb-1">May I participate?</h2>
           <p>
             Yes. Full-time, part-time, and one-time contributors are eligible
             and <i>encouraged</i> to participate! You cannot score your own pull

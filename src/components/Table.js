@@ -43,15 +43,15 @@ export const Table = ({ headers, body, pinned }) => {
         }`}
       >
         <div className="flex gap-3 items-center truncate">
-          <div className="truncate">
-            {item.href ? (
-              <Link href={item.href}>{item.value}</Link>
-            ) : (
-              <span className={item.value ?? "text-_secondary"}>
-                {item.value ?? "N/A"}
-              </span>
-            )}
-          </div>
+          {item.href ? (
+            <Link className="truncate" href={item.href}>
+              {item.value}
+            </Link>
+          ) : (
+            <span className={`truncate ${item.value ?? "text-_secondary"}`}>
+              {item.value ?? "N/A"}
+            </span>
+          )}
         </div>
       </div>
     );

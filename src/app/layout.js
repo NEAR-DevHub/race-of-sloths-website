@@ -4,6 +4,7 @@ import { authOptions } from "./api/auth/[...nextauth]/route";
 import AuthProvider from "./auth-provider";
 import "./globals.css";
 import { Footer, Header } from "@/components";
+import { Hero } from "@/components/Hero";
 
 const font = localFont({
   src: [
@@ -44,15 +45,16 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className={font.className}>
         <AuthProvider session={session}>
-          <main className="w-full flex h-full items-center justify-center">
-            <article className="w-full lg:w-[1277px] h-full flex flex-col items-center justify-between gap-[56px]">
-              <div className="w-full">
-                <Header />
-                <section className="flex w-full flex-col gap-[24px] md:px-24 md:py-12 pt-4 pb-24 px-[16px]">
+          <main className="w-full h-full flex flex-col items-center justify-center">
+            <Header />
+            <Hero />
+            <article className="w-full xl:w-[1280px] h-full flex flex-col items-center justify-between gap-[56px]">
+              <div className="flex h-full w-full flex-col justify-between">
+                <section className="flex w-full flex-col gap-[24px] md:px-24 md:py-12 pt-4 px-[16px]">
                   {children}
                 </section>
+                <Footer />
               </div>
-              <Footer />
             </article>
           </main>
         </AuthProvider>

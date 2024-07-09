@@ -18,7 +18,7 @@ const preparedDataObj = (item, period) => {
             src={item.user.image}
             alt={item.user.image}
           />
-          <div>{item.user.login}</div>
+          <div className="truncate">{item.user.login}</div>
         </div>
       ),
       href: `profile/${item.user.login}`,

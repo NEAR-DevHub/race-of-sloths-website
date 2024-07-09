@@ -45,14 +45,14 @@ export const preparedData = (data) =>
               src={item.organization.image}
               alt={item.organization.image}
             />
-            <div>
-              <div className="text-_secondary text-xs">
+            <div className="block truncate">
+              <p className="text-_secondary text-xs truncate">
                 {item.organization.name ?? item.organization.login} /
-              </div>
-              <div className="flex gap-2 items-center">
+              </p>
+              <p className="truncate">
                 {item.repository}{" "}
                 <span className="text-_secondary">#{item.pr_number}</span>
-              </div>
+              </p>
             </div>
           </div>
         ),

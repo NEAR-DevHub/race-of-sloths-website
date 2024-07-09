@@ -7,8 +7,8 @@ export default function ToS() {
   return (
     <div className="flex flex-col gap-5">
       <h1 className="text-4xl">About</h1>
-      <div className="flex flex-col gap-5 max-w-screen-sm tracking-wide leading-7">
-        <p>
+      <div className="w-full flex flex-col gap-5 tracking-wide leading-7">
+        <p className="uppercase font-semibold tracking-wide">
           <b>Race of Sloths</b> &mdash; gamified open-source contributions.
         </p>
 
@@ -20,11 +20,11 @@ export default function ToS() {
         <p>
           Let&apos;s cut it to the race (pun intended) and say that we started
           actively working on it on April 19th, 2024 as part of{" "}
-          <a href="https://devhub.near.page" className="underline">
+          <a href="https://devhub.near.page" className="underline text-_green">
             NEAR DevHub
           </a>{" "}
           initiative to bring more developers to the{" "}
-          <a href="https://near.org" className="underline">
+          <a href="https://near.org" className="underline text-_green">
             NEAR
           </a>{" "}
           ecosystem. Vlad Frolov proposed the initial design of a gamified

@@ -10,11 +10,11 @@ export const preparedData = (data) =>
               src={project.organization.image}
               alt={project.organization.image}
             />
-            <div>
-              <div className="text-_secondary text-xs">
+            <div className="block truncate">
+              <p className="text-_secondary text-xs truncate">
                 {project.organization.name ?? project.organization.login} /
-              </div>
-              <div>{project.name}</div>
+              </p>
+              <p className="truncate">{project.name}</p>
             </div>
           </div>
         ),
@@ -32,7 +32,9 @@ export const preparedData = (data) =>
                   src={project.contributor_of_the_month.image}
                   alt={project.contributor_of_the_month.image}
                 />
-                <div>{project.contributor_of_the_month.login}</div>
+                <div className="truncate">
+                  {project.contributor_of_the_month.login}
+                </div>
               </div>
             )}
           </>

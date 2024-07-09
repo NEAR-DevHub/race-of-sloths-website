@@ -28,7 +28,7 @@ export const Footer = () => {
   const { data: githubUser } = useSession();
 
   return (
-    <footer className="flex flex-col gap-5 w-full md:px-24 px-[16px] md:pb-12 pb-28">
+    <footer className="flex flex-col gap-5 w-full md:px-24 px-[16px] py-12 pb-28">
       <section className="flex md:flex-row flex-col w-full justify-between md:items-start items-center gap-[24px]">
         <Image
           className="md:hidden block"
@@ -61,7 +61,7 @@ export const Footer = () => {
               href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
             },
             {
-              title: "About",
+              title: "About Project",
               href: "/about",
             },
             {
