@@ -50,7 +50,10 @@ export default function ToS() {
         </p>
 
         <p>
-          <a href="https://github.com/race-of-sloths">
+          <a
+            href="https://github.com/race-of-sloths"
+            className="underline text-_green"
+          >
             <b>@race-of-sloths</b>
           </a>{" "}
           is a friendly GitHub bot that you, as a contributor, can mention in
