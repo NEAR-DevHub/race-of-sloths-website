@@ -9,7 +9,7 @@ export default function Projects({ apiUrl }) {
   const [repos, setRepos] = useState([]);
   const searchParams = useSearchParams();
   const paramsRepo = searchParams.get("repo");
-  const paramsOrg = searchParams.get("organization");
+  const paramsOrg = searchParams.get("org");
 
   async function fetchRepos() {
     const resp = await fetch(`${apiUrl}/leaderboard/repos`);
