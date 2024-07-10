@@ -19,7 +19,9 @@ export const preparedData = (data) =>
           </div>
         ),
         href: `https://github.com/${project.organization.login}/${project.name}`,
-        sortBy: project.name,
+        sortBy: `${project.organization.name ?? project.organization.login} ${
+          project.name
+        }`,
       },
       contributor: {
         className: "md:flex-1 w-64 min-w-64",

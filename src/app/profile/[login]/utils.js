@@ -57,7 +57,9 @@ export const preparedData = (data) =>
           </div>
         ),
         href: item.pull_request_link,
-        sortBy: `${item.repository} #${item.pr_number}`,
+        sortBy: `${item.organization.name ?? item.organization.login} ${
+          item.repository
+        } #${item.pr_number}`,
       },
       date: {
         className: "w-52 min-w-52",
