@@ -12,8 +12,8 @@ export const Header = () => {
 
   return (
     <>
-      <div className="flex w-full items-center justify-between border-b-gray-800 border-b py-[8px] md:px-[24px] px-[16px]">
-        <Link href="/">
+      <div className="flex w-full sticky top-0 items-center justify-between bg-_main z-50 border-b-[#313131] border-b py-[8px] md:px-[24px] px-[16px]">
+        <Link className="w-full" href="/">
           <Image
             src={"/images/logo-header.svg"}
             height={62}
@@ -30,7 +30,7 @@ export const Header = () => {
             ]}
           />
         </div>
-        <div className="md:flex hidden">
+        <div className="md:flex hidden w-full justify-end">
           {githubUser ? (
             <Link href={`/profile/${githubUser.user.login}`}>
               <img
