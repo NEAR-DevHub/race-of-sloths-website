@@ -12,7 +12,7 @@ export default function Projects({ apiUrl }) {
   const paramsOrg = searchParams.get("org");
 
   async function fetchRepos() {
-    const resp = await fetch(`${apiUrl}/leaderboard/repos`);
+    const resp = await fetch(`${apiUrl}/leaderboard/repos?limit=1000`);
     const data = await resp.json();
 
     if (data) {
