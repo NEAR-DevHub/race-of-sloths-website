@@ -114,7 +114,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
             </span>{" "}
             Total contribution
             {profile?.global?.contributions &&
-            profile?.global?.contributions > 1
+              profile?.global?.contributions > 1
               ? "s"
               : ""}
           </div>
@@ -167,23 +167,21 @@ export default function Profile({ apiUrl, badgeUrl }) {
             icon="/images/cup.svg"
           />
           <Statistic
-            text={`Week${
-              profile.streaks.find((s) => s.streak_type == "Weekly").current > 1
-                ? "s"
-                : ""
-            } Streak`}
+            text={`Week${profile.streaks.find((s) => s.streak_type == "Weekly").current > 1
+              ? "s"
+              : ""
+              } Streak`}
             value={
               profile.streaks.find((s) => s.streak_type == "Weekly").current
             }
             icon="/images/fire.svg"
           />
           <Statistic
-            text={`Month${
-              profile.streaks.find((s) => s.streak_type == "Monthly").current >
+            text={`Month${profile.streaks.find((s) => s.streak_type == "Monthly").current >
               1
-                ? "s"
-                : ""
-            } Streak`}
+              ? "s"
+              : ""
+              } Streak`}
             value={
               profile.streaks.find((s) => s.streak_type == "Monthly").current
             }
@@ -305,6 +303,13 @@ export default function Profile({ apiUrl, badgeUrl }) {
   };
 
   const ShareSection = () => {
+    const share = `[<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="${badgeUrl}/${params.login}?theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="${badgeUrl}/${params.login}?theme=light">
+    <img alt="Shows profile picture on the Race-of-Sloths" src="${badgeUrl}/${params.login}"}>
+</picture>
+](https://race-of-sloths.com/profile/${params.login})`;
+
     return (
       <div className="flex md:flex-row flex-col justify-between items-center gap-2">
         <div className="flex w-full flex-col gap-3">
@@ -320,13 +325,12 @@ export default function Profile({ apiUrl, badgeUrl }) {
             Copy-paste into your GitHub profile README
           </small>
           <Section>
-            <div className="gap-3 flex flex-col">
-              <code className="text-[#5B75F0]">
-                ![<span className="text-white">Race Of Sloths</span>
-                ]({badgeUrl}/{params.login})
+            <div className="gap-3 flex flex-col text-xs">
+              <code className="text-[#5B75F0]  whitespace-break-spaces language-md">
+                {share}
               </code>
               <CopyButton
-                text={`![Race Of Sloths](${badgeUrl}/${params.login})`}
+                text={share}
               />
             </div>
           </Section>
