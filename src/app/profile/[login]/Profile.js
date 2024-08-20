@@ -94,18 +94,20 @@ export default function Profile({ apiUrl, badgeUrl }) {
       <div className="flex justify-between items-center">
         <Section className="w-full flex flex-col gap-[24px]">
           <div className="flex w-full md:flex-row flex-col gap-[24px] justify-between">
-            <div className="flex gap-[24px] items-center">
-              <img
-                className="rounded-full w-[80px] h-[80px]"
-                src={profile.user.image}
-              />
-              <div className="flex flex-col">
-                <h2 className="text-2xl">{profile.user.login}</h2>
-                <h2 className="text-_secondary">
-                  Sloth#{String(profile.user_id).padStart(4, "0")}
-                </h2>
+            <Link href={`https://github.com/${profile.user.login}`}>
+              <div className="flex gap-[24px] items-center">
+                <img
+                  className="rounded-full w-[80px] h-[80px]"
+                  src={profile.user.image}
+                />
+                <div className="flex flex-col">
+                  <h2 className="text-2xl">{profile.user.login}</h2>
+                  <h2 className="text-_secondary">
+                    Sloth#{String(profile.user_id).padStart(4, "0")}
+                  </h2>
+                </div>
               </div>
-            </div>
+            </Link>
             <Badge bonus={profile.lifetime_bonus} lifetime={contributionDays} />
           </div>
           <div>
@@ -114,7 +116,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
             </span>{" "}
             Total contribution
             {profile?.global?.contributions &&
-            profile?.global?.contributions > 1
+              profile?.global?.contributions > 1
               ? "s"
               : ""}
           </div>
@@ -167,23 +169,21 @@ export default function Profile({ apiUrl, badgeUrl }) {
             icon="/images/cup.svg"
           />
           <Statistic
-            text={`Week${
-              profile.streaks.find((s) => s.streak_type == "Weekly").current > 1
-                ? "s"
-                : ""
-            } Streak`}
+            text={`Week${profile.streaks.find((s) => s.streak_type == "Weekly").current > 1
+              ? "s"
+              : ""
+              } Streak`}
             value={
               profile.streaks.find((s) => s.streak_type == "Weekly").current
             }
             icon="/images/fire.svg"
           />
           <Statistic
-            text={`Month${
-              profile.streaks.find((s) => s.streak_type == "Monthly").current >
+            text={`Month${profile.streaks.find((s) => s.streak_type == "Monthly").current >
               1
-                ? "s"
-                : ""
-            } Streak`}
+              ? "s"
+              : ""
+              } Streak`}
             value={
               profile.streaks.find((s) => s.streak_type == "Monthly").current
             }
