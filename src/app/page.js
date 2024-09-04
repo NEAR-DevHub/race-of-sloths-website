@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Leaderboard from "./leaderboard/page";
 import CookieConsent from "@/components/CookieConsent";
+import { Hero } from "@/components/Hero";
 
 const HowItWorks = () => {
   const items = [
@@ -209,6 +210,7 @@ export default function Home() {
   return (
     <>
       <section className="flex w-full flex-col gap-[80px]">
+        <Hero />
         <HowItWorks />
         <StreaksRating />
         <Leaderboard />
