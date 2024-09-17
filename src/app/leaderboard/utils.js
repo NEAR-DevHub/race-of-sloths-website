@@ -24,10 +24,10 @@ const preparedDataObj = (item, period) => {
       href: `profile/${item.user.login}`,
       sortBy: item.user.login,
     },
-    rating: { className: "md:w-40 w-40 min-w-40", value: item.rating },
-    prs: { className: "md:w-40 w-40 min-w-40", value: item.merged_prs },
+    rating: { className: "md:w-44 w-44 min-w-44", value: item.rating },
+    prs: { className: "md:w-44 w-44 min-w-44", value: item.contributions },
     streak: {
-      className: "md:w-40 w-40 min-w-40",
+      className: "md:w-44 w-44 min-w-44",
       value: (
         <div className="flex gap-3">
           <Image
@@ -58,10 +58,13 @@ export const preparedPinned = (data, period, githubUser) => {
   return preparedDataObj(item, period);
 };
 
-export const headers = [
-  { value: "Place", className: "md:w-24 w-24 min-w-24" },
-  { value: "Name", className: "md:flex-1 w-52 min-w-52" },
-  { value: "Sloth points", className: "md:w-40 w-40 min-w-40" },
-  { value: "Pull Requests", className: "md:w-40 w-40 min-w-40" },
-  { value: "Streak", className: "md:w-40 w-40 min-w-40" },
-];
+export const headers = (period) => {
+  const streak = period === "all-time" ? "Largest Streak" : "Streak";
+  return [
+    { value: "Place", className: "md:w-24 w-24 min-w-24" },
+    { value: "Name", className: "md:flex-1 w-52 min-w-52" },
+    { value: "Sloth points", className: "md:w-44 w-44 min-w-44" },
+    { value: "Pull Requests", className: "md:w-44 w-44 min-w-44" },
+    { value: streak, className: "md:w-44 w-44 min-w-44" },
+  ];
+};

@@ -126,6 +126,14 @@ export default function Profile({ apiUrl, badgeUrl }) {
   );
 
   const StatisticSection = () => {
+    const weekStreak = profile.streaks.find((s) => s.streak_type == "Weekly")
+    const monthStreak = profile.streaks.find((s) => s.streak_type == "Monthly")
+
+    const weekStreakValue = period === "all-time" ? weekStreak.longest : weekStreak.current
+    const monthStreakValue = period === "all-time" ? monthStreak.longest : monthStreak.current
+
+    let streakPrefix = period === "all-time" ? "Largest " : ""
+
     const Statistic = ({ icon, text, value }) => (
       <Section className="w-full p-[12px] px-[8px]">
         <div className="flex flex-row gap-2 md:items-start items-center">
@@ -153,7 +161,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-4 grid-cols-2 justify-between items-center gap-2">
+        <div className="grid xl:grid-cols-4 grid-cols-2 justify-between items-center gap-2">
           <Statistic
             text="Sloth Points"
             value={
@@ -169,24 +177,19 @@ export default function Profile({ apiUrl, badgeUrl }) {
             icon="/images/cup.svg"
           />
           <Statistic
-            text={`Week${profile.streaks.find((s) => s.streak_type == "Weekly").current > 1
+            text={`${streakPrefix}Week${weekStreakValue > 1
               ? "s"
               : ""
               } Streak`}
-            value={
-              profile.streaks.find((s) => s.streak_type == "Weekly").current
-            }
+            value={weekStreakValue}
             icon="/images/fire.svg"
           />
           <Statistic
-            text={`Month${profile.streaks.find((s) => s.streak_type == "Monthly").current >
-              1
+            text={`${streakPrefix}Month${monthStreakValue > 1
               ? "s"
               : ""
               } Streak`}
-            value={
-              profile.streaks.find((s) => s.streak_type == "Monthly").current
-            }
+            value={monthStreakValue}
             icon="/images/fire.svg"
           />
         </div>
