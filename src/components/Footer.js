@@ -78,6 +78,10 @@ export const Footer = () => {
             },
             { title: "Privacy policy", href: "/policy" },
             { title: "Terms of Service", href: "/tos" },
+            {
+              title: "Remove my data",
+              href: "https://github.com/NEAR-DevHub/race-of-sloths/issues/new/choose",
+            },
           ]}
         />
       </section>
