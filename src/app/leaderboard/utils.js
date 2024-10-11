@@ -4,7 +4,13 @@ const date = new Date();
 const month = date.getMonth() + 1;
 const year = date.getFullYear();
 
-export const periods = [`${month < 10 ? 0 : ""}${month}${year}`, "all-time"];
+const period = (month, year) => `${month < 10 ? 0 : ""}${month}${year}`;
+const previousPeriod = (month, year) => {
+  if (month === 1) return `${12}${year - 1}`;
+  return `${month - 1 < 10 ? 0 : ""}${month - 1}${year}`;
+};
+
+export const periods = [period(month, year), previousPeriod(month, year), "all-time"];
 
 const preparedDataObj = (item, period) => {
   return {
