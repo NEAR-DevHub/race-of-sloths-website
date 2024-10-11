@@ -29,13 +29,18 @@ export default function Leaderboard({ apiUrl }) {
     if (period) fetchLeaderboard();
   }, [period, githubUser]);
 
+  const defaultOptions = ["This month", "Previous", "All time"];
+  const options = periods.map((period, index) =>
+    period === "102024" ? "Rosctober" : defaultOptions[index]
+  );
+
   return (
     <div className="flex flex-col gap-5">
       <div className="flex md:flex-row flex-col justify-between gap-5">
         <h2 className="text-3xl">Leaderboard</h2>
         <div className="md:w-[400px] w-full">
           <Toggle
-            options={["This month", "All time"]}
+            options={options}
             selectedOpt={periods.indexOf(period)}
             onClick={(index) => setPeriod(periods[index])}
           />
