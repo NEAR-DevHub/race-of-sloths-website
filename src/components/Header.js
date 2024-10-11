@@ -13,20 +13,9 @@ const NewsTicker = () => {
     "THIS OCTOBER, WE'RE BRINGING YOU A SPECIAL HACKTOBERFEST EDITION WITH RACE OF SLOTHS: ROCTOBER FEST!",
   ];
 
-  const tickerRef = useRef(null);
-  const [tickerWidth, setTickerWidth] = useState(0);
-
-  useEffect(() => {
-    if (tickerRef.current) {
-      setTickerWidth(tickerRef.current.offsetWidth);
-    }
-  }, []);
-
-
   return (
     <div className="bg-_ticker_red text-_main font-bold overflow-hidden h-10">
       <div
-        ref={tickerRef}
         className="whitespace-nowrap translate-x-full flex items-center h-full"
         style={{
           animation: `ticker 30s linear infinite`,
@@ -39,7 +28,7 @@ const NewsTicker = () => {
       <style jsx>{`
         @keyframes ticker {
           0% { transform: translateX(100%); }
-          100% { transform: translateX(-100%); }
+          100% { transform: translateX(-${news.length * 100}%); }
         }
       `}</style>
     </div>
