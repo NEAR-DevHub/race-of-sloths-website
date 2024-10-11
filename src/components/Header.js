@@ -10,7 +10,7 @@ import { useEffect, useRef, useState } from "react";
 
 const NewsTicker = () => {
   const news = [
-    "THIS OCTOBER, WE'RE BRINGING YOU A SPECIAL HACKTOBERFEST EDITION WITH RACE OF SLOTHS: ROCTOBER FEST!",
+    "THIS OCTOBER, WE'RE BRINGING YOU A SPECIAL HACKTOBERFEST EDITION WITH RACE OF SLOTHS: ROSCTOBER FEST!",
   ];
 
   return (
