@@ -13,7 +13,7 @@ import {
   preparedData,
   weeklyStrickRewardsMap,
 } from "./utils";
-import { periods } from "@/app/leaderboard/utils";
+import { PROFILE_PERIODS } from "@/app/leaderboard/utils";
 import { GithubButton, ProgressBar } from "@/components/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
@@ -23,7 +23,7 @@ import NotFound from "@/app/not-found";
 export default function Profile({ apiUrl, badgeUrl }) {
   const params = useParams();
   const [profile, setProfile] = useState(undefined);
-  const [period, setPeriod] = useState(periods[0]);
+  const [period, setPeriod] = useState(PROFILE_PERIODS[0]);
   const [contributions, setContributions] = useState([]);
   const { data: githubUser } = useSession();
   const router = useRouter();
@@ -155,8 +155,8 @@ export default function Profile({ apiUrl, badgeUrl }) {
           <div className="md:w-[400px] w-full">
             <Toggle
               options={["This month", "All time"]}
-              selectedOpt={periods.indexOf(period)}
-              onClick={(index) => setPeriod(periods[index])}
+              selectedOpt={PROFILE_PERIODS.indexOf(period)}
+              onClick={(index) => setPeriod(PROFILE_PERIODS[index])}
             />
           </div>
         </div>
