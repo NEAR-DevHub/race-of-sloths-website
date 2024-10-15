@@ -10,7 +10,8 @@ const previousPeriod = (month, year) => {
   return `${month - 1 < 10 ? 0 : ""}${month - 1}${year}`;
 };
 
-export const periods = [period(month, year), previousPeriod(month, year), "all-time"];
+export const LEADERBOARD_PERIODS = [period(month, year), previousPeriod(month, year), "all-time"];
+export const PROFILE_PERIODS = [period(month, year), "all-time"];
 
 const preparedDataObj = (item, period) => {
   return {

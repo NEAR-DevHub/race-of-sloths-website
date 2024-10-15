@@ -2,14 +2,14 @@
 
 import { Table } from "@/components";
 import { useEffect, useState } from "react";
-import { headers, periods, preparedData, preparedPinned } from "./utils";
+import { headers, LEADERBOARD_PERIODS, preparedData, preparedPinned } from "./utils";
 import { Toggle } from "@/components/Toggle";
 import { useSession } from "next-auth/react";
 
 export default function Leaderboard({ apiUrl }) {
   const [leaderboard, setLeaderboard] = useState([]);
   const [userData, setUserData] = useState({});
-  const [period, setPeriod] = useState(periods[0]);
+  const [period, setPeriod] = useState(LEADERBOARD_PERIODS[0]);
   const { data: githubUser } = useSession();
 
   async function fetchLeaderboard() {
@@ -30,7 +30,7 @@ export default function Leaderboard({ apiUrl }) {
   }, [period, githubUser]);
 
   const defaultOptions = ["This month", "Previous", "All time"];
-  const options = periods.map((period, index) =>
+  const options = LEADERBOARD_PERIODS.map((period, index) =>
     period === "102024" ? "Rosctober" : defaultOptions[index]
   );
 
@@ -41,8 +41,8 @@ export default function Leaderboard({ apiUrl }) {
         <div className="md:w-[400px] w-full">
           <Toggle
             options={options}
-            selectedOpt={periods.indexOf(period)}
-            onClick={(index) => setPeriod(periods[index])}
+            selectedOpt={LEADERBOARD_PERIODS.indexOf(period)}
+            onClick={(index) => setPeriod(LEADERBOARD_PERIODS[index])}
           />
         </div>
       </div>
