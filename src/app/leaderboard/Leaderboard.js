@@ -47,7 +47,7 @@ export default function Leaderboard({ apiUrl }) {
         </div>
       </div>
       <Table
-        headers={headers(period)}
+        headers={headers()}
         body={leaderboard}
         pinned={userData.place > 14 ? userData : null}
         fallbackMsg="There are no activity"

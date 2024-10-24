@@ -129,11 +129,6 @@ export default function Profile({ apiUrl, badgeUrl }) {
     const weekStreak = profile.streaks.find((s) => s.streak_type == "Weekly")
     const monthStreak = profile.streaks.find((s) => s.streak_type == "Monthly")
 
-    const weekStreakValue = period === "all-time" ? weekStreak.longest : weekStreak.current
-    const monthStreakValue = period === "all-time" ? monthStreak.longest : monthStreak.current
-
-    let streakPrefix = period === "all-time" ? "Largest " : ""
-
     const Statistic = ({ icon, text, value }) => (
       <Section className="w-full p-[12px] px-[8px]">
         <div className="flex flex-row gap-2 md:items-start items-center">
@@ -177,20 +172,14 @@ export default function Profile({ apiUrl, badgeUrl }) {
             icon="/images/cup.svg"
           />
           <Statistic
-            text={`${streakPrefix}Week${weekStreakValue > 1
-              ? "s"
-              : ""
-              } Streak`}
-            value={weekStreakValue}
+            text={`Weekly Streak`}
+            value={`${weekStreak.current} / ${weekStreak.longest}`}
             icon="/images/fire.svg"
           />
           <Statistic
-            text={`${streakPrefix}Month${monthStreakValue > 1
-              ? "s"
-              : ""
-              } Streak`}
-            value={monthStreakValue}
-            icon="/images/fire.svg"
+            text={`Monthly Streak`}
+            value={`${monthStreak.current} / ${monthStreak.longest}`}
+            icon="/images/fire3.svg"
           />
         </div>
       </div>
