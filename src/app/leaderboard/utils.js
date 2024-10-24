@@ -31,7 +31,7 @@ const preparedDataObj = (item, period) => {
           {
             item.rank !== "Unranked" && (
               <div className="ml-auto my-auto"><img
-                className="rounded-full w-[20px] h-[20px]"
+                className="rounded-full min-w-[20px] min-h-[20px] w-[20px] h-[20px]"
                 src={`/images/badge-${item.rank.toLowerCase()}.svg`}
                 alt={item.rank}
               />
