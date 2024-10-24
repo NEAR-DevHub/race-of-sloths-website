@@ -14,6 +14,7 @@ export const LEADERBOARD_PERIODS = [period(month, year), previousPeriod(month, y
 export const PROFILE_PERIODS = [period(month, year), "all-time"];
 
 const preparedDataObj = (item, period) => {
+  console.log(item);
   return {
     place: { className: "md:w-24 w-24 min-w-24", value: item.place },
     name: {
@@ -33,7 +34,7 @@ const preparedDataObj = (item, period) => {
     },
     rating: { className: "md:w-44 w-44 min-w-44", value: item.rating },
     prs: { className: "md:w-44 w-44 min-w-44", value: item.contributions },
-    streak: {
+    weeklyStreak: {
       className: "md:w-44 w-44 min-w-44",
       value: (
         <div className="flex gap-3">
@@ -44,11 +45,28 @@ const preparedDataObj = (item, period) => {
             alt={"fire"}
           />
           <div>
-            {period === "all-time" ? item.streak.longest : item.streak.current}
+            {item.weekly_streak.current} / {item.weekly_streak.longest}
           </div>
         </div>
       ),
-      sortBy: period === "all-time" ? item.streak.longest : item.streak.current,
+      sortBy: item.weekly_streak.current
+    },
+    monthlyStreak: {
+      className: "md:w-44 w-44 min-w-44",
+      value: (
+        <div className="flex gap-3">
+          <Image
+            width={21}
+            height={21}
+            src={"/images/fire3.svg"}
+            alt={"fire"}
+          />
+          <div>
+            {item.monthly_streak.current} / {item.monthly_streak.longest}
+          </div>
+        </div>
+      ),
+      sortBy: item.monthly_streak.current,
     },
   };
 };
@@ -65,13 +83,13 @@ export const preparedPinned = (data, period, githubUser) => {
   return preparedDataObj(item, period);
 };
 
-export const headers = (period) => {
-  const streak = period === "all-time" ? "Largest Streak" : "Streak";
+export const headers = () => {
   return [
     { value: "Place", className: "md:w-24 w-24 min-w-24" },
     { value: "Name", className: "md:flex-1 w-52 min-w-52" },
     { value: "Sloth points", className: "md:w-44 w-44 min-w-44" },
     { value: "Pull Requests", className: "md:w-44 w-44 min-w-44" },
-    { value: streak, className: "md:w-44 w-44 min-w-44" },
+    { value: "Weekly Streak", className: "md:w-44 w-44 min-w-44" },
+    { value: "Monthly Streak", className: "md:w-44 w-44 min-w-44" },
   ];
 };
