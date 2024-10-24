@@ -36,15 +36,13 @@ export const Table = ({ headers, body, pinned }) => {
   function Cell({ item, pinned, last }) {
     return (
       <div
-        className={`flex items-center p-3 border-b-[1px] border-r-[1px] last:border-r-0 ${
-          last ? "border-b-0" : ""
-        } ${pinned ? "border-[#E6E6E6]" : "border-[#424242]"} ${
-          item.className
-        }`}
+        className={`flex items-center p-3 border-b-[1px] border-r-[1px] last:border-r-0 ${last ? "border-b-0" : ""
+          } ${pinned ? "border-[#E6E6E6]" : "border-[#424242]"} ${item.className
+          }`}
       >
-        <div className="flex gap-3 items-center truncate">
+        <div className="flex gap-3 items-center truncate w-full">
           {item.href ? (
-            <Link className="truncate" href={item.href}>
+            <Link className="truncate w-full" href={item.href}>
               {item.value}
             </Link>
           ) : (

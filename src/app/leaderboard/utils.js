@@ -18,16 +18,27 @@ const preparedDataObj = (item, period) => {
   return {
     place: { className: "md:w-24 w-24 min-w-24", value: item.place },
     name: {
-      className: "md:flex-1 w-52 min-w-52",
+      className: "md:flex-1 w-full min-w-52",
       value: (
-        <div className="flex gap-3 items-center">
+        <div className="flex gap-3 items-center w-full">
           <img
             className="rounded-full w-[32px] h-[32px]"
             src={item.user.image}
             alt={item.user.image}
           />
           <div className="truncate">{item.user.login}</div>
-        </div>
+
+          {
+            item.rank !== "Unranked" && (
+              <div className="ml-auto my-auto"><img
+                className="rounded-full w-[20px] h-[20px]"
+                src={`/images/badge-${item.rank.toLowerCase()}.svg`}
+                alt={item.rank}
+              />
+              </div>
+            )
+          }
+        </div >
       ),
       href: `profile/${item.user.login}`,
       sortBy: item.user.login,
