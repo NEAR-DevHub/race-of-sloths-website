@@ -50,7 +50,6 @@ export default function Leaderboard({ apiUrl }) {
         headers={headers()}
         body={leaderboard}
         pinned={userData.place > 14 ? userData : null}
-        pinFirst={true}
         fallbackMsg="There are no activity"
       />
     </div>

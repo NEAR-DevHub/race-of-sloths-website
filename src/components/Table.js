@@ -4,7 +4,7 @@ import { CaretUpDown } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export const Table = ({ headers, body, pinned, pinFirst }) => {
+export const Table = ({ headers, body, pinned, }) => {
   const [bodyData, setBodyData] = useState([]);
   const [asc, setAsc] = useState(
     headers.map((_i, index) => {
@@ -59,8 +59,6 @@ export const Table = ({ headers, body, pinned, pinFirst }) => {
     setBodyData(body);
   }, [body]);
 
-  const rest = bodyData.slice(pinFirst ? 1 : 0);
-
   return (
     <div
       className={`w-full flex flex-col bg-[#1d1d1d] border-[1px] border-[#424242] rounded-xl p-[2px]`}
@@ -80,20 +78,11 @@ export const Table = ({ headers, body, pinned, pinFirst }) => {
               </div>
             ))}
           </div>
-          {pinFirst && bodyData.length > 0 && (
-            <div className="flex sticky top-0">
-              <div className="flex md:w-full  w-fit bg-[#222] border-[#424242] ">
-                {Object.values(bodyData[0]).map((cell, i) => (
-                  <Cell key={i} item={cell} pinned={false} last={bodyData.length === 1} />
-                ))}
-              </div>
-            </div>
-          )}
         </div>
-        {rest.map((row, i) => (
+        {bodyData.map((row, i) => (
           <div key={i} className={`flex hover:bg-[#222] border-[#424242]`}>
             {Object.values(row).map((cell, j) => (
-              <Cell key={j} item={cell} last={rest.len - 1 === i} />
+              <Cell key={j} item={cell} last={bodyData.length - 1 === i && !pinned} />
             ))}
           </div>
         ))}
