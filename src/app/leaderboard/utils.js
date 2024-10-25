@@ -14,7 +14,6 @@ export const LEADERBOARD_PERIODS = [period(month, year), previousPeriod(month, y
 export const PROFILE_PERIODS = [period(month, year), "all-time"];
 
 const preparedDataObj = (item, period) => {
-  console.log(item);
   return {
     place: { className: "md:w-24 w-24 min-w-24", value: item.place },
     name: {

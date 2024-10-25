@@ -4,7 +4,7 @@ import { CaretUpDown } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-export const Table = ({ headers, body, pinned }) => {
+export const Table = ({ headers, body, pinned, pinFirst }) => {
   const [bodyData, setBodyData] = useState([]);
   const [asc, setAsc] = useState(
     headers.map((_i, index) => {
@@ -59,28 +59,41 @@ export const Table = ({ headers, body, pinned }) => {
     setBodyData(body);
   }, [body]);
 
+  const rest = bodyData.slice(pinFirst ? 1 : 0);
+
   return (
     <div
       className={`w-full flex flex-col bg-[#1d1d1d] border-[1px] border-[#424242] rounded-xl p-[2px]`}
     >
       <div className="no-scrollbar overflow-y-auto overflow-x-auto max-h-[840px]">
-        <div className="flex">
-          {headers.map((item, idx) => (
-            <div
-              role="button"
-              key={idx}
-              onClick={() => sortColumn(idx)}
-              className={`flex whitespace-nowrap justify-between gap-3 items-center px-3 py-2 bg-[#222222] border-b-[1px] border-r-[1px] last:border-r-0 border-[#424242] ${item.className}`}
-            >
-              {item.value}
-              <CaretUpDown className="opacity-50" />
+        <div className="sticky top-0">
+          <div className="flex">
+            {headers.map((item, idx) => (
+              <div
+                role="button"
+                key={idx}
+                onClick={() => sortColumn(idx)}
+                className={`flex whitespace-nowrap justify-between gap-3 items-center px-3 py-2 bg-[#222222] border-b-[1px] border-r-[1px] last:border-r-0 border-[#424242] ${item.className}`}
+              >
+                {item.value}
+                <CaretUpDown className="opacity-50" />
+              </div>
+            ))}
+          </div>
+          {pinFirst && bodyData.length > 0 && (
+            <div className="flex sticky top-0">
+              <div className="flex md:w-full  w-fit bg-[#222] border-[#424242] ">
+                {Object.values(bodyData[0]).map((cell, i) => (
+                  <Cell key={i} item={cell} pinned={false} last={bodyData.length === 1} />
+                ))}
+              </div>
             </div>
-          ))}
+          )}
         </div>
-        {bodyData.map((row, i) => (
+        {rest.map((row, i) => (
           <div key={i} className={`flex hover:bg-[#222] border-[#424242]`}>
             {Object.values(row).map((cell, j) => (
-              <Cell key={j} item={cell} last={bodyData.length - 1 === i} />
+              <Cell key={j} item={cell} last={rest.len - 1 === i} />
             ))}
           </div>
         ))}
