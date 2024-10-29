@@ -12,6 +12,7 @@ module.exports = {
         _green: "#bdf02d",
         _red: "#f05151",
         _ticker_red: "#FF5555",
+        _ticker_blue: "#5B75F0",
         _blue: "#5b75f0",
         _yellow: "#FFD400",
         _secondary: "#919399",
