@@ -6,15 +6,14 @@ import { Navigation } from "./Navigation";
 import { signIn, useSession } from "next-auth/react";
 import { BookOpen, House, Ranking, User } from "@phosphor-icons/react";
 import { GithubButton } from "./ui";
-import { useEffect, useRef, useState } from "react";
 
 const NewsTicker = () => {
   const news = [
-    "THIS OCTOBER, WE'RE BRINGING YOU A SPECIAL HACKTOBERFEST EDITION WITH RACE OF SLOTHS: ROSCTOBER FEST!",
+    "LAST CALL: ROSCTOBER IS COMING TO THE END! MAKE SURE TO SUBMIT YOUR PRs TILL OCTOBER 31ST. THE RESULTS WILL BE ANNOUNCED ON NOVEMBER 4TH.",
   ];
 
   return (
-    <div className="bg-_ticker_red text-_main font-bold overflow-hidden h-10">
+    <div className="bg-_ticker_blue text-_main font-bold overflow-hidden h-10">
       <div
         className="whitespace-nowrap translate-x-full flex items-center h-full"
         style={{
