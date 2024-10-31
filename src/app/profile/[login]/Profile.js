@@ -323,6 +323,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
           <ul className="list-disc list-inside p-3">
             <li>Dynamically rendered</li>
             <li>Shareable across the internet</li>
+            <li>Dark and light themes</li>
           </ul>
         </div>
 
