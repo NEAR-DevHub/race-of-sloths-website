@@ -297,6 +297,25 @@ export default function Profile({ apiUrl, badgeUrl }) {
   };
 
   const ShareSection = () => {
+    const share = `[<picture>
+    <source media="(prefers-color-scheme: dark)" srcset="${badgeUrl}/${params.login}?theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="${badgeUrl}/${params.login}?theme=light">
+    <img alt="Shows profile image on the Race-of-Sloths" src="${badgeUrl}/${params.login}"}>
+</picture>
+](https://race-of-sloths.com/profile/${params.login})`;
+
+    const formatCode = (code) => {
+      return code
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        // First highlight all HTML tags and brackets
+        .replace(/(&lt;\/|&lt;|&gt;)/gi, '<span class="text-white">$1</span>')
+        // Then highlight specific HTML elements
+        .replace(/(picture|source|img)/gi, '<span class="text-white">$1</span>')
+        // Finally highlight HTML attributes
+        .replace(/(media|srcset|alt|src|prefers-color-scheme)=/g, '<span class="text-white">$1</span>=')
+    };
+
     return (
       <div className="flex md:flex-row flex-col justify-between items-center gap-2">
         <div className="flex w-full flex-col gap-3">
@@ -312,15 +331,13 @@ export default function Profile({ apiUrl, badgeUrl }) {
             Copy-paste into your GitHub profile README
           </small>
           <Section>
-            <div className="gap-3 flex flex-col">
-              <code className="text-[#5B75F0]">
-                ![<span className="text-white">Race Of Sloths</span>
-                ]({badgeUrl}/{params.login})
-              </code>
-              <CopyButton
-                text={`![Race Of Sloths](${badgeUrl}/${params.login})`}
+            <div className="gap-3 flex flex-col max-h-[150px] overflow-y-auto mb-2">
+              <code
+                className="text-[#5B75F0] break-all whitespace-pre-wrap p-2"
+                dangerouslySetInnerHTML={{ __html: formatCode(share) }}
               />
             </div>
+            <CopyButton text={share} />
           </Section>
         </div>
       </div>
