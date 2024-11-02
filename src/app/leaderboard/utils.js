@@ -44,6 +44,7 @@ const preparedDataObj = (item, period) => {
     },
     rating: { className: "md:w-44 w-44 min-w-44", value: item.rating },
     prs: { className: "md:w-44 w-44 min-w-44", value: item.contributions },
+    scoredPRs: { className: "md:w-44 w-44 min-w-44", value: item.scored_prs },
     weeklyStreak: {
       className: "md:w-44 w-44 min-w-44",
       value: (
@@ -78,6 +79,7 @@ const preparedDataObj = (item, period) => {
       ),
       sortBy: item.monthly_streak.current,
     },
+
   };
 };
 
@@ -99,6 +101,7 @@ export const headers = () => {
     { value: "Name", className: "md:flex-1 w-52 min-w-52" },
     { value: "Sloth points", className: "md:w-44 w-44 min-w-44" },
     { value: "Pull Requests", className: "md:w-44 w-44 min-w-44" },
+    { value: "Scored PRs", className: "md:w-44 w-44 min-w-44" },
     { value: "Weekly Streak", className: "md:w-44 w-44 min-w-44" },
     { value: "Monthly Streak", className: "md:w-44 w-44 min-w-44" },
   ];

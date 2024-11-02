@@ -11,7 +11,7 @@ export const Hero = () => {
       {page === "/" && (
         <section className="flex w-full flex-col">
           <article className="md:flex hidden gap-10 justify-between">
-            <section className="md:py-12 flex items-center">
+            <section className="md:py-12 flex items-center ">
               <div className="flex flex-col gap-[24px] w-full">
                 <p className="text-_green">Open source, gamified</p>
                 <h1 className="text-4xl">
@@ -23,9 +23,10 @@ export const Hero = () => {
               </div>
               <div className="flex">
                 <Image
+                  className="w-[600px] xl:w-[850px] h-auto"
                   src={"/images/hero-logo.svg"}
-                  height={600}
-                  width={600}
+                  height={0}
+                  width={0}
                   alt={"Sloth image"}
                 />
               </div>

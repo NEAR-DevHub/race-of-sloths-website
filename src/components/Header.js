@@ -9,11 +9,11 @@ import { GithubButton } from "./ui";
 
 const NewsTicker = () => {
   const news = [
-    "LAST CALL: ROSCTOBER IS COMING TO THE END! MAKE SURE TO SUBMIT YOUR PRs TILL OCTOBER 31ST. THE RESULTS WILL BE ANNOUNCED ON NOVEMBER 4TH.",
+    "THANK YOU MAINTAINERS! 🎉 WE'RE REWARDING YOUR DEDICATION WITH 25 SLOTH POINTS FOR EACH SCORED PULL REQUEST. YOUR HARD WORK MAKES OPEN SOURCE AMAZING!",
   ];
 
   return (
-    <div className="bg-_ticker_blue text-_main font-bold overflow-hidden h-10">
+    <div className="bg-_ticker_yellow text-_main font-bold overflow-hidden h-10">
       <div
         className="whitespace-nowrap translate-x-full flex items-center h-full"
         style={{
