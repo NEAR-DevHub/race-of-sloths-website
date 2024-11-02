@@ -10,7 +10,7 @@ export const Hero = () => {
     <>
       {page === "/" && (
         <section className="flex w-full flex-col">
-          <article className="md:flex relative hidden gap-10 justify-between w-full">
+          <article className="md:flex hidden gap-10 justify-between">
             <section className="md:py-12 flex items-center ">
               <div className="flex flex-col gap-[24px] w-full">
                 <p className="text-_green">Open source, gamified</p>
