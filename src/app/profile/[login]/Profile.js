@@ -79,6 +79,21 @@ export default function Profile({ apiUrl, badgeUrl }) {
     </div>
   );
 
+  const SmallNumberInfo = ({ value, text }) => {
+    return (
+      <div>
+        <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">
+          {value ?? "N/A"}
+        </span>{" "}
+        {text}
+        {value &&
+          value > 1
+          ? "s"
+          : ""}
+      </div>
+    );
+  };
+
   const ProfileSection = () => (
     <div>
       <div className="flex justify-between items-center my-5">
@@ -110,15 +125,9 @@ export default function Profile({ apiUrl, badgeUrl }) {
             </Link>
             <Badge bonus={profile.lifetime_bonus} lifetime={contributionDays} />
           </div>
-          <div>
-            <span className="p-1 px-2 mr-2 bg-[#2d2d2d] rounded-md">
-              {profile?.global?.contributions ?? "N/A"}
-            </span>{" "}
-            Total contribution
-            {profile?.global?.contributions &&
-              profile?.global?.contributions > 1
-              ? "s"
-              : ""}
+          <div className="flex gap-5">
+            <SmallNumberInfo value={profile?.global?.contributions} text="Total contribution" />
+            <SmallNumberInfo value={profile?.global?.scored} text="Scored PRs" />
           </div>
         </Section>
       </div>
