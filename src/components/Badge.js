@@ -17,21 +17,21 @@ export const Badge = ({ bonus, lifetime }) => {
       description: "+5% Lifetime bonus",
       textColor: "text-_yellow",
       src: "/images/badge-bronze.svg",
-      hoverText: "This bonut will be aplied to your every future contribution",
+      hoverText: "This bonus will be aplied to your every future contribution",
     },
     10: {
       title: "silver",
       description: "+10% Lifetime bonus",
       textColor: "text-_yellow",
       src: "/images/badge-silver.svg",
-      hoverText: "This bonut will be aplied to your every future contribution",
+      hoverText: "This bonus will be aplied to your every future contribution",
     },
     15: {
       title: "gold",
       description: "+15% Lifetime bonus",
       textColor: "text-_yellow",
       src: "/images/badge-gold.svg",
-      hoverText: "This bonut will be aplied to your every future contribution",
+      hoverText: "This bonus will be aplied to your every future contribution",
       gradient:
         "radial-gradient(95.11% 105.42% at 50% 0%, rgba(249, 164, 0, 0.20) 0%, rgba(37, 25, 1, 0.00) 100%), var(--bg-3, #222)",
     },
@@ -40,7 +40,7 @@ export const Badge = ({ bonus, lifetime }) => {
       description: "+20% Lifetime bonus",
       textColor: "text-_yellow",
       src: "/images/badge-platinum.svg",
-      hoverText: "This bonut will be aplied to your every future contribution",
+      hoverText: "This bonus will be aplied to your every future contribution",
       gradient:
         "radial-gradient(95.11% 105.42% at 50% 0%, rgba(37, 0, 249, 0.20) 0%, rgba(106, 91, 247, 0.00) 100%), var(--bg-3, #222)",
     },
@@ -49,7 +49,7 @@ export const Badge = ({ bonus, lifetime }) => {
       description: "+25% Lifetime bonus",
       textColor: "text-_yellow",
       src: "/images/badge-rust.svg",
-      hoverText: "This bonut will be aplied to your every future contribution",
+      hoverText: "This bonus will be aplied to your every future contribution",
       gradient:
         "radial-gradient(95.11% 105.42% at 50% 0%, rgba(255, 0, 0, 0.20) 0%, rgba(145, 68, 17, 0.00) 100%), var(--bg-3, #222)",
     },
