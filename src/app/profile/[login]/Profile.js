@@ -127,7 +127,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
           </div>
           <div className="flex gap-5">
             <SmallNumberInfo value={profile?.global?.contributions} text="Total contribution" />
-            <SmallNumberInfo value={profile?.global?.scored} text="Scored PRs" />
+            <SmallNumberInfo value={profile?.global?.scored} text="Scored PR" />
           </div>
         </Section>
       </div>
