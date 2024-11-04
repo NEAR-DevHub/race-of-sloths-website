@@ -5,11 +5,15 @@ import { useEffect, useState } from "react";
 import { headers, LEADERBOARD_PERIODS, preparedData, preparedPinned } from "./utils";
 import { Toggle } from "@/components/Toggle";
 import { useSession } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
 
 export default function Leaderboard({ apiUrl }) {
+  const searchParams = useSearchParams();
+  const periodParam = searchParams.get("period");
+
   const [leaderboard, setLeaderboard] = useState([]);
   const [userData, setUserData] = useState({});
-  const [period, setPeriod] = useState(LEADERBOARD_PERIODS[0]);
+  const [period, setPeriod] = useState(periodParam ?? LEADERBOARD_PERIODS[0]);
   const { data: githubUser } = useSession();
 
   async function fetchLeaderboard() {
