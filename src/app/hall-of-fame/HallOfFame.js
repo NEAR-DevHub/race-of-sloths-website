@@ -85,9 +85,9 @@ export default function HallOfFame({ apiUrl }) {
             <section className="flex w-full flex-col gap-[80px]">
                 <Hero />
                 <Line />
-                <HallOfFameLeaderboard apiUrl={apiUrl} />
-                <Line />
                 <HowItWorks />
+                <Line />
+                <HallOfFameLeaderboard apiUrl={apiUrl} />
                 <Questions />
                 <HaveFun />
 
@@ -95,16 +95,3 @@ export default function HallOfFame({ apiUrl }) {
         </>
     );
 }
-// /* Line 6 */
-
-// width: 1024px;
-// height: 0px;
-
-// /* Border */
-// border: 1px solid #313131;
-// box - shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-// /* Inside auto layout */
-// flex: none;
-// order: 2;
-// flex - grow: 0;
