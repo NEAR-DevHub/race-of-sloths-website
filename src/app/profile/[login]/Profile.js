@@ -309,7 +309,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
     const share = `[<picture>
     <source media="(prefers-color-scheme: dark)" srcset="${badgeUrl}/${params.login}?theme=dark">
     <source media="(prefers-color-scheme: light)" srcset="${badgeUrl}/${params.login}?theme=light">
-    <img alt="Shows profile image on the Race-of-Sloths" src="${badgeUrl}/${params.login}"}>
+    <img alt="Shows profile image on the Race-of-Sloths" src="${badgeUrl}/${params.login}">
 </picture>
 ](https://race-of-sloths.com/profile/${params.login})`;
 
