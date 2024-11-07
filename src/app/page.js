@@ -116,7 +116,7 @@ const StreaksRating = () => {
         title: "Monthly streak",
         description:
           "Keep your monthly streak of high-valuable pull requests scored 8 or 13 to receive additional bonus at the end of the month.",
-        image: "/images/fire3.svg",
+        image: "/images/rating2.svg",
       },
       {
         title: "Lifetime bonus",
