@@ -104,6 +104,7 @@ function Quests() {
     </section>);
 }
 
+
 function HowItWorks() {
     return <section className="flex w-full flex-col gap-6">
         <h1 className="text-4xl">How to get into the <span className="text-_yellow">Hall of Fame</span></h1>
