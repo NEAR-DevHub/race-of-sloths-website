@@ -13,7 +13,7 @@ const NewsTicker = () => {
   ];
 
   return (
-    <div className="bg-_ticker_yellow text-_main font-bold overflow-hidden h-10">
+    <div className="bg-_yellow text-_main font-bold overflow-hidden h-10">
       <div
         className="whitespace-nowrap translate-x-full flex items-center h-full"
         style={{
@@ -41,24 +41,25 @@ export const Header = () => {
     <>
       <div className="w-full sticky top-0 z-50">
         <div className="flex items-center justify-between bg-_main border-b-[#313131] border-b py-[8px] md:px-[24px] px-[16px]">
-          <Link className="w-full" href="/">
+          <Link className="md:w-1/4 w-full" href="/">
             <Image
               src={"/images/logo-header.svg"}
-              height={62}
-              width={160}
+              height={32}
+              width={154}
               alt={"Logo"}
             />
           </Link>
-          <div className="md:flex hidden">
+          <div className="md:flex hidden w-1/2">
             <Navigation
               links={[
                 { title: "Home", href: "/" },
                 { title: "Leaderboard", href: "/leaderboard" },
+                { title: "Hall of Fame", href: "/hall-of-fame" },
                 { title: "Projects", href: "/projects" },
               ]}
             />
           </div>
-          <div className="md:flex hidden w-full justify-end">
+          <div className="md:flex hidden w-1/4 justify-end ">
             {githubUser ? (
               <Link href={`/profile/${githubUser.user.login}`}>
                 <img

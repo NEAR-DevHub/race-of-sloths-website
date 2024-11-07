@@ -13,9 +13,8 @@ export const Navigation = ({ links, mobile }) => {
           {links.map((link, index) => (
             <Link
               key={index}
-              className={`flex flex-col items-center px-5 ${
-                page === link.href ? " text-_green " : "text-white"
-              }`}
+              className={`flex flex-col items-center px-5 ${page === link.href ? " text-_green " : "text-white"
+                }`}
               href={link.href}
             >
               {link.icon}
