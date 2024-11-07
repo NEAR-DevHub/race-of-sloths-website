@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 function NoUsers({ slothImage, id }) {
@@ -11,7 +12,7 @@ function NoUsers({ slothImage, id }) {
 }
 
 function User({ id, login, slothPoints }) {
-    return <div className="flex justify-between items-center py-2 px-4 bg-_dark_blue rounded-lg">
+    return <Link className="flex justify-between items-center py-2 px-4 bg-_dark_blue rounded-lg" href={`/profile/${login}`}>
         <div className="flex gap-6 items-center">
             <img src={`https://github.com/${login}.png`} className="rounded-full border-[3px] border-_white" alt="Sloth image" width={80} height={80} />
             <div className="flex flex-col">
@@ -23,7 +24,7 @@ function User({ id, login, slothPoints }) {
             <p className="text-2xl m-auto leading-[27px]">{slothPoints}</p>
             <p className="text-_secondary text-xs">Sloths Points</p>
         </div>
-    </div>
+    </Link>
 }
 
 function RankSection({ rank, badgeImage, slothImage, users }) {
