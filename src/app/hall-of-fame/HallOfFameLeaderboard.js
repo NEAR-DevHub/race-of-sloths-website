@@ -80,7 +80,7 @@ export default function HallOfFameLeaderboard({ apiUrl }) {
         <h1 className="text-[32px] font-semibold">Hall of Fame: <span className="text-_rust">Ranks</span></h1>
         {
             ranks.map((value) => {
-                return <RankSection {...value} />
+                return <RankSection key={value.rank} {...value} />
             })
         }
     </section>
