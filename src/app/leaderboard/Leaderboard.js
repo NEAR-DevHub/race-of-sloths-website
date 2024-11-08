@@ -7,7 +7,8 @@ import { Toggle } from "@/components/Toggle";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
+import { ArrowRight } from "@phosphor-icons/react";
+
 export default function Leaderboard({ apiUrl, minimized }) {
   const searchParams = useSearchParams();
   const periodParam = searchParams.get("period");
@@ -60,10 +61,11 @@ export default function Leaderboard({ apiUrl, minimized }) {
           <p className="text-2xl text-_secondary">
             + {total - leaderboard.length} Contributors
           </p>
-          <Link href="/leaderboard" className="flex gap-2 text-2xl text-white ">
-            Show all <Image src="/images/arrow-right.svg" alt="arrow-right" width={23} height={23} />
+          <Link href="/leaderboard" className="flex gap-2 text-2xl items-center text-white ">
+            Show all <ArrowRight size={23} />
           </Link>
         </div>
+
 
       }
     </div>

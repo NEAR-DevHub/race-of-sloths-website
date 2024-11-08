@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Navigation } from "./Navigation";
 import { signIn, useSession } from "next-auth/react";
-import { BookOpen, House, Ranking, User } from "@phosphor-icons/react";
+import { BookOpen, House, Ranking, User, Trophy } from "@phosphor-icons/react";
 import { GithubButton } from "./ui";
 
 const NewsTicker = () => {
@@ -95,7 +95,7 @@ export const Header = () => {
             {
               title: "Hall of Fame",
               href: "/hall-of-fame",
-              icon: <Ranking size={28} />,
+              icon: <Trophy size={28} />,
             },
             {
               title: "Projects",
