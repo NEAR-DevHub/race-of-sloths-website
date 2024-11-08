@@ -40,7 +40,7 @@ export const Header = () => {
   return (
     <>
       <div className="w-full sticky top-0 z-50">
-        <div className="flex items-center justify-between bg-_main border-b-[#313131] border-b py-[8px] md:px-[24px] px-[16px]">
+        <div className="flex items-center justify-between bg-_main border-b-[#313131] border-b py-[8px] md:gap-x-[24px] gap-x-[16px]">
           <Link className="md:w-1/4 w-full" href="/">
             <Image
               src={"/images/logo-header.svg"}
