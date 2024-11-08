@@ -15,7 +15,7 @@ function Hero() {
                             <br />
                             sloth squad
                         </h1>
-                        <p>Hall of Fame is the place where passion for open-source
+                        <p >Hall of Fame is the place where passion for open-source
                             <br />
                             development and contribution consistency honours
                             <br />
@@ -34,6 +34,7 @@ function Hero() {
                 </section>
             </article >
             <article className="md:hidden flex flex-col gap-10 justify-between items-center">
+
                 <section className="p-10">
                     <Image
                         src={"/images/hof-hero.svg"}
@@ -43,7 +44,8 @@ function Hero() {
                     />
                 </section>
                 <section className="flex flex-col gap-[24px] px-[16px] justify-start w-full">
-                    <h1 className="text-4xl">
+                    <p className="text-_yellow">Keep your streaks up and build your legacy!</p>
+                    <h1 className="text-4xl font-semibold">
                         Meet the elite
                         <br />
                         sloth squad
@@ -51,7 +53,6 @@ function Hero() {
                     <p>Hall of Fame is the place where passion for open-source
                         development and contribution consistency honours
                         Sloths with a nitro boost in the Race.</p>
-                    <p className="text-_yellow">Keep your streaks up and build your legacy!</p>
                 </section>
             </article>
         </section >
@@ -59,7 +60,7 @@ function Hero() {
 }
 
 function Line() {
-    return <hr className="w-full h-0 border-_shadow" />
+    return <hr className="w-full md:block hidden h-0 border-_shadow" />
 }
 
 function Quests() {
@@ -93,7 +94,7 @@ function Quests() {
 
     return (<section className="flex w-full justify-center flex-wrap gap-x-[88px] md:gap-y-9 gap-y-4 ">
         {quests.map((quest) => (
-            <div key={quest.rank} className="flex w-full md:w-auto px-[30px] py-4 gap-4 bg-_dark_blue rounded-lg border border-[#30363D]">
+            <div key={quest.rank} className="flex min-w-[280px] w-auto px-[30px] py-4 gap-4 bg-_dark_blue rounded-lg border border-[#30363D]">
                 <Image src={`/images/sloth-${quest.rank.toLowerCase()}.svg`} alt={quest.rank} width={80} height={80} />
                 <div className="flex flex-col items-center m-auto">
                     <p className="text-2xl" style={{ color: quest.color }}>{quest.rank}</p>
@@ -107,9 +108,10 @@ function Quests() {
 
 function HowItWorks() {
     return <section className="flex w-full flex-col gap-6">
-        <h1 className="text-4xl">How to get into the <span className="text-_yellow">Hall of Fame</span></h1>
-        <p>Complete the following quests to gain additional ranks <br /> in the Sloth Hall of Fame:</p>
-        <Image className="w-full h-auto" src={"/images/hof-howto1.svg"} height={600} width={600} alt={"How it works"} />
+        <h1 className="text-3xl font-semibold">How to get into the <span className="text-_yellow">Hall of Fame</span></h1>
+        <p >Complete the following quests to gain additional ranks <br className="md:block hidden" /> in the Sloth Hall of Fame:</p>
+        <Image className="w-full h-auto md:block hidden" src={"/images/hof-howto1.svg"} height={600} width={600} alt={"How it works"} />
+        <Image className="w-full h-auto md:hidden block" src={"/images/hof-howto-mobile.svg"} height={600} width={600} alt={"How it works"} />
         <Quests />
     </section>
 }
@@ -123,12 +125,12 @@ function Questions() {
 export default function HallOfFame({ apiUrl }) {
     return (
         <>
-            <section className="flex w-full flex-col gap-[80px]">
+            <section className="flex w-full flex-col md:gap-[80px] gap-12">
                 <Hero />
                 <Line />
-                <HowItWorks />
-                <Line />
                 <HallOfFameLeaderboard apiUrl={apiUrl} />
+                <Line />
+                <HowItWorks />
                 <Questions />
                 <HaveFun />
 
