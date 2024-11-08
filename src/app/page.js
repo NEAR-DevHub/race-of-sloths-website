@@ -202,7 +202,7 @@ export default function Home() {
         <HowItWorks />
         <FaqButton />
         <StreaksRating />
-        <Leaderboard />
+        <Leaderboard minimized />
         <OurMission />
         <HaveFun />
       </section>
