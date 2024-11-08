@@ -93,6 +93,11 @@ export const Header = () => {
               icon: <Ranking size={28} />,
             },
             {
+              title: "Hall of Fame",
+              href: "/hall-of-fame",
+              icon: <Ranking size={28} />,
+            },
+            {
               title: "Projects",
               href: "/projects",
               icon: <BookOpen size={28} />,

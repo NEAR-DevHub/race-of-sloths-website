@@ -13,12 +13,12 @@ export const Navigation = ({ links, mobile }) => {
           {links.map((link, index) => (
             <Link
               key={index}
-              className={`flex flex-col items-center px-5 ${page === link.href ? " text-_green " : "text-white"
+              className={`flex flex-col items-center px-2 ${page === link.href ? " text-_green " : "text-white"
                 }`}
               href={link.href}
             >
               {link.icon}
-              <small>{link.title}</small>
+              <small className="text-xs">{link.title}</small>
             </Link>
           ))}
         </nav>
