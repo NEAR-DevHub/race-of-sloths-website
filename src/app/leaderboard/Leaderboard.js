@@ -6,17 +6,20 @@ import { headers, LEADERBOARD_PERIODS, preparedData, preparedPinned } from "./ut
 import { Toggle } from "@/components/Toggle";
 import { useSession } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
+import { ArrowRight } from "@phosphor-icons/react";
 
-export default function Leaderboard({ apiUrl }) {
+export default function Leaderboard({ apiUrl, minimized }) {
   const searchParams = useSearchParams();
   const periodParam = searchParams.get("period");
 
   const [leaderboard, setLeaderboard] = useState([]);
   const [userData, setUserData] = useState({});
   const [period, setPeriod] = useState(periodParam ?? LEADERBOARD_PERIODS[0]);
+  const [total, setTotal] = useState(0);
   const { data: githubUser } = useSession();
 
-  async function fetchLeaderboard() {
+  async function fetchLeaderboard(minimized) {
     const resp = await fetch(`${apiUrl}/leaderboard/users/${period}`);
     const data = await resp.json();
 
@@ -24,14 +27,15 @@ export default function Leaderboard({ apiUrl }) {
       const leaderboardData = preparedData(data.records, period);
       const githubUserData = preparedPinned(data.records, period, githubUser);
 
-      setLeaderboard(leaderboardData);
+      setTotal(leaderboardData.length);
+      setLeaderboard(minimized ? leaderboardData.slice(0, 10) : leaderboardData);
       setUserData(githubUserData);
     }
   }
 
   useEffect(() => {
-    if (period) fetchLeaderboard();
-  }, [period, githubUser]);
+    if (period) fetchLeaderboard(minimized);
+  }, [period, githubUser, minimized]);
 
   return (
     <div className="flex flex-col gap-5">
@@ -51,6 +55,19 @@ export default function Leaderboard({ apiUrl }) {
         pinned={userData.place > 14 ? userData : null}
         fallbackMsg="There are no activity"
       />
+      {
+        minimized &&
+        <div className="flex flex-col gap-[10px]">
+          <p className="text-2xl text-_secondary">
+            + {total - leaderboard.length} Contributors
+          </p>
+          <Link href="/leaderboard" className="flex gap-2 text-2xl items-center text-white ">
+            Show all <ArrowRight size={23} />
+          </Link>
+        </div>
+
+
+      }
     </div>
   );
 }
