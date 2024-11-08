@@ -3,6 +3,7 @@ import Leaderboard from "./leaderboard/page";
 import { Hero } from "@/components/Hero";
 import CookieConsent from "@/components/CookieConsent";
 import HaveFun from "@/components/HaveFun";
+import Link from "next/link";
 
 const HowItWorks = () => {
   const items = [
@@ -187,12 +188,19 @@ const OurMission = () => (
   </article>
 );
 
+const FaqButton = () => (
+  <Link href="/faq" className="m-auto md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3">
+    FAQ
+  </Link>
+);
+
 export default function Home() {
   return (
     <>
       <section className="flex w-full flex-col gap-[80px]">
         <Hero />
         <HowItWorks />
+        <FaqButton />
         <StreaksRating />
         <Leaderboard />
         <OurMission />
