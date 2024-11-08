@@ -17,9 +17,9 @@ function Hero() {
                         </h1>
                         <p >Hall of Fame is the place where passion for open-source
                             <br />
-                            development and contribution consistency honours
+                            development and contribution consistency honours Sloths
                             <br />
-                            Sloths with a nitro boost in the Race.</p>
+                            with a nitro boost in the Race.</p>
                         <p className="text-_yellow">Keep your streaks up and build your legacy!</p>
                     </div>
                     <div className="flex">
@@ -98,7 +98,7 @@ function Quests() {
                 <Image src={`/images/sloth-${quest.rank.toLowerCase()}.svg`} alt={quest.rank} width={80} height={80} />
                 <div className="flex flex-col items-center m-auto">
                     <p className="text-2xl" style={{ color: quest.color }}>{quest.rank}</p>
-                    <p className="text-lg">{quest.number} quests</p>
+                    <p className="text-lg">{quest.number} quest{quest.number > 1 ? "s" : ""}</p>
                 </div>
             </div>
         ))}
@@ -109,7 +109,7 @@ function Quests() {
 function HowItWorks() {
     return <section className="flex w-full flex-col gap-6">
         <h1 className="text-3xl font-semibold">How to get into the <span className="text-_yellow">Hall of Fame</span></h1>
-        <p >Complete the following quests to gain additional ranks <br className="md:block hidden" /> in the Sloth Hall of Fame:</p>
+        <p >Complete the following quests to gain additional ranks <br className="md:block hidden" /> in the Sloths Hall of Fame:</p>
         <Image className="w-full h-auto md:block hidden" src={"/images/hof-howto1.svg"} height={600} width={600} alt={"How it works"} />
         <Image className="w-full h-auto md:hidden block" src={"/images/hof-howto-mobile.svg"} height={600} width={600} alt={"How it works"} />
         <Quests />
