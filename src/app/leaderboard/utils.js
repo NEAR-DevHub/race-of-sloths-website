@@ -17,7 +17,7 @@ const preparedDataObj = (item, period) => {
   return {
     place: { className: "md:w-24 w-24 min-w-24", value: item.place },
     name: {
-      className: "md:flex-1 w-full min-w-52",
+      className: "md:flex-1 w-full min-w-52 w-52",
       value: (
         <div className="flex gap-3 items-center w-full">
           <img
@@ -42,11 +42,11 @@ const preparedDataObj = (item, period) => {
       href: `profile/${item.user.login}`,
       sortBy: item.user.login,
     },
-    rating: { className: "md:w-44 w-44 min-w-44", value: item.rating },
-    prs: { className: "md:w-44 w-44 min-w-44", value: item.contributions },
-    scoredPRs: { className: "md:w-44 w-44 min-w-44", value: item.scored_prs },
+    rating: { className: "md:w-40 w-40 min-w-40", value: item.rating },
+    prs: { className: "md:w-40 w-40 min-w-40", value: item.contributions },
+    scoredPRs: { className: "md:w-36 w-36 min-w-36", value: item.scored_prs },
     weeklyStreak: {
-      className: "md:w-44 w-44 min-w-44",
+      className: "md:w-40 w-40 min-w-40",
       value: (
         <div className="flex gap-3">
           <Image
@@ -63,7 +63,7 @@ const preparedDataObj = (item, period) => {
       sortBy: item.weekly_streak.current
     },
     monthlyStreak: {
-      className: "md:w-44 w-44 min-w-44",
+      className: "md:w-40 w-40 min-w-40",
       value: (
         <div className="flex gap-3">
           <Image
@@ -99,10 +99,10 @@ export const headers = () => {
   return [
     { value: "Place", className: "md:w-24 w-24 min-w-24" },
     { value: "Name", className: "md:flex-1 w-52 min-w-52" },
-    { value: "Sloth points", className: "md:w-44 w-44 min-w-44" },
-    { value: "Pull Requests", className: "md:w-44 w-44 min-w-44" },
-    { value: "Scored PRs", className: "md:w-44 w-44 min-w-44" },
-    { value: "Weekly Streak", className: "md:w-44 w-44 min-w-44" },
-    { value: "Monthly Streak", className: "md:w-44 w-44 min-w-44" },
+    { value: "Sloth points", className: "md:w-40 w-40 min-w-40" },
+    { value: "Pull Requests", className: "md:w-40 w-40 min-w-40" },
+    { value: "Scored PRs", className: "md:w-36 w-36 min-w-36" },
+    { value: "Weekly Streak", className: "md:w-40 w-40 min-w-40" },
+    { value: "Monthly Streak", className: "md:w-40 w-40 min-w-40" },
   ];
 };

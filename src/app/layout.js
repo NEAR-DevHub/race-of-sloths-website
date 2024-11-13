@@ -48,7 +48,7 @@ export default async function RootLayout({ children }) {
         <AuthProvider session={session}>
           <main className="w-full h-full flex flex-col items-center justify-center">
             <Header />
-            <article className="w-full xl:w-[1280px] 2xl:w-[1440px] h-full flex flex-col items-center justify-between gap-[56px]">
+            <article className="w-full min-[1440px]:w-[1440px] h-full flex flex-col items-center justify-between gap-[56px]">
               <div className="flex h-full w-full flex-col justify-between">
                 <section className="flex w-full flex-col gap-[24px] md:px-24 md:py-12 pt-4 px-[16px]">
                   {children}
