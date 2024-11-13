@@ -20,7 +20,7 @@ export default function Leaderboard({ apiUrl, minimized }) {
   const { data: githubUser } = useSession();
 
   async function fetchLeaderboard(minimized) {
-    const resp = await fetch(`${apiUrl}/leaderboard/users/${period}`);
+    const resp = await fetch(`${apiUrl}/leaderboard/users/${period}?limit=1000`);
     const data = await resp.json();
 
     if (data) {
