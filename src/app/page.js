@@ -136,17 +136,18 @@ const StreaksRating = () => {
       {items.map((row, i) => (
         <div
           key={i}
-          className="flex md:flex-row flex-col justify-between gap-[64px]"
+          className="flex lg:flex-row flex-col justify-between gap-[40px] lg:gap-[64px]"
         >
           {row.map((item, j) => (
             <div key={`${i}${j}`} className="flex gap-4 items-center">
               <Image
+                className="w-[100px] h-[100px]"
                 src={item.image}
-                height={100}
-                width={100}
+                height={0}
+                width={0}
                 alt={`rating ${i}${j}`}
               />
-              <div className="flex flex-col gap-2 w-[344px]">
+              <div className="flex flex-col gap-2 lg:w-[344px]">
                 <b>{item.title}</b>
                 <p>{item.description}</p>
               </div>
