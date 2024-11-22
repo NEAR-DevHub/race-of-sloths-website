@@ -23,7 +23,7 @@ export const Hero = () => {
               </div>
               <div className="flex">
                 <Image
-                  className="w-600px md:w-[850px] h-auto"
+                  className="w-[600px] md:w-[850px] h-auto"
                   src={"/images/hero-logo.svg"}
                   height={0}
                   width={0}
