@@ -328,7 +328,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
     return (
       <div className="flex md:flex-row flex-col justify-between items-center gap-2">
         <div className="flex w-full flex-col gap-3">
-          <h2 className="text-3xl">Share your achievemets</h2>
+          <h2 className="text-3xl">Share your achievements</h2>
           <ul className="list-disc list-inside p-3">
             <li>Dynamically rendered</li>
             <li>Shareable across the internet</li>
