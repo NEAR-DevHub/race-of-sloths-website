@@ -66,8 +66,8 @@ export default function HallOfFameLeaderboard({ apiUrl }) {
 
     const ranks = [
         { users: users.rust, rank: "Rust", color: "#BE621C", gradient: "radial-gradient(108.53% 100% at 50.28% 0%, #461E02 0%, #161B22 86.5%)", percentage: 25 },
-        { users: users.gold, rank: "Platinum", color: "#E5E4E2", gradient: "radial-gradient(189.93% 175% at 50.11% -75%, rgba(133, 156, 184, 0.49) 0%, #161B22 95%)", percentage: 20 },
-        { users: users.platinum, rank: "Gold", color: "#FFD700", gradient: "radial-gradient(107.54% 138.75% at 50% -38.75%, rgba(222, 160, 5, 0.55) 0%, #161B22 100%)", percentage: 15 },
+        { users: users.platinum, rank: "Platinum", color: "#E5E4E2", gradient: "radial-gradient(189.93% 175% at 50.11% -75%, rgba(133, 156, 184, 0.49) 0%, #161B22 95%)", percentage: 20 },
+        { users: users.gold, rank: "Gold", color: "#FFD700", gradient: "radial-gradient(107.54% 138.75% at 50% -38.75%, rgba(222, 160, 5, 0.55) 0%, #161B22 100%)", percentage: 15 },
         { users: users.silver, rank: "Silver", color: "#A6A5C4", gradient: "radial-gradient(207.5% 207.5% at 50% -115%, rgba(155, 155, 155, 0.92) 0%, #161B22 100%)", percentage: 10 },
         { users: users.bronze, rank: "Bronze", color: "#EA860D", gradient: "radial-gradient(161.88% 161.88% at 50% -61.87%, rgba(165, 101, 30, 0.75) 0%, #161B22 100%)", percentage: 5 }
     ]
