@@ -9,7 +9,7 @@ import { GithubButton } from "./ui";
 
 const NewsTicker = () => {
   const news = [
-    "Get a Christmas Gift from the Race of Sloths! Make the PR in a new repo and tag the @race-of-sloths!",
+    "Get a Christmas Gift! Make the PR in a not-yet-listed repo and tag @race-of-sloths!",
   ];
 
   return (
