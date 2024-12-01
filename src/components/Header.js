@@ -9,11 +9,11 @@ import { GithubButton } from "./ui";
 
 const NewsTicker = () => {
   const news = [
-    "THANK YOU MAINTAINERS! 🎉 WE'RE REWARDING YOUR DEDICATION WITH 25 SLOTH POINTS FOR EACH SCORED PULL REQUEST. YOUR HARD WORK MAKES OPEN SOURCE AMAZING!",
+    "Get a Christmas Gift! Make the PR in a not-yet-listed repo and tag @race-of-sloths!",
   ];
 
   return (
-    <div className="bg-_yellow text-_main font-bold overflow-hidden h-10">
+    <div className="bg-_ticker_red text-_main font-bold overflow-hidden h-10">
       <div
         className="whitespace-nowrap translate-x-full flex items-center h-full"
         style={{
