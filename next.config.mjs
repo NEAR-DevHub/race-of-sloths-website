@@ -4,7 +4,7 @@ const nextConfig = {
         return [
             {
                 source: '/latest-news',
-                destination: 'https://x.com/race_of_sloths/status/1852730800023781885',
+                destination: 'https://x.com/race_of_sloths/status/1862965316965253288',
                 permanent: false,
             },
 
