@@ -189,10 +189,15 @@ const OurMission = () => (
   </article>
 );
 
-const FaqButton = () => (
-  <Link href="/faq" className="m-auto md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3">
-    FAQ
-  </Link>
+const Buttons = () => (
+  <div className="flex flex-row  md:justify-start justify-center gap-8">
+    <Link href="/faq" className=" md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3">
+      FAQ
+    </Link>
+    <Link href="https://github.com/race-of-sloths/race-of-sloths-onboarding" target="_blank" className="md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3">
+      Try it out
+    </Link>
+  </div>
 );
 
 export default function Home() {
@@ -201,7 +206,7 @@ export default function Home() {
       <section className="flex w-full flex-col gap-[80px]">
         <Hero />
         <HowItWorks />
-        <FaqButton />
+        <Buttons />
         <StreaksRating />
         <Leaderboard minimized />
         <OurMission />
