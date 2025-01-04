@@ -2,8 +2,8 @@
 
 import {
   GithubLogo,
+  RedditLogo,
   TelegramLogo,
-  TwitterLogo,
   XLogo,
 } from "@phosphor-icons/react";
 import { useSession } from "next-auth/react";
@@ -86,6 +86,9 @@ export const Footer = () => {
         />
       </section>
       <section className="flex md:flex-row w-full justify-center items-start gap-12 mt-3 text-white">
+        <a href="https://www.reddit.com/r/RaceOfSloth/" target="_blank">
+          <RedditLogo size={32} />
+        </a>
         <a href="https://x.com/race_of_sloths" target="_blank">
           <XLogo size={32} />
         </a>
