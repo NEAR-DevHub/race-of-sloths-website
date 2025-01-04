@@ -5,6 +5,7 @@ import { useEffect, useState, useCallback } from "react";
 import {
   headers,
   LEADERBOARD_PERIODS,
+  DEFAULT_LEADERBOARD_PERIOD,
   preparedData,
   preparedPinned,
 } from "./utils";
@@ -18,7 +19,7 @@ export default function Leaderboard({ apiUrl, minimized, defaultPeriod }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const period =
-    searchParams.get("period") ?? defaultPeriod ?? LEADERBOARD_PERIODS[0];
+    searchParams.get("period") ?? defaultPeriod ?? DEFAULT_LEADERBOARD_PERIOD;
 
   const [leaderboard, setLeaderboard] = useState([]);
   const [userData, setUserData] = useState({});
@@ -78,7 +79,7 @@ export default function Leaderboard({ apiUrl, minimized, defaultPeriod }) {
             + {total - leaderboard.length} Contributors
           </p>
           <Link
-            href="/leaderboard"
+            href={`/leaderboard?period=${period}`}
             className="flex gap-2 text-2xl items-center text-white "
           >
             Show all <ArrowRight size={23} />

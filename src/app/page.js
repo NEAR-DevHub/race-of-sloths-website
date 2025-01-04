@@ -190,7 +190,7 @@ const OurMission = () => (
 );
 
 const Buttons = () => (
-  <div className="flex flex-row  md:justify-start justify-center gap-8">
+  <div className="flex sm:flex-row flex-col md:justify-start justify-center gap-8">
     <Link
       href="/faq"
       className=" md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3"

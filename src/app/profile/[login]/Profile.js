@@ -11,7 +11,10 @@ import {
   preparedData,
   weeklyStrickRewardsMap,
 } from "./utils";
-import { PROFILE_PERIODS } from "@/app/leaderboard/utils";
+import {
+  PROFILE_PERIODS,
+  DEFAULT_PROFILE_PERIOD,
+} from "@/app/leaderboard/utils";
 import { GithubButton, ProgressBar } from "@/components/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -27,7 +30,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
 
   const profileUsername = params.login;
   const [profile, setProfile] = useState(undefined);
-  const period = searchParams.get("period") ?? PROFILE_PERIODS[0];
+  const period = searchParams.get("period") ?? DEFAULT_PROFILE_PERIOD;
   const [contributions, setContributions] = useState([]);
 
   async function fetchContributions() {
