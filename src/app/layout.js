@@ -4,7 +4,6 @@ import { authOptions } from "./api/auth/[...nextauth]/route";
 import AuthProvider from "./auth-provider";
 import "./globals.css";
 import { Footer, Header } from "@/components";
-import { Hero } from "@/components/Hero";
 import { Analytics } from "@vercel/analytics/react";
 
 const font = localFont({

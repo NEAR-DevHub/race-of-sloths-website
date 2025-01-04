@@ -6,14 +6,18 @@ const year = date.getFullYear();
 
 const period = (month, year) => `${month < 10 ? 0 : ""}${month}${year}`;
 const previousPeriod = (month, year) => {
-  if (month === 1) return `${12}${year - 1}`;
+  if (month === 1) return `12${year - 1}`;
   return `${month - 1 < 10 ? 0 : ""}${month - 1}${year}`;
 };
 
-export const LEADERBOARD_PERIODS = [period(month, year), previousPeriod(month, year), "all-time"];
+export const LEADERBOARD_PERIODS = [
+  period(month, year),
+  previousPeriod(month, year),
+  "all-time",
+];
 export const PROFILE_PERIODS = [period(month, year), "all-time"];
 
-const preparedDataObj = (item, period) => {
+const preparedDataObj = (item) => {
   return {
     place: { className: "md:w-24 w-24 min-w-24", value: item.place },
     name: {
@@ -27,17 +31,16 @@ const preparedDataObj = (item, period) => {
           />
           <div className="truncate">{item.user.login}</div>
 
-          {
-            item.rank !== "Unranked" && (
-              <div className="ml-auto my-auto"><img
+          {item.rank !== "Unranked" && (
+            <div className="ml-auto my-auto">
+              <img
                 className="rounded-full min-w-[20px] min-h-[20px] w-[20px] h-[20px]"
                 src={`/images/badge-${item.rank.toLowerCase()}.svg`}
                 alt={item.rank}
               />
-              </div>
-            )
-          }
-        </div >
+            </div>
+          )}
+        </div>
       ),
       href: `profile/${item.user.login}`,
       sortBy: item.user.login,
@@ -60,7 +63,7 @@ const preparedDataObj = (item, period) => {
           </div>
         </div>
       ),
-      sortBy: item.weekly_streak.current
+      sortBy: item.weekly_streak.current,
     },
     monthlyStreak: {
       className: "md:w-40 w-40 min-w-40",
@@ -79,20 +82,18 @@ const preparedDataObj = (item, period) => {
       ),
       sortBy: item.monthly_streak.current,
     },
-
   };
 };
 
-export const preparedData = (data, period) =>
-  data.map((item) => preparedDataObj(item, period));
+export const preparedData = (data) => data.map((item) => preparedDataObj(item));
 
-export const preparedPinned = (data, period, githubUser) => {
+export const preparedPinned = (data, githubUser) => {
   if (!githubUser) return {};
 
   const item = data.find((d) => d.user.login === githubUser.user.login);
   if (!item) return {};
 
-  return preparedDataObj(item, period);
+  return preparedDataObj(item);
 };
 
 export const headers = () => {

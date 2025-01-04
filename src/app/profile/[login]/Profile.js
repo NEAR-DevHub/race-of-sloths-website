@@ -3,8 +3,6 @@
 import { Badge, CopyButton, Table } from "@/components";
 import { Toggle } from "@/components/Toggle";
 import { Calendar, CalendarDots, Clock, SignOut } from "@phosphor-icons/react";
-import Image from "next/image";
-import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   daysLeft,
@@ -16,20 +14,26 @@ import {
 import { PROFILE_PERIODS } from "@/app/leaderboard/utils";
 import { GithubButton, ProgressBar } from "@/components/ui";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
+import { useRouter, useSearchParams, useParams } from "next/navigation";
 import NotFound from "@/app/not-found";
 
 export default function Profile({ apiUrl, badgeUrl }) {
-  const params = useParams();
-  const [profile, setProfile] = useState(undefined);
-  const [period, setPeriod] = useState(PROFILE_PERIODS[0]);
-  const [contributions, setContributions] = useState([]);
-  const { data: githubUser } = useSession();
   const router = useRouter();
+  const params = useParams();
+  const searchParams = useSearchParams();
+  const { data: githubUser } = useSession();
+
+  const profileUsername = params.login;
+  const [profile, setProfile] = useState(undefined);
+  const period = searchParams.get("period") ?? PROFILE_PERIODS[0];
+  const [contributions, setContributions] = useState([]);
 
   async function fetchContributions() {
-    const resp = await fetch(`${apiUrl}/users/${params.login}/contributions`);
+    const resp = await fetch(
+      `${apiUrl}/users/${profileUsername}/contributions`
+    );
     const data = await resp.json();
 
     if (data) {
@@ -40,7 +44,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
 
   async function fetchProfile() {
     try {
-      const resp = await fetch(`${apiUrl}/users/${params.login}`);
+      const resp = await fetch(`${apiUrl}/users/${profileUsername}`);
       const data = await resp.json();
 
       if (data) {
@@ -53,18 +57,18 @@ export default function Profile({ apiUrl, badgeUrl }) {
 
   useEffect(() => {
     if (params) fetchProfile();
-  }, [params]);
+  }, [profileUsername]);
 
   useEffect(() => {
     if (profile) fetchContributions();
   }, [profile]);
 
   useEffect(() => {
-    if (githubUser && params.login === "undefined")
+    if (githubUser && profileUsername === "undefined")
       router.push(`/profile/${githubUser.user.login}`, { scroll: false });
   }, [githubUser]);
 
-  const isCurrentUser = githubUser?.user?.login === params.login;
+  const isCurrentUser = githubUser?.user?.login === profileUsername;
   const contributionDays = daysLeft(
     profile?.first_contribution,
     new Date()
@@ -86,10 +90,7 @@ export default function Profile({ apiUrl, badgeUrl }) {
           {value ?? "N/A"}
         </span>{" "}
         {text}
-        {value &&
-          value > 1
-          ? "s"
-          : ""}
+        {value && value > 1 ? "s" : ""}
       </div>
     );
   };
@@ -126,7 +127,10 @@ export default function Profile({ apiUrl, badgeUrl }) {
             <Badge bonus={profile.lifetime_bonus} lifetime={contributionDays} />
           </div>
           <div className="flex gap-5">
-            <SmallNumberInfo value={profile?.global?.contributions} text="Total contribution" />
+            <SmallNumberInfo
+              value={profile?.global?.contributions}
+              text="Total contribution"
+            />
             <SmallNumberInfo value={profile?.global?.scored} text="Scored PR" />
           </div>
         </Section>
@@ -135,8 +139,8 @@ export default function Profile({ apiUrl, badgeUrl }) {
   );
 
   const StatisticSection = () => {
-    const weekStreak = profile.streaks.find((s) => s.streak_type == "Weekly")
-    const monthStreak = profile.streaks.find((s) => s.streak_type == "Monthly")
+    const weekStreak = profile.streaks.find((s) => s.streak_type == "Weekly");
+    const monthStreak = profile.streaks.find((s) => s.streak_type == "Monthly");
 
     const Statistic = ({ icon, text, value }) => (
       <Section className="w-full p-[12px] px-[8px]">
@@ -159,8 +163,12 @@ export default function Profile({ apiUrl, badgeUrl }) {
           <div className="md:w-[400px] w-full">
             <Toggle
               options={["This month", "All time"]}
-              selectedOpt={PROFILE_PERIODS.indexOf(period)}
-              onClick={(index) => setPeriod(PROFILE_PERIODS[index])}
+              selected={PROFILE_PERIODS.indexOf(period)}
+              onClick={(index) =>
+                router.push(`?period=${PROFILE_PERIODS[index]}`, {
+                  scroll: false,
+                })
+              }
             />
           </div>
         </div>
@@ -307,22 +315,30 @@ export default function Profile({ apiUrl, badgeUrl }) {
 
   const ShareSection = () => {
     const share = `[<picture>
-    <source media="(prefers-color-scheme: dark)" srcset="${badgeUrl}/${params.login}?theme=dark">
-    <source media="(prefers-color-scheme: light)" srcset="${badgeUrl}/${params.login}?theme=light">
-    <img alt="Shows profile image on the Race-of-Sloths" src="${badgeUrl}/${params.login}">
+    <source media="(prefers-color-scheme: dark)" srcset="${badgeUrl}/${profileUsername}?theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="${badgeUrl}/${profileUsername}?theme=light">
+    <img alt="Shows profile image on the Race-of-Sloths" src="${badgeUrl}/${profileUsername}">
 </picture>
-](https://race-of-sloths.com/profile/${params.login})`;
+](https://race-of-sloths.com/profile/${profileUsername})`;
 
     const formatCode = (code) => {
-      return code
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        // First highlight all HTML tags and brackets
-        .replace(/(&lt;\/|&lt;|&gt;)/gi, '<span class="text-white">$1</span>')
-        // Then highlight specific HTML elements
-        .replace(/(picture|source|img)/gi, '<span class="text-white">$1</span>')
-        // Finally highlight HTML attributes
-        .replace(/(media|srcset|alt|src|prefers-color-scheme)=/g, '<span class="text-white">$1</span>=')
+      return (
+        code
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          // First highlight all HTML tags and brackets
+          .replace(/(&lt;\/|&lt;|&gt;)/gi, '<span class="text-white">$1</span>')
+          // Then highlight specific HTML elements
+          .replace(
+            /(picture|source|img)/gi,
+            '<span class="text-white">$1</span>'
+          )
+          // Finally highlight HTML attributes
+          .replace(
+            /(media|srcset|alt|src|prefers-color-scheme)=/g,
+            '<span class="text-white">$1</span>='
+          )
+      );
     };
 
     return (

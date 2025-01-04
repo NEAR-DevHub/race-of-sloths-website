@@ -1,7 +1,7 @@
 "use client";
 
 import { Table } from "@/components";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import {
   headers,
   LEADERBOARD_PERIODS,
@@ -10,43 +10,45 @@ import {
 } from "./utils";
 import { Toggle } from "@/components/Toggle";
 import { useSession } from "next-auth/react";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react";
 
 export default function Leaderboard({ apiUrl, minimized, defaultPeriod }) {
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const periodParam = searchParams.get("period");
+  const period =
+    searchParams.get("period") ?? defaultPeriod ?? LEADERBOARD_PERIODS[0];
 
   const [leaderboard, setLeaderboard] = useState([]);
   const [userData, setUserData] = useState({});
-  const [period, setPeriod] = useState(
-    periodParam ?? defaultPeriod ?? LEADERBOARD_PERIODS[0]
-  );
   const [total, setTotal] = useState(0);
   const { data: githubUser } = useSession();
 
-  async function fetchLeaderboard(minimized) {
-    const resp = await fetch(
-      `${apiUrl}/leaderboard/users/${period}?limit=1000`
-    );
-    const data = await resp.json();
-
-    if (data) {
-      const leaderboardData = preparedData(data.records, period);
-      const githubUserData = preparedPinned(data.records, period, githubUser);
-
-      setTotal(leaderboardData.length);
-      setLeaderboard(
-        minimized ? leaderboardData.slice(0, 10) : leaderboardData
+  const fetchLeaderboard = useCallback(
+    async function (minimized) {
+      const resp = await fetch(
+        `${apiUrl}/leaderboard/users/${period}?limit=1000`
       );
-      setUserData(githubUserData);
-    }
-  }
+      const data = await resp.json();
+
+      if (data) {
+        const leaderboardData = preparedData(data.records);
+        const githubUserData = preparedPinned(data.records, githubUser);
+
+        setTotal(leaderboardData.length);
+        setLeaderboard(
+          minimized ? leaderboardData.slice(0, 10) : leaderboardData
+        );
+        setUserData(githubUserData);
+      }
+    },
+    [period, githubUser, apiUrl]
+  );
 
   useEffect(() => {
     if (period) fetchLeaderboard(minimized);
-  }, [period, githubUser, minimized]);
+  }, [period, minimized, fetchLeaderboard]);
 
   return (
     <div className="flex flex-col gap-5">
@@ -55,8 +57,12 @@ export default function Leaderboard({ apiUrl, minimized, defaultPeriod }) {
         <div className="md:w-[400px] w-full">
           <Toggle
             options={["This month", "Previous", "All time"]}
-            selectedOpt={LEADERBOARD_PERIODS.indexOf(period)}
-            onClick={(index) => setPeriod(LEADERBOARD_PERIODS[index])}
+            selected={LEADERBOARD_PERIODS.indexOf(period)}
+            onClick={(index) =>
+              router.push(`?period=${LEADERBOARD_PERIODS[index]}`, {
+                scroll: false,
+              })
+            }
           />
         </div>
       </div>
