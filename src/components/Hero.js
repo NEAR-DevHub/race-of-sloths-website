@@ -11,19 +11,20 @@ export const Hero = () => {
       {page === "/" && (
         <section className="flex w-full flex-col">
           <article className="md:flex hidden gap-10 justify-between">
-            <section className="md:py-12 flex items-center ">
+            <section className="flex items-center ">
               <div className="flex flex-col gap-[24px] w-full">
                 <p className="text-_green">Open source, gamified</p>
                 <h1 className="text-4xl">
-                  A fun way to contribute
+                  Contribute to Open Source,
                   <br />
-                  to open source
+                  <br />
+                  and reach the top of the leaderboard
                 </h1>
-                <p>Contribute, get recognized, and boost your profile</p>
+                <p></p>
               </div>
               <div className="flex">
                 <Image
-                  className="w-[600px] md:w-[850px] h-auto"
+                  className="w-[400px] md:w-[650px] h-auto"
                   src={"/images/hero-logo.svg"}
                   height={0}
                   width={0}

@@ -7,6 +7,6 @@ export const metadata = {
 
 const apiUrl = process.env.API_URL;
 
-export default function LeaderboardPage({ minimized }) {
-  return <Leaderboard apiUrl={apiUrl} minimized={minimized} />;
+export default function LeaderboardPage(props) {
+  return <Leaderboard apiUrl={apiUrl} {...props} />;
 }

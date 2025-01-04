@@ -191,10 +191,24 @@ const OurMission = () => (
 
 const Buttons = () => (
   <div className="flex flex-row  md:justify-start justify-center gap-8">
-    <Link href="/faq" className=" md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3">
+    <Link
+      href="/faq"
+      className=" md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3"
+    >
       FAQ
     </Link>
-    <Link href="https://github.com/race-of-sloths/race-of-sloths-onboarding" target="_blank" className="md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3">
+    <Link
+      href="https://github.com/near/near-linkdrop/pull/32"
+      target="_blank"
+      className="md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3"
+    >
+      See it in action
+    </Link>
+    <Link
+      href="https://github.com/race-of-sloths/race-of-sloths-onboarding"
+      target="_blank"
+      className="md:m-0 w-fit text-[#242424] bg-white rounded-full font-semibold text-lg px-6 py-3"
+    >
       Try it out
     </Link>
   </div>
@@ -207,8 +221,8 @@ export default function Home() {
         <Hero />
         <HowItWorks />
         <Buttons />
+        <Leaderboard minimized defaultPeriod="all-time" />
         <StreaksRating />
-        <Leaderboard minimized />
         <OurMission />
         <HaveFun />
       </section>

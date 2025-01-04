@@ -9,7 +9,7 @@ import { GithubButton } from "./ui";
 
 const NewsTicker = () => {
   const news = [
-    "Get a Christmas Gift! Make the PR in a not-yet-listed repo and tag @race-of-sloths!",
+    "Make the PR in a not-yet-listed repo and tag @race-of-sloths to get started!",
   ];
 
   return (
@@ -21,13 +21,19 @@ const NewsTicker = () => {
         }}
       >
         {news.map((item, index) => (
-          <span key={index} className="mx-4 inline-block">{item}</span>
+          <span key={index} className="mx-4 inline-block">
+            {item}
+          </span>
         ))}
       </div>
       <style jsx>{`
         @keyframes ticker {
-          0% { transform: translateX(100%); }
-          100% { transform: translateX(-${news.length * 100}%); }
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-${news.length * 100}%);
+          }
         }
       `}</style>
     </div>
@@ -41,7 +47,7 @@ export const Header = () => {
     <>
       <div className="w-full sticky top-0 z-50">
         <div className="flex items-center justify-between bg-_main border-b-[#313131] border-b py-[8px] md:gap-x-[24px] gap-x-[16px]">
-          <Link className="md:w-1/4 w-full" href="/">
+          <Link className="md:w-1/4 w-full pl-2" href="/">
             <Image
               src={"/images/logo-header.svg"}
               height={32}
@@ -59,7 +65,7 @@ export const Header = () => {
               ]}
             />
           </div>
-          <div className="md:flex hidden w-1/4 justify-end ">
+          <div className="md:flex hidden w-1/4 justify-end pr-2">
             {githubUser ? (
               <Link href={`/profile/${githubUser.user.login}`}>
                 <img
@@ -74,13 +80,11 @@ export const Header = () => {
               />
             )}
           </div>
-
         </div>
         <Link href="/latest-news" target="_blank">
           <NewsTicker />
         </Link>
       </div>
-
 
       <div className="md:hidden flex w-full">
         <Navigation
