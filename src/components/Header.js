@@ -81,9 +81,9 @@ export const Header = () => {
             )}
           </div>
         </div>
-        <Link href="/latest-news" target="_blank">
+        {/* <Link href="/latest-news" target="_blank">
           <NewsTicker />
-        </Link>
+        </Link> */}
       </div>
 
       <div className="md:hidden flex w-full">
