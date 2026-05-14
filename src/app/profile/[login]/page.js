@@ -3,16 +3,18 @@ import Profile from "./Profile";
 const apiUrl = process.env.API_URL;
 const badgeUrl = process.env.BADGE_URL;
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadata({ params }) {
+  const { login } = await params;
+
   return {
-    title: `Race of Sloths | ${params.login}`,
+    title: `Race of Sloths | ${login}`,
     description: "Supercharge your open source project with Race of Sloths",
     openGraph: {
-      title: `Race of Sloths | ${params.login}`,
+      title: `Race of Sloths | ${login}`,
       description: "Supercharge your open source project with Race of Sloths",
       images: [
         {
-          url: `${badgeUrl}/${params.login}?type=meta`,
+          url: `${badgeUrl}/${login}?type=meta`,
           width: 1200,
           height: 630,
         },
@@ -20,11 +22,11 @@ export async function generateMetadata({ params, searchParams }, parent) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `Race of Sloths | ${params.login}`,
+      title: `Race of Sloths | ${login}`,
       description: "Supercharge your open source project with Race of Sloths",
       images: [
         {
-          url: `${badgeUrl}/${params.login}?type=meta`,
+          url: `${badgeUrl}/${login}?type=meta`,
           width: 1200,
           height: 630,
         },
